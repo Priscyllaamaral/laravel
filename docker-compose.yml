@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  php:
+     image: frxyt/php-dev:7.4-apache
+     network_mode: bridge
+     environment:
+      - FRX_APT_GET_INSTALL=libpng-dev zlib1g-dev libxml2-dev libzip-dev libmcrypt-dev libfreetype6-dev libjpeg62-turbo-dev libonig-dev libxext6 fontconfig libxrender1
+      - FRX_PHP_EXT_INSTALL=gd pcntl pdo_mysql
+      - FRX_APACHE_ENABLE_MOD=rewrite
+      - FRX_APACHE_DOCUMENT_ROOT=/var/www/html/public
+      - FRX_COMPOSER_VENDOR_CACHE_ENABLE=1
+      - FRX_SCRIPT_START=bash start.sh
+     ports:
+      - "80:80"
+     volumes:
+      - ./:/var/www/html:rw,cached
+      - ./vendor:/frx/composer/vendor:rw
