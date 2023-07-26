@@ -209,7 +209,30 @@ export default{
 
         
     },
+
+    mounted() {
+
+            console.log(urlParams.get('id'))
+            if (urlParams.get('id')) {
+              this.abrir(urlParams.get('id'))
+              
+            }
+        },
     methods: {
+
+        async abrir(id){
+                try {
+                    let response = await axios.get(Config.baseURL + '/fornecedores/' + id + '/abrir');
+                    this.fornecedor = response.data;
+                    this.fornecedor.endereco =response.data.enderecos;
+                    this.fornecedor.observacao =response.data.observacoes;               
+
+                    console.log(this.fornecedor);
+
+                    } catch (error) {
+                    console.log('Erro:', error);
+                }
+            },
         //para salvar no servidor
         async onFileSelected(event){
             let file = event.target.files[0];
@@ -243,15 +266,14 @@ export default{
         
         },
 
-        salvar(){
-            let resposta = axios.post(Config.baseURL + '/fornecedor/salvar', this.fornecedor);
+        async salvar(){
+            let resposta = await axios.post(Config.baseURL + '/fornecedor/salvar', this.fornecedor);
+            //console.log(resposta);
             if(resposta){
                 window.alert('Fornecedor Salvo com sucesso!');
-                window.location.href= Config.baseURL+ "/menuCadastro";
+                window.location.href= Config.baseURL+ "/fornecedores/todos";
             }
-        },
-                
-        
+        },  
     }
 }
 

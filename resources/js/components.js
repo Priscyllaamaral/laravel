@@ -21,3 +21,4 @@ Vue.component('fornecedor-pessoal', require('./components/FornecedorPessoal.vue'
 Vue.component('fornecedor-endereco', require('./components/FornecedorEndereco.vue').default);
 Vue.component('fornecedor-observacoes', require('./components/FornecedorObservacoes.vue').default);
 Vue.component('fornecedor-tabs', require('./components/Fornecedores.vue').default);
+Vue.component('fornecedor-listar', require('./components/FornecedoresListar.vue').default);

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFuncionarioTable extends Migration
+class CreateFuncionariosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,6 +16,12 @@ class CreateFuncionarioTable extends Migration
         Schema::create('funcionarios', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome')->nullable();
+            $table->string('cpfcnpj', 20)->nullable();
+            $table->string('celular', 13)->nullable();
+            $table->string('email')->nullable();
+            $table->string('rg')->nullable();
+            $table->date('data_nascimento')->nullable();
+            $table->binary('foto')->change();
             $table->timestamps();
         });
     }
@@ -27,6 +33,6 @@ class CreateFuncionarioTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('funcionario');
+        Schema::dropIfExists('funcionarios');
     }
 }

@@ -26,6 +26,18 @@ class FornecedorController extends Controller
 
     public function listarFornecedores()
     {
+        return view('fornecedoresListar');
+    }
+
+    public function editar()
+    {
+        return view('fornecedorTabs');
+    }
+
+    public function listar()
+    {
+        // $fornecedores = Fornecedor::all();
+        // dd($fornecedores);
         return Fornecedor::all();
     }
 
@@ -46,22 +58,19 @@ class FornecedorController extends Controller
  
     } 
 
-    public function abrir(Produto $produto)
+    public function abrir(Fornecedor $fornecedor)
     {
-        if ($produto->foto) {
-            $binary = isBinary($produto->foto);
-
-            if (!$binary) {
-                $produto->foto = base64_decode($produto->foto);
-            }
-        }
-
-        return response()->json($produto);
+        $fornecedor->foto = base64_decode($fornecedor->foto);
+        $fornecedor->load('enderecos');
+        $fornecedor->load('observacoes');
+        
+        return response()->json($fornecedor);
     }
 
 
     public function salvar(Request $request)
     {
+    
         $fornecedor = new Fornecedor();
         if ($request->filled('foto')) {
             $fornecedor->foto = base64_encode($request->input('foto'));     
@@ -120,7 +129,7 @@ class FornecedorController extends Controller
 
         
        
-        return 'ok';
+        return response()->json($fornecedor);
 
     }
 

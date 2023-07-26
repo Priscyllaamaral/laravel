@@ -119,6 +119,11 @@ Route::get('/fornecedor/buscar/{id}', ['middleware' => 'auth', 'uses' => 'Fornec
 Route::get('/fornecedor/filtrar', ['middleware' => 'auth', 'uses' => 'FornecedorController@search']); 
 Route::post('/fornecedor/salvar', ['middleware' => 'auth', 'uses' => 'FornecedorController@salvar']);
 Route::get('/fornecedores', ['middleware' => 'auth', 'uses' => 'FornecedorController@tela']);
+Route::get('/fornecedores/{fornecedor}/abrir', ['middleware' => 'auth', 'uses' => 'FornecedorController@abrir']);
+Route::get('/fornecedores/editar', ['middleware' => 'auth', 'uses' => 'FornecedorController@editar']);
+Route::get('/fornecedores/listar', ['middleware' => 'auth', 'uses' => 'FornecedorController@listar']);
+Route::get('/fornecedores/todos', ['middleware' => 'auth', 'uses' => 'FornecedorController@listarFornecedores']);
+
 
 
 

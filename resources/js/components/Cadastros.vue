@@ -2,7 +2,7 @@
     <div class="container ajustar">
         <div class="row">
             <div class="col-lg-6">
-                <a href="/fornecedores">
+                <a href="/fornecedores/todos">
                     <div class="card" style="float:right">
                         <div class="row">
                             <div class="col-lg-4 col-3"><i class="bi bi-person img"></i></div>
