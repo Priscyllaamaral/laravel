@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Fornecedor;
+use App\FornecedorEnderecos;
+use App\FornecedorObservacoes;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Image; //composer require intervention/image
@@ -71,11 +73,28 @@ class FornecedorController extends Controller
         $fornecedor->rg = $request->input('rg');
         $fornecedor->data_nascimento = $request->input('data_nascimento');
         $fornecedor->celular = $request->input('celular');
-
-
-
         $fornecedor->save();
 
+        $endereco = new FornecedorEnderecos ();
+        $novoEndereco = $request->input('endereco');
+        $endereco->rua = $novoEndereco['rua'];
+        $endereco->cidade = $novoEndereco['cidade'];
+        $endereco->estado = $novoEndereco['estado'];
+        $endereco->cep = $novoEndereco['cep'];
+        $endereco->numero = $novoEndereco['numero'];
+        $endereco->bairro = $novoEndereco['bairro'];
+        $endereco->complemento = $novoEndereco['complemento'];
+        $endereco->ponto_referencia = $novoEndereco['ponto_referencia'];
+        $endereco->fornecedor_id = $fornecedor->id;
+        $endereco->save();
+
+        $observacao = new FornecedorObservacoes();
+        $novaObservacao = $request->input('observacao');
+        $observacao->comissao = $novaObservacao['comissao'];
+        $observacao->status = $novaObservacao['status'];
+        $observacao->observacoes = $novaObservacao['observacoes'];
+        $observacao->fornecedor_id = $fornecedor->id;
+        $observacao->save();
 
         // if ($request->hasFile('file')) {
         //     $file = $request->file('file');

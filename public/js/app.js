@@ -2244,7 +2244,22 @@ var urlParams = new URLSearchParams(queryString);
         cpfcnpj: '',
         rg: '',
         data_nascimento: '',
-        celular: ''
+        celular: '',
+        endereco: {
+          rua: '',
+          numero: '',
+          bairro: '',
+          cep: '',
+          cidade: '',
+          estado: '',
+          complemento: '',
+          ponto_referencia: ''
+        },
+        observacao: {
+          comissao: '',
+          status: '',
+          observacoes: ''
+        }
       }
     };
   },
@@ -5418,7 +5433,7 @@ var render = function render() {
     on: {
       change: _vm.onFileChange
     }
-  })])])])])]), _vm._v(" "), _c("div", {
+  })])])])]), _vm._v(" "), _c("br"), _c("br")]), _vm._v(" "), _c("div", {
     staticClass: "col-lg-7"
   }, [_c("div", {
     staticClass: "card"
@@ -5547,7 +5562,286 @@ var render = function render() {
         _vm.$set(_vm.fornecedor, "celular", $event.target.value);
       }
     }
-  })])])])])])])]), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4)])])]), _vm._v(" "), _c("div", {
+  })])])])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "tab-pane",
+    attrs: {
+      id: "profile",
+      role: "tabpanel",
+      "aria-labelledby": "profile-tab"
+    }
+  }, [_c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "form-group col-md-6"
+  }, [_c("label", [_vm._v("Rua")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.fornecedor.endereco.rua,
+      expression: "fornecedor.endereco.rua"
+    }],
+    staticClass: "form-control",
+    domProps: {
+      value: _vm.fornecedor.endereco.rua
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.fornecedor.endereco, "rua", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group col-md-2"
+  }, [_c("label", [_vm._v("Número")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.fornecedor.endereco.numero,
+      expression: "fornecedor.endereco.numero"
+    }],
+    staticClass: "form-control",
+    domProps: {
+      value: _vm.fornecedor.endereco.numero
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.fornecedor.endereco, "numero", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group col-md-4"
+  }, [_c("label", [_vm._v("Bairro")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.fornecedor.endereco.bairro,
+      expression: "fornecedor.endereco.bairro"
+    }],
+    staticClass: "form-control",
+    domProps: {
+      value: _vm.fornecedor.endereco.bairro
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.fornecedor.endereco, "bairro", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "form-group col-md-3"
+  }, [_c("label", [_vm._v("CEP")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.fornecedor.endereco.cep,
+      expression: "fornecedor.endereco.cep"
+    }],
+    staticClass: "form-control",
+    domProps: {
+      value: _vm.fornecedor.endereco.cep
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.fornecedor.endereco, "cep", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group col-md-5"
+  }, [_c("label", [_vm._v("Cidade")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.fornecedor.endereco.cidade,
+      expression: "fornecedor.endereco.cidade"
+    }],
+    staticClass: "form-control",
+    domProps: {
+      value: _vm.fornecedor.endereco.cidade
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.fornecedor.endereco, "cidade", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group col-md-4"
+  }, [_c("label", [_vm._v("Estado")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.fornecedor.endereco.estado,
+      expression: "fornecedor.endereco.estado"
+    }],
+    staticClass: "form-control",
+    domProps: {
+      value: _vm.fornecedor.endereco.estado
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.fornecedor.endereco, "estado", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "form-group col-md-6"
+  }, [_c("label", [_vm._v("Complemento")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.fornecedor.endereco.complemento,
+      expression: "fornecedor.endereco.complemento"
+    }],
+    staticClass: "form-control",
+    domProps: {
+      value: _vm.fornecedor.endereco.complemento
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.fornecedor.endereco, "complemento", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group col-md-6"
+  }, [_c("label", [_vm._v("Ponto de referência")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.fornecedor.endereco.ponto_referencia,
+      expression: "fornecedor.endereco.ponto_referencia"
+    }],
+    staticClass: "form-control",
+    domProps: {
+      value: _vm.fornecedor.endereco.ponto_referencia
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.fornecedor.endereco, "ponto_referencia", $event.target.value);
+      }
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "tab-pane",
+    attrs: {
+      id: "contact",
+      role: "tabpanel",
+      "aria-labelledby": "contact-tab"
+    }
+  }, [_c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "form-group col-md-4"
+  }, [_c("label", [_vm._v("Comissão")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.fornecedor.observacao.comissao,
+      expression: "fornecedor.observacao.comissao"
+    }],
+    staticClass: "form-control",
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.fornecedor.observacao, "comissao", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      selected: ""
+    }
+  }, [_vm._v("Tipo")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "Permanente"
+    }
+  }, [_vm._v("Permanente")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "Variável"
+    }
+  }, [_vm._v("Variável")])])]), _vm._v(" "), _c("div", {
+    staticClass: "form-group col-md-3"
+  }, [_c("label", [_vm._v("Status")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.fornecedor.observacao.status,
+      expression: "fornecedor.observacao.status"
+    }],
+    staticClass: "form-control",
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.fornecedor.observacao, "status", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      selected: ""
+    }
+  }, [_vm._v("Tipo")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "Ativo"
+    }
+  }, [_vm._v("Ativo")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "Suspenso"
+    }
+  }, [_vm._v("Suspenso")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "Inapto"
+    }
+  }, [_vm._v("Inapto")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "Baixado"
+    }
+  }, [_vm._v("Baixado")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "Nulo"
+    }
+  }, [_vm._v("Nulo")])])]), _vm._v(" "), _c("div", {
+    staticClass: "form-group col-md-4"
+  }, [_c("label", [_vm._v("Observaçōes")]), _vm._v(" "), _c("textarea", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.fornecedor.observacao.observacoes,
+      expression: "fornecedor.observacao.observacoes"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      rows: "4",
+      cols: "50"
+    },
+    domProps: {
+      value: _vm.fornecedor.observacao.observacoes
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.fornecedor.observacao, "observacoes", $event.target.value);
+      }
+    }
+  })])])])])])])]), _vm._v(" "), _c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-md-12"
@@ -5646,108 +5940,6 @@ var staticRenderFns = [function () {
   })]), _vm._v(" "), _c("div", {
     staticClass: "text"
   }, [_vm._v("No file chosen, yet!!")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "tab-pane",
-    attrs: {
-      id: "profile",
-      role: "tabpanel",
-      "aria-labelledby": "profile-tab"
-    }
-  }, [_c("div", {
-    staticClass: "container"
-  }, [_c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "form-group col-md-6"
-  }, [_c("label", [_vm._v("Rua")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "form-group col-md-2"
-  }, [_c("label", [_vm._v("Número")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "form-group col-md-4"
-  }, [_c("label", [_vm._v("Bairro")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "form-group col-md-3"
-  }, [_c("label", [_vm._v("CEP")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "form-group col-md-5"
-  }, [_c("label", [_vm._v("Cidade")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "form-group col-md-4"
-  }, [_c("label", [_vm._v("Estado")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "form-group col-md-6"
-  }, [_c("label", [_vm._v("Complemento")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "form-group col-md-6"
-  }, [_c("label", [_vm._v("Ponto de referência")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control"
-  })])])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "tab-pane",
-    attrs: {
-      id: "contact",
-      role: "tabpanel",
-      "aria-labelledby": "contact-tab"
-    }
-  }, [_c("div", {
-    staticClass: "container"
-  }, [_c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "form-group col-md-4"
-  }, [_c("label", [_vm._v("Comissão")]), _vm._v(" "), _c("select", {
-    staticClass: "form-control"
-  }, [_c("option", {
-    attrs: {
-      selected: ""
-    }
-  }, [_vm._v("Tipo")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "x"
-    }
-  }, [_vm._v("x")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "x"
-    }
-  }, [_vm._v("x")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "x"
-    }
-  }, [_vm._v("x")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "x"
-    }
-  }, [_vm._v("x")])])]), _vm._v(" "), _c("div", {
-    staticClass: "form-group col-md-3"
-  }, [_c("label", [_vm._v("Status")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "form-group col-md-4"
-  }, [_c("label", [_vm._v("Observaçōes")]), _vm._v(" "), _c("textarea", {
-    staticClass: "form-control",
-    attrs: {
-      rows: "4",
-      cols: "50"
-    }
-  })])])])]);
 }];
 render._withStripped = true;
 

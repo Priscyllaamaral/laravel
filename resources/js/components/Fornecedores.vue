@@ -46,6 +46,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <br><br>
                                             </div>
                                             <div class="col-lg-7">
                                                 <div class="card">
@@ -91,39 +92,39 @@
                                         <div class="row">
                                             <div class="form-group col-md-6">
                                                 <label>Rua</label>
-                                                <input class="form-control"/>
+                                                <input v-model="fornecedor.endereco.rua" class="form-control"/>
                                             </div>
                                             <div class="form-group col-md-2">
                                                 <label>Número</label>
-                                                <input class="form-control"/>
+                                                <input v-model="fornecedor.endereco.numero" class="form-control"/>
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label>Bairro</label>
-                                                <input class="form-control"/>
+                                                <input v-model="fornecedor.endereco.bairro" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="form-group col-md-3">
                                                 <label>CEP</label>
-                                                <input class="form-control"/>
+                                                <input v-model="fornecedor.endereco.cep" class="form-control"/>
                                             </div>
                                             <div class="form-group col-md-5">
                                                 <label>Cidade</label>
-                                                <input class="form-control"/>
+                                                <input v-model="fornecedor.endereco.cidade" class="form-control"/>
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label>Estado</label>
-                                                <input class="form-control"/>
+                                                <input v-model="fornecedor.endereco.estado" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="form-group col-md-6">
                                                 <label>Complemento</label>
-                                                <input class="form-control"/>
+                                                <input v-model="fornecedor.endereco.complemento" class="form-control"/>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Ponto de referência</label>
-                                                <input class="form-control"/>
+                                                <input v-model="fornecedor.endereco.ponto_referencia" class="form-control"/>
                                             </div>
                                         </div>
                                     </div>
@@ -133,21 +134,27 @@
                                         <div class="row">
                                             <div class="form-group col-md-4">
                                                 <label>Comissão</label>
-                                                <select class="form-control">
+                                                <select  v-model="fornecedor.observacao.comissao" class="form-control">
                                                     <option selected>Tipo</option>
-                                                    <option value="x">x</option>
-                                                    <option value="x">x</option>
-                                                    <option value="x">x</option>
-                                                    <option value="x">x</option>
+                                                    <option value="Permanente">Permanente</option>
+                                                    <option value="Variável">Variável</option>
+                                
                                                 </select>
                                             </div>
                                             <div class="form-group col-md-3">
                                                 <label>Status</label>
-                                                <input class="form-control"/>
+                                                <select v-model="fornecedor.observacao.status" class="form-control">
+                                                    <option selected>Tipo</option>
+                                                    <option value="Ativo">Ativo</option>
+                                                    <option value="Suspenso">Suspenso</option>
+                                                    <option value="Inapto">Inapto</option>
+                                                    <option value="Baixado">Baixado</option>
+                                                    <option value="Nulo">Nulo</option>
+                                                </select>
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label>Observaçōes</label>
-                                                <textarea rows="4" cols="50" class="form-control"></textarea>
+                                                <textarea v-model="fornecedor.observacao.observacoes" rows="4" cols="50" class="form-control"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -180,7 +187,23 @@ export default{
                 cpfcnpj: '',
                 rg: '',
                 data_nascimento:'',
-                celular: ''
+                celular: '',
+                endereco:{
+                    rua: '',
+                    numero: '',
+                    bairro: '',
+                    cep: '',
+                    cidade: '',
+                    estado: '',
+                    complemento: '',
+                    ponto_referencia: ''
+
+                },
+                observacao:{
+                    comissao:'',
+                    status: '',
+                    observacoes: ''
+                }
             }
         }
 
