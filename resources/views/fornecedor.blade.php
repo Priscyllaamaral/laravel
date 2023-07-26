@@ -31,10 +31,13 @@
                         </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-primary" style="float:right ; margin-right: 20px">Salvar</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
         </div>
     </div>
-
 @endsection

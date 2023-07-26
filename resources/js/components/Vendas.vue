@@ -153,7 +153,7 @@
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal2" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -180,7 +180,7 @@
                                 <th scope="row">{{ item.id }}</th>
                                 <th>{{ item.nome }}</th>
                                 <th>{{ item.cpf }}</th>
-                                <th><button @click="adicionarCliente(item)" type="button"><i class="bi bi-check"></i></button></th>
+                                <th><button @click="adicionarCliente(item)" id="btnSave" type="button"><i class="bi bi-check"></i></button></th>
                             </tr>                      
                         </tbody>
                     </table>
@@ -235,10 +235,15 @@
     import util from '../libs/util';
     const urlParams = new URLSearchParams(queryString);
 
+ 
+                
+        
+
     export default{
         data(){
             return {
 
+                modalVisible : true,
                 dados2: '',
                 dados:'',
                 produtos: [],
@@ -546,6 +551,10 @@
             adicionarCliente(item){
                 this.cliente = item
                 $('#exampleModal2').modal('hide');
+                //$('#exampleModal2').hide();
+                //$('.modal').modal('hide');
+                //$('.modal').remove();
+                //bootstrap.Modal.getOrCreateInstance(document.getElementById('#exampleModal2')).hide();
             },
 
             async mudarNomeCliente(nome){

@@ -17,6 +17,10 @@ class CreateFornecedores extends Migration
             $table->increments('id');
             $table->string('nome')->nullable();
             $table->string('cpfcnpj', 20)->nullable();
+            $table->string('celularj', 13)->nullable();
+            $table->string('emailj')->nullable();
+            $table->string('rg')->nullable();
+            $table->date('data_nascimento')->nullable();
             $table->binary('foto')->change();
             $table->timestamps();
         });

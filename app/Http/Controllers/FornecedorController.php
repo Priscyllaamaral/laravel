@@ -17,6 +17,11 @@ class FornecedorController extends Controller
         return view('fornecedor');
     }
 
+    public function tela()
+    {
+        return view('fornecedorTabs');
+    }
+
     public function listarFornecedores()
     {
         return Fornecedor::all();
@@ -53,14 +58,24 @@ class FornecedorController extends Controller
     }
 
 
-    public function salvarImagem(Request $request)
+    public function salvar(Request $request)
     {
-
+        $fornecedor = new Fornecedor();
         if ($request->filled('foto')) {
-            $fornecedor = new Fornecedor();
-            $fornecedor->foto = base64_encode($request->input('foto'));
-            $fornecedor->save();
+            $fornecedor->foto = base64_encode($request->input('foto'));     
         }
+
+        $fornecedor->nome = $request->input('nome');
+        $fornecedor->cpfcnpj = $request->input('cpfcnpj');
+        $fornecedor->email = $request->input('email');
+        $fornecedor->rg = $request->input('rg');
+        $fornecedor->data_nascimento = $request->input('data_nascimento');
+        $fornecedor->celular = $request->input('celular');
+
+
+
+        $fornecedor->save();
+
 
         // if ($request->hasFile('file')) {
         //     $file = $request->file('file');

@@ -10,6 +10,8 @@ Vue.component('listar-produtos', require('./components/ListaProdutos.vue').defau
 Vue.component('produtos', require('./components/Produto.vue').default);
 Vue.component('mov-estoque', require('./components/MovimentoEstoque.vue').default);
 Vue.component('teste', require('./components/Teste.vue').default);
+Vue.component('menu-completo', require('./components/Menu.vue').default);
+Vue.component('menu-cadastro', require('./components/Cadastros.vue').default);
 
 Vue.component('campo-valor', require('./components/extras/CampoValor.vue').default);
 Vue.component('vendas', require('./components/Vendas.vue').default);
@@ -18,3 +20,4 @@ Vue.component('listar-vendas', require('./components/ListarVendas.vue').default)
 Vue.component('fornecedor-pessoal', require('./components/FornecedorPessoal.vue').default);
 Vue.component('fornecedor-endereco', require('./components/FornecedorEndereco.vue').default);
 Vue.component('fornecedor-observacoes', require('./components/FornecedorObservacoes.vue').default);
+Vue.component('fornecedor-tabs', require('./components/Fornecedores.vue').default);

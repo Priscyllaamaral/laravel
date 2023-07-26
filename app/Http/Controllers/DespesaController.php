@@ -17,12 +17,12 @@ class DespesaController extends Controller
     {
 
 
-        $resposta = Despesa::join('fornecedors', 'fornecedors.id', '=', 'despesas.fornecedor')
+        $resposta = Despesa::join('fornecedores', 'fornecedores.id', '=', 'despesas.fornecedor')
         ->join('plano_contas', 'plano_contas.id', '=', 'despesas.plano_de_contas')
-        ->select('despesas.id','fornecedors.nome', 'plano_contas.descricao','despesas.data', 'despesas.valor', 'despesas.tipo');
+        ->select('despesas.id','fornecedores.nome', 'plano_contas.descricao','despesas.data', 'despesas.valor', 'despesas.tipo');
 
         if ($request->nomeFornecedor) {
-            $resposta->where('fornecedors.nome', '=', $request->nomeFornecedor);
+            $resposta->where('fornecedores.nome', '=', $request->nomeFornecedor);
         }
 
         if ($request->planoConta) {

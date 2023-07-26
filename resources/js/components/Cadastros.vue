@@ -2,14 +2,14 @@
     <div class="container ajustar">
         <div class="row">
             <div class="col-lg-6">
-                <a href="/menuCadastro">
+                <a href="/fornecedores">
                     <div class="card" style="float:right">
                         <div class="row">
-                            <div class="col-lg-4 col-3"><i class="bi bi-receipt-cutoff img"></i></div>
+                            <div class="col-lg-4 col-3"><i class="bi bi-person img"></i></div>
                             <div class="col-lg-8 col-9">
                                 <div class="row espaco">
-                                    <h4 class="label"><b>Cadastros</b></h4>
-                                    <h6 class="label"><b>Fornecedores, Despesas, Clientes, Produtos</b></h6>
+                                    <h4 class="label"><b>Fornecedores</b></h4>
+                                    <h6 class="label"><b>Cadastro e Consultas</b></h6>
                                 </div>
                             </div>
                         </div>  
@@ -17,14 +17,14 @@
                 </a>     
             </div>
             <div class="col-lg-6" >
-                <a href="/venda">
+                <a href="/clientes">
                     <div class="card" style="float:left">
                         <div class="row">
-                            <div class="col-lg-4 col-3"><i class="bi bi-cart-check img"></i></div>
+                            <div class="col-lg-4 col-3"><i class="bi bi-person-circle img"></i></div>
                             <div class="col-lg-8 col-9">
                                 <div class="row espaco">
-                                    <h4 class="label"><b>Vendas</b></h4>
-                                    <h6 class="label"><b>Consultas e Relatórios</b></h6>
+                                    <h4 class="label"><b>Clientes</b></h4>
+                                    <h6 class="label"><b>Cadastro e Consultas</b></h6>
                                 </div>
                             </div>                  
                         </div>          
@@ -34,14 +34,14 @@
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <a href="https://www.google.com">
+                <a href="/produtos">
                     <div class="card" style="float:right">
                         <div class="row">
-                            <div class="col-lg-4 col-3"><i class="bi bi-calculator img"></i></div>
+                            <div class="col-lg-4 col-3"><i class="bi bi-upc-scan img"></i></div>
                             <div class="col-lg-8 col-9">
                                 <div class="row espaco">
-                                    <h4 class="label"><b>Caixa</b></h4>
-                                    <h6 class="label"><b>Recebimentos, Consultas e Relatórios</b></h6>
+                                    <h4 class="label"><b>Produtos</b></h4>
+                                    <h6 class="label"><b>Cadastro e Consultas</b></h6>
                                 </div>
                             </div>  
                         </div>
@@ -49,14 +49,14 @@
                 </a>
             </div>
             <div class="col-lg-6">
-                <a href="/movEstoque">
+                <a href="/movimentacoes/despesas">
                     <div class="card" style="float:left">
                         <div class="row">
-                            <div class="col-lg-4 col-3"><i class="bi bi-box-seam img"></i></div>
+                            <div class="col-lg-4 col-3"><i class="bi bi-arrow-down-square img"></i></div>
                             <div class="col-lg-8 col-9">
                                 <div class="row espaco">
-                                    <h4 class="label"><b>Movimento Estoque</b></h4>
-                                    <h6 class="label"><b>Entrada de Produtos</b></h6>
+                                    <h4 class="label"><b>Despesas</b></h4>
+                                    <h6 class="label"><b>Cadastro e Consultas</b></h6>
                                 </div>
                             </div>   
                         </div>
@@ -153,20 +153,14 @@ export default {
 
 i{
     padding-left: 20px;
-    padding-top: 20px;
+    padding-top: 15px;
     font-size: 70px;
-    color: purple;
+    color: rgb(202, 128, 202);
 }
 
 .img{
     display: flex;
     justify-content: center;
-}
-.estilo{
-    margin-top: 0px;
-    padding-top: 0px;
-    margin-left: 20px;
-    margin-bottom: 30px;
 }
 
 .label{

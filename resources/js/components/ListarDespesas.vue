@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container ajustar">
       <div class="container">
           <div class="row">
               <div class="col-lg-12 corH5">
@@ -19,8 +19,8 @@
       </div>
 
       <div class="scroll">
+
         <table class="table table-striped table-bordered " style="background-color: aliceblue;">
-            <caption>Lista de Despesas </caption>
             <thead>
                 <tr>
                     <th scope="col">Fornecedor</th>
@@ -126,11 +126,7 @@
                                         <input v-model="dataFim" type="date" class="form-select" aria-label="Tipo">
                                     </div>
                                 </div>
-                            </div>
-                    
-                             
-                                    
-                           
+                            </div>  
                         </form>
                     </div>
                 </div>

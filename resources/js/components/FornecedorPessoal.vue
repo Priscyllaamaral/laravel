@@ -1,51 +1,63 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="form-group col-md-6">
-                <label>Nome</label>
-                <input class="form-control"/>
-            </div>
-            <div class="form-group col-md-3">
-                <label>CPF</label>
-                <input class="form-control"/>
-            </div>
-            <div class="form-group col-md-3">
-                <label>RG</label>
-                <input class="form-control"/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-6">
-                <label>E-mail</label>
-                <input class="form-control"/>
-            </div>
-            <div class="form-group col-md-2">
-                <label>Data Nascimento</label>
-                <input type="date" class="form-control"/>
-            </div>
-            <div class="form-group col-md-4">
-                <label>Celular</label>
-                <input class="form-control"/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="thumb col-lg-6">
-                <div class="cont">
-                    <div class="wrapper">
-                        <div class="image">
-                            <img v-bind:src="fornecedor.foto" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="icon"><i class="bi bi-cloud-upload"></i></div>
-                            <div class="text">No file chosen, yet!</div>
+            <div class="col-lg-5">
+                <div class="card">
+                    <div class="thumb">
+                        <div class="cont">
+                            <div class="wrapper">
+                                <div class="image">
+                                    <img v-bind:src="fornecedor.foto" alt="">
+                                </div>
+                                <div class="content">
+                                    <div class="icon"><i class="bi bi-cloud-upload"></i></div>
+                                    <div class="text">No file chosen, yet!!</div>
+                                </div>
+                            </div>
+                            <div>
+                                <input id="inputFoto" ref="foto" v-on:change="onFileChange" type="file" accept="image/*"> 
+                            </div> 
                         </div>
                     </div>
-                    <div>
-                        <input id="inputFoto" ref="foto" v-on:change="onFileChange" type="file" accept="image/*"> 
-                    </div> 
                 </div>
             </div>
-        </div>
+            <div class="col-lg-7">
+                <div class="card">
+                    <div class="row">
+                        <div class="form-group col-lg-12">
+                            <label>Nome</label>
+                            <input v-model="fornecedor.nome" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-lg-6">
+                            <label>CPF</label>
+                            <input v-model="fornecedor.cpfcnpj" class="form-control"/>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>RG</label>
+                            <input v-model="fornecedor.rg" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label>E-mail</label>
+                            <input v-model="fornecedor.email" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-5">
+                            <label>Data Nascimento</label>
+                            <input v-model="fornecedor.data_nascimento" type="date" class="form-control"/>
+                        </div>
+                        <div class="form-group col-md-7">
+                            <label>Celular</label>
+                            <input v-model="fornecedor.celular" class="form-control"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
     </div>
 </template>
 <script>
@@ -59,6 +71,11 @@
 
                 fornecedor:{
                     foto : null,
+                    nome: '',
+                    cpfcnpj: '',
+                    rg: '',
+                    data_nascimento:'',
+                    celular: ''
                 }
             }
 
@@ -98,8 +115,11 @@
             
             },
 
-            salvarFoto(){
-                axios.post(Config.baseURL + '/fornecedor/salvar', this.fornecedor);
+            salvar(){
+                let resposta = axios.post(Config.baseURL + '/fornecedor/salvar', this.fornecedor);
+                if(resposta){
+                    window.alert('Fornecedor Salvo com sucesso!')
+                }
             },
                     
             
@@ -181,6 +201,10 @@
 
     margin-bottom: 30px;
 
+}
+
+.card{
+    border: none;
 }
 
 </style>

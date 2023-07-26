@@ -163,7 +163,7 @@ const urlParams = new URLSearchParams(queryString);
     export default{
         data(){
             return{
-              loading: false,
+                loading: false,
                 dados : '',
                 nomeFornecedor: '',
                 dados2 : '',
@@ -204,7 +204,7 @@ const urlParams = new URLSearchParams(queryString);
             }
 
             //this.carregar();
-            //this.carregarPlanos();
+            this.carregarPlanos();
             
         
         },

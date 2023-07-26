@@ -18,8 +18,17 @@ if (env('PROXY_SCHEMA')) {
     URL::forceScheme(env('PROXY_SCHEMA', ''));
 }
 
+
 Route::get('/teste', function() {
     return view('teste');
+});
+
+Route::get('/menu', function() {
+    return view('menu');
+});
+
+Route::get('/menuCadastro', function() {
+    return view('menuCadastro');
 });
 
 Route::get('/login', 'LoginController@index')->name('login');
@@ -108,7 +117,8 @@ Route::get('/fornecedor', ['middleware' => 'auth', 'uses' => 'FornecedorControll
 Route::get('/fornecedor/buscar', ['middleware' => 'auth', 'uses' => 'FornecedorController@listarFornecedores'])->name('fornecedores');
 Route::get('/fornecedor/buscar/{id}', ['middleware' => 'auth', 'uses' => 'FornecedorController@buscar']);
 Route::get('/fornecedor/filtrar', ['middleware' => 'auth', 'uses' => 'FornecedorController@search']); 
-Route::post('/fornecedor/salvar', ['middleware' => 'auth', 'uses' => 'FornecedorController@salvarImagem']);
+Route::post('/fornecedor/salvar', ['middleware' => 'auth', 'uses' => 'FornecedorController@salvar']);
+Route::get('/fornecedores', ['middleware' => 'auth', 'uses' => 'FornecedorController@tela']);
 
 
 
