@@ -124,8 +124,7 @@ class VendasController extends Controller
         $venda->delete();
 
         return "Venda Excluída com sucesso";
-
-
+        
     }
 
    

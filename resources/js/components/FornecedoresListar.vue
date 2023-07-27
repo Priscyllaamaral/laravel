@@ -50,7 +50,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" @click="confirmar" class="btn btn-primary">Confirmar</button>
+                    <button type="button" @click="confirmar" class="btn btn-primary" data-dismiss="modal">Confirmar</button>
                 </div>
                 </div>
             </div>
@@ -84,7 +84,7 @@ const urlParams = new URLSearchParams(queryString);
 
             deletar: function (id) {
                 try{
-                    axios.post(Config.baseURL + `/fornecedores/destroy/${id}`)
+                   axios.post(Config.baseURL + `/fornecedores/destroy/${id}`)
                     .then(response => {
                         let i = this.dados.map(data => data.id).indexOf(id);
                         this.dados.slice(i, 1);
@@ -93,7 +93,7 @@ const urlParams = new URLSearchParams(queryString);
                 }catch(error){
                     console.log(error);
                 }finally{
-                    window.location.href = Config.baseURL + '/fornecedores';
+                    window.location.href = Config.baseURL + '/fornecedores/todos';
                 }
             },
 
@@ -113,6 +113,7 @@ const urlParams = new URLSearchParams(queryString);
 
             excluir(id){
                 this.idExcluir = parseInt(id);
+                console.log(this.idExcluir);
             }
         }
 

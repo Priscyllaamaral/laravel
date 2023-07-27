@@ -2239,6 +2239,7 @@ var urlParams = new URLSearchParams(queryString);
   data: function data() {
     return {
       fornecedor: {
+        id: '',
         foto: null,
         nome: '',
         cpfcnpj: '',
@@ -2350,24 +2351,46 @@ var urlParams = new URLSearchParams(queryString);
     salvar: function salvar() {
       var _this3 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
-        var resposta;
+        var resposta, _resposta;
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
-              _context4.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(Config.baseURL + '/fornecedor/salvar', _this3.fornecedor);
-            case 2:
+              _context4.prev = 0;
+              if (!_this3.fornecedor.id) {
+                _context4.next = 8;
+                break;
+              }
+              _context4.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(Config.baseURL + '/fornecedores/' + _this3.fornecedor.id + '/atualizar', _this3.fornecedor);
+            case 4:
               resposta = _context4.sent;
-              //console.log(resposta);
               if (resposta) {
+                window.alert('Fornecedor Atualizado com sucesso!');
+                window.location.href = Config.baseURL + "/fornecedores/todos";
+              }
+              _context4.next = 12;
+              break;
+            case 8:
+              _context4.next = 10;
+              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(Config.baseURL + '/fornecedor/salvar', _this3.fornecedor);
+            case 10:
+              _resposta = _context4.sent;
+              if (_resposta) {
                 window.alert('Fornecedor Salvo com sucesso!');
                 window.location.href = Config.baseURL + "/fornecedores/todos";
               }
-            case 4:
+            case 12:
+              _context4.next = 17;
+              break;
+            case 14:
+              _context4.prev = 14;
+              _context4.t0 = _context4["catch"](0);
+              console.log('Erro', _context4.t0);
+            case 17:
             case "end":
               return _context4.stop();
           }
-        }, _callee4);
+        }, _callee4, null, [[0, 14]]);
       }))();
     }
   }
@@ -2419,7 +2442,7 @@ var urlParams = new URLSearchParams(queryString);
       } catch (error) {
         console.log(error);
       } finally {
-        window.location.href = Config.baseURL + '/fornecedores';
+        window.location.href = Config.baseURL + '/fornecedores/todos';
       }
     },
     carregar: function carregar() {
@@ -2454,6 +2477,7 @@ var urlParams = new URLSearchParams(queryString);
     },
     excluir: function excluir(id) {
       this.idExcluir = parseInt(id);
+      console.log(this.idExcluir);
     }
   }
 });
@@ -3900,10 +3924,6 @@ var urlParams = new URLSearchParams(queryString);
     adicionarCliente: function adicionarCliente(item) {
       this.cliente = item;
       $('#exampleModal2').modal('hide');
-      //$('#exampleModal2').hide();
-      //$('.modal').modal('hide');
-      //$('.modal').remove();
-      //bootstrap.Modal.getOrCreateInstance(document.getElementById('#exampleModal2')).hide();
     },
     mudarNomeCliente: function mudarNomeCliente(nome) {
       var _this6 = this;
@@ -4867,7 +4887,8 @@ var render = function render() {
       }
     }, [_vm._v(_vm._s(item.id))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.nome))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.cpf))]), _vm._v(" "), _c("th", [_c("button", {
       attrs: {
-        type: "button"
+        type: "button",
+        "data-dismiss": "modal"
       },
       on: {
         click: function click($event) {
@@ -4906,7 +4927,8 @@ var render = function render() {
       }
     }, [_vm._v(_vm._s(item.descricao))]), _vm._v(" "), _c("th", [_c("button", {
       attrs: {
-        type: "button"
+        type: "button",
+        "data-dismiss": "modal"
       },
       on: {
         click: function click($event) {
@@ -6164,7 +6186,8 @@ var render = function render() {
   }, [_vm._v("Cancelar")]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-primary",
     attrs: {
-      type: "button"
+      type: "button",
+      "data-dismiss": "modal"
     },
     on: {
       click: _vm.confirmar
@@ -6410,7 +6433,8 @@ var render = function render() {
   }, [_vm._v("Cancelar")]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-primary",
     attrs: {
-      type: "button"
+      type: "button",
+      "data-dismiss": "modal"
     },
     on: {
       click: _vm.confirmar
@@ -6583,7 +6607,8 @@ var render = function render() {
   }, [_vm._v("Cancelar")]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-primary",
     attrs: {
-      type: "button"
+      type: "button",
+      "data-dismiss": "modal"
     },
     on: {
       click: _vm.confirmar
@@ -6800,7 +6825,8 @@ var render = function render() {
   }, [_vm._v("Cancelar")]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-primary",
     attrs: {
-      type: "button"
+      type: "button",
+      "data-dismiss": "modal"
     },
     on: {
       click: _vm.confirmar
@@ -6994,7 +7020,8 @@ var render = function render() {
   }, [_vm._v("Cancelar")]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-primary",
     attrs: {
-      type: "button"
+      type: "button",
+      "data-dismiss": "modal"
     },
     on: {
       click: _vm.carregar
@@ -7872,7 +7899,8 @@ var render = function render() {
       }
     }, [_vm._v(_vm._s(item.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(item.codigo))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(item.nome))]), _vm._v(" "), _c("th", [_c("button", {
       attrs: {
-        type: "button"
+        type: "button",
+        "data-dismiss": "modal"
       },
       on: {
         click: function click($event) {
@@ -7934,7 +7962,8 @@ var render = function render() {
       }
     }, [_vm._v(_vm._s(item.id))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.nome))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.cpfcnpj))]), _vm._v(" "), _c("th", [_c("button", {
       attrs: {
-        type: "button"
+        type: "button",
+        "data-dismiss": "modal"
       },
       on: {
         click: function click($event) {
@@ -8451,7 +8480,8 @@ var render = function render() {
       }
     }, [_vm._v(_vm._s(item.id))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.nome))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.cpfcnpj))]), _vm._v(" "), _c("th", [_c("button", {
       attrs: {
-        type: "button"
+        type: "button",
+        "data-dismiss": "modal"
       },
       on: {
         click: function click($event) {
@@ -8679,7 +8709,7 @@ var render = function render() {
   }, [_vm._v("Cancelar")])])]), _vm._v(" "), _c("br"), _vm._v(" "), _c("form", [_c("div", {
     staticClass: "form-row"
   }, [_c("div", {
-    staticClass: "form-group col-lg-5"
+    staticClass: "form-group col-lg-5 col-12"
   }, [_c("label", [_vm._v(" Cliente ")]), _vm._v(" "), _c("div", {
     staticClass: "input-group"
   }, [_c("input", {
@@ -9202,6 +9232,7 @@ var render = function render() {
       }
     }, [_vm._v(_vm._s(item.id))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.nome))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.cpf))]), _vm._v(" "), _c("th", [_c("button", {
       attrs: {
+        "data-dismiss": "modal",
         id: "btnSave",
         type: "button"
       },
@@ -9264,6 +9295,7 @@ var render = function render() {
       }
     }, [_vm._v(_vm._s(item.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(item.codigo))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(item.nome))]), _vm._v(" "), _c("th", [_c("button", {
       attrs: {
+        "data-dismiss": "modal",
         type: "button"
       },
       on: {

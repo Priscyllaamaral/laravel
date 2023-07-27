@@ -176,7 +176,7 @@
                                 <th scope="row">{{ item.id }}</th>
                                 <td>{{ item.codigo }}</td>
                                 <td>{{ item.nome }}</td>
-                                <th><button @click="adicionarMovimento(item)" type="button"><i class="bi bi-check"></i></button></th>
+                                <th><button @click="adicionarMovimento(item)" type="button" data-dismiss="modal"><i class="bi bi-check"></i></button></th>
                             </tr>                      
                         </tbody>
                     </table>
@@ -214,7 +214,7 @@
                                 <th scope="row">{{ item.id }}</th>
                                 <th>{{ item.nome }}</th>
                                 <th>{{ item.cpfcnpj }}</th>
-                                <th><button @click="adicionarFornecedor(item.id, item.nome)" type="button"><i class="bi bi-check"></i></button></th>
+                                <th><button @click="adicionarFornecedor(item.id, item.nome)" type="button" data-dismiss="modal"><i class="bi bi-check"></i></button></th>
                             </tr>                      
                         </tbody>
                     </table>

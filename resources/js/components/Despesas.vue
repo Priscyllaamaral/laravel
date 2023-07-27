@@ -111,7 +111,7 @@
                             <th scope="row">{{ item.id }}</th>
                             <th>{{ item.nome }}</th>
                             <th>{{ item.cpf }}</th>
-                            <th><button @click="adicionarFornecedor(item.id, item.nome)" type="button"><i class="bi bi-check"></i></button></th>
+                            <th><button @click="adicionarFornecedor(item.id, item.nome)" type="button" data-dismiss="modal"><i class="bi bi-check"></i></button></th>
                         </tr>                      
                     </tbody>
                 </table>
@@ -143,7 +143,7 @@
                     <tbody>
                         <tr v-for= "(item, index) in planos" :key="index">
                             <th scope="row">{{ item.descricao }}</th>
-                            <th><button @click="adicionarPlano(item.descricao, item.id)" type="button"><i class="bi bi-check"></i></button></th>
+                            <th><button @click="adicionarPlano(item.descricao, item.id)" type="button" data-dismiss="modal"><i class="bi bi-check"></i></button></th>
                         </tr>                      
                     </tbody>
                 </table>

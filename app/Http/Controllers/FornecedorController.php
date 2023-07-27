@@ -68,6 +68,29 @@ class FornecedorController extends Controller
     }
 
 
+    public function atualizar(Request $request, Fornecedor $fornecedor)
+    {
+
+
+        if ($request->filled('foto')) {
+            $fornecedor->foto = base64_encode($request->input('foto'));     
+        }
+
+        $fornecedor->nome = $request->input('nome');
+        $fornecedor->cpfcnpj = $request->input('cpfcnpj');
+        $fornecedor->email = $request->input('email');
+        $fornecedor->rg = $request->input('rg');
+        $fornecedor->data_nascimento = $request->input('data_nascimento');
+        $fornecedor->celular = $request->input('celular');
+        $fornecedor->save();
+
+        $fornecedor->enderecos()->update($request->input('endereco'));
+        $fornecedor->observacoes()->update($request->input('observacao'));
+     
+
+    }
+
+
     public function salvar(Request $request)
     {
     
@@ -97,7 +120,7 @@ class FornecedorController extends Controller
         $endereco->fornecedor_id = $fornecedor->id;
         $endereco->save();
 
-        $observacao = new FornecedorObservacoes();
+        $observacao = new FornecedorObservacoes ();
         $novaObservacao = $request->input('observacao');
         $observacao->comissao = $novaObservacao['comissao'];
         $observacao->status = $novaObservacao['status'];
@@ -135,12 +158,19 @@ class FornecedorController extends Controller
 
     public function buscar($id)
    {
-    
         $query = Fornecedor::findOrFail($id);
-
-        
-
         return $query;
-
    } 
+
+   public function destroy($id){
+
+        $fornecedor = Fornecedor::findOrFail($id);
+        $fornecedor->load('enderecos');
+        $fornecedor->enderecos()->delete();
+        $fornecedor->load('observacoes');
+        $fornecedor->observacoes()->delete();
+        $fornecedor->delete();
+
+    return "Fornecedor Excluído com sucesso";
+    }
 }

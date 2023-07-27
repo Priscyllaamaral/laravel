@@ -182,6 +182,7 @@ export default{
         return{
 
             fornecedor:{
+                id:'',
                 foto : null,
                 nome: '',
                 cpfcnpj: '',
@@ -267,12 +268,30 @@ export default{
         },
 
         async salvar(){
-            let resposta = await axios.post(Config.baseURL + '/fornecedor/salvar', this.fornecedor);
-            //console.log(resposta);
-            if(resposta){
-                window.alert('Fornecedor Salvo com sucesso!');
-                window.location.href= Config.baseURL+ "/fornecedores/todos";
-            }
+            try{
+              
+                if(this.fornecedor.id){
+                   let resposta = await axios.post(Config.baseURL+ '/fornecedores/'+this.fornecedor.id+'/atualizar', this.fornecedor);
+
+                   if(resposta){
+                        window.alert('Fornecedor Atualizado com sucesso!');
+                        window.location.href= Config.baseURL+ "/fornecedores/todos";
+                    }
+                }
+
+                else{
+                    let resposta = await axios.post(Config.baseURL + '/fornecedor/salvar', this.fornecedor);   
+                    if(resposta){
+                        window.alert('Fornecedor Salvo com sucesso!');
+                        window.location.href= Config.baseURL+ "/fornecedores/todos";
+                    }                 
+                }
+
+                }catch(erro){
+                    console.log('Erro', erro);
+                }
+            
+            
         },  
     }
 }

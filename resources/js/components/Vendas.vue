@@ -22,7 +22,7 @@
                         <br>
                         <form>
                             <div class="form-row" >
-                                <div class="form-group col-lg-5">
+                                <div class="form-group col-lg-5 col-12">
                                     <label > Cliente </label>
                                     <div class="input-group">
                                         <input v-model="cliente.codigo" type="text" class="form-control" style="max-width: 15%; min-width: 15%;" readonly>
@@ -180,7 +180,7 @@
                                 <th scope="row">{{ item.id }}</th>
                                 <th>{{ item.nome }}</th>
                                 <th>{{ item.cpf }}</th>
-                                <th><button @click="adicionarCliente(item)" id="btnSave" type="button"><i class="bi bi-check"></i></button></th>
+                                <th><button @click="adicionarCliente(item)" data-dismiss="modal" id="btnSave" type="button"><i class="bi bi-check"></i></button></th>
                             </tr>                      
                         </tbody>
                     </table>
@@ -218,7 +218,7 @@
                                 <th scope="row">{{ item.id }}</th>
                                 <td>{{ item.codigo }}</td>
                                 <td>{{ item.nome }}</td>
-                                <th><button @click="adicionarProduto(item)" type="button"><i class="bi bi-check"></i></button></th>
+                                <th><button @click="adicionarProduto(item)" data-dismiss="modal" type="button"><i class="bi bi-check"></i></button></th>
                             </tr>                      
                         </tbody>
                     </table>
@@ -551,10 +551,6 @@
             adicionarCliente(item){
                 this.cliente = item
                 $('#exampleModal2').modal('hide');
-                //$('#exampleModal2').hide();
-                //$('.modal').modal('hide');
-                //$('.modal').remove();
-                //bootstrap.Modal.getOrCreateInstance(document.getElementById('#exampleModal2')).hide();
             },
 
             async mudarNomeCliente(nome){

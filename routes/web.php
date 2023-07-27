@@ -123,6 +123,8 @@ Route::get('/fornecedores/{fornecedor}/abrir', ['middleware' => 'auth', 'uses' =
 Route::get('/fornecedores/editar', ['middleware' => 'auth', 'uses' => 'FornecedorController@editar']);
 Route::get('/fornecedores/listar', ['middleware' => 'auth', 'uses' => 'FornecedorController@listar']);
 Route::get('/fornecedores/todos', ['middleware' => 'auth', 'uses' => 'FornecedorController@listarFornecedores']);
+Route::post('/fornecedores/destroy/{id}', ['uses' => 'FornecedorController@destroy']);
+Route::post('/fornecedores/{fornecedor}/atualizar',  ['uses' => 'FornecedorController@atualizar']);
 
 
 

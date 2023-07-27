@@ -106,7 +106,7 @@
                                 <th scope="row">{{ item.id }}</th>
                                 <th>{{ item.nome }}</th>
                                 <th>{{ item.cpfcnpj }}</th>
-                                <th><button @click="adicionarFornecedor(item.id, item.nome)" type="button"><i class="bi bi-check"></i></button></th>
+                                <th><button @click="adicionarFornecedor(item.id, item.nome)" type="button" data-dismiss="modal"><i class="bi bi-check"></i></button></th>
                             </tr>                      
                         </tbody>
                     </table>
