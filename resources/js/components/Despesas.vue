@@ -143,7 +143,7 @@
                     <tbody>
                         <tr v-for= "(item, index) in planos" :key="index">
                             <th scope="row">{{ item.descricao }}</th>
-                            <th><button @click="adicionarPlano(item.descricao, item.id)" type="button" data-dismiss="modal"><i class="bi bi-check"></i></button></th>
+                            <th><button @click="adicionarPlano(item)" type="button" data-dismiss="modal"><i class="bi bi-check"></i></button></th>
                         </tr>                      
                     </tbody>
                 </table>
@@ -212,17 +212,17 @@ const urlParams = new URLSearchParams(queryString);
         watch:{
             'despesa.fornecedor'(newValue){
                  this.buscarNomeIdFornecedor(newValue);
+            },
+
+            'despesa.plano_de_contas'(newValue){
+                 this.buscarNomePlanoContas(newValue);
             }
         },
 
 
 
         methods:{
-            printar(x,y){
-                console.log("aqui",x,y);
-            },
-
-
+       
           async abrir(despesa) {
             try {
               let response = await axios.get(Config.baseURL + '/movimentacoes/despesas/' + despesa + '/abrir')
@@ -243,6 +243,16 @@ const urlParams = new URLSearchParams(queryString);
                 console.log('Erro:', error)
             }
           },
+
+          async buscarNomePlanoContas(id){
+
+            try{
+                let response = await axios.get(Config.baseURL + `/planoContas/buscar/${id}`)
+                this.nomePlanoContas = response.data.descricao;
+            } catch (error){
+                console.log('Erro:', error)
+            }
+        },
 
             async carregar(){
                /** await axios.get('http://localhost:80/api/user').then(response => {
@@ -282,7 +292,7 @@ const urlParams = new URLSearchParams(queryString);
                     }
                 }
                 ).then(response => {
-                    console.log(response)
+                    //console.log(response)
                     this.dados2 = response.data})
                     .catch(error => console.log(error));
 
@@ -300,9 +310,9 @@ const urlParams = new URLSearchParams(queryString);
                 //this.$refs.meu-modal.hide(); lembrar de fechar modal
             },
 
-            adicionarPlano(event1, event2){
-                this.nomePlanoContas = event1
-                this.despesa.plano_de_contas = event2;
+            adicionarPlano(event){
+                this.nomePlanoContas = event.descricao;
+                this.despesa.plano_de_contas = event.id;
                 $('#exampleModal2').modal('hide');
             },
 

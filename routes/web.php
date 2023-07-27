@@ -131,6 +131,7 @@ Route::post('/fornecedores/{fornecedor}/atualizar',  ['uses' => 'FornecedorContr
 
 
 Route::get('/planoContas', ['uses' => 'PlanocontasController@listaPlanoContas']);
+Route::get('/planoContas/buscar/{id}', ['uses' => 'PlanocontasController@buscar']);
 
 Route::post('/enderecos/cadastrar', ['middleware' => 'auth', 'uses' => 'EnderecosController@cadastrar']);
 Route::get('/enderecos/{endereco}/abrir', ['uses' => 'EnderecosController@abrir']); 

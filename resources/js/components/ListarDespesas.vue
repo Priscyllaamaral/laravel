@@ -2,17 +2,17 @@
     <div class="container ajustar">
       <div class="container">
           <div class="row">
-              <div class="col-lg-12 corH5">
-                <h2><b> Lista de Despesa  
+              <div class="col-md-12">
+                <h1 style="color: aliceblue;"> Lista de Despesa 
                     <a href="/movimentacoes/despesas/nova" class="btn" style="float:right">
-                        <button type="button" class="btn btn-light" style="border-color: rgb(217, 219, 218);"> Nova Despesa</button></a>
+                        <button type="button" class="btn btn-light btn2" style="border-color: rgb(217, 219, 218);"> Nova Despesa</button></a>
                     <a class="btn" style="float:right">
-                        <button data-toggle="modal" data-target="#modal2" type="button" class="btn btn-light" style="border-color: rgb(217, 219, 218);"> 
+                        <button data-toggle="modal" data-target="#modal2" type="button" class="btn btn-light btn2" style="border-color: rgb(217, 219, 218);"> 
                             Filtrar Despesa</button></a>
                     <a class="btn" style="float:right">
-                        <button @click="novamente = true; carregar()" type="button" class="btn btn-light" style="border-color: rgb(217, 219, 218);"> 
+                        <button @click="novamente = true; carregar()" type="button" class="btn btn-light btn2" style="border-color: rgb(217, 219, 218);"> 
                             Mostrar Tudo</button></a>
-                </b></h2>
+                </h1>
                 
               </div>
           </div>
@@ -35,7 +35,7 @@
                     <tr v-for= "(item, index) in dados" :key="index">
                         <th scope="row">{{ item.nome }}</th>
                         <th>{{ item.descricao }}</th>
-                        <th>{{ item.data }}</th>
+                        <th>{{ formatarData(item.data) }}</th>
                         <th>{{ item.valor }}</th>
                         <th>{{ item.tipo }}</th>
                         <th>
@@ -217,6 +217,14 @@ export default{
             this.del = parseInt(item.id);
 
         },
+
+        formatarData(data){
+            let date = new Date(data);
+
+            let formater = Intl.DateTimeFormat('pt-BR',{dateStyle:"short"});
+
+            return formater.format(date);
+        },
      
 
       
@@ -258,6 +266,10 @@ export default{
     max-height: 500px;
     overflow-y: scroll;
     
+  }
+
+  .btn2{
+    border-radius: 0px 15px 15px 15px;
   }
 
 </style>

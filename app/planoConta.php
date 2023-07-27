@@ -9,4 +9,5 @@ class planoConta extends Model
     protected $fillable = [
         'descricao', 'id'
     ];
+
 }

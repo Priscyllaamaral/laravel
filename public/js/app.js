@@ -1906,12 +1906,12 @@ var urlParams = new URLSearchParams(queryString);
   watch: {
     'despesa.fornecedor': function despesaFornecedor(newValue) {
       this.buscarNomeIdFornecedor(newValue);
+    },
+    'despesa.plano_de_contas': function despesaPlano_de_contas(newValue) {
+      this.buscarNomePlanoContas(newValue);
     }
   },
   methods: {
-    printar: function printar(x, y) {
-      console.log("aqui", x, y);
-    },
     abrir: function abrir(despesa) {
       var _this = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -1964,7 +1964,7 @@ var urlParams = new URLSearchParams(queryString);
         }, _callee2, null, [[0, 7]]);
       }))();
     },
-    carregar: function carregar() {
+    buscarNomePlanoContas: function buscarNomePlanoContas(id) {
       var _this3 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
         var response;
@@ -1973,10 +1973,10 @@ var urlParams = new URLSearchParams(queryString);
             case 0:
               _context3.prev = 0;
               _context3.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(Config.baseURL + '/fornecedor');
+              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(Config.baseURL + "/planoContas/buscar/".concat(id));
             case 3:
               response = _context3.sent;
-              _this3.dados = response.data;
+              _this3.nomePlanoContas = response.data.descricao;
               _context3.next = 10;
               break;
             case 7:
@@ -1990,7 +1990,7 @@ var urlParams = new URLSearchParams(queryString);
         }, _callee3, null, [[0, 7]]);
       }))();
     },
-    carregarPlanos: function carregarPlanos() {
+    carregar: function carregar() {
       var _this4 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
         var response;
@@ -1999,10 +1999,10 @@ var urlParams = new URLSearchParams(queryString);
             case 0:
               _context4.prev = 0;
               _context4.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(Config.baseURL + '/planoContas');
+              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(Config.baseURL + '/fornecedor');
             case 3:
               response = _context4.sent;
-              _this4.planos = response.data;
+              _this4.dados = response.data;
               _context4.next = 10;
               break;
             case 7:
@@ -2016,29 +2016,55 @@ var urlParams = new URLSearchParams(queryString);
         }, _callee4, null, [[0, 7]]);
       }))();
     },
-    mudarNome: function mudarNome(nome) {
+    carregarPlanos: function carregarPlanos() {
       var _this5 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
+        var response;
         return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
-              console.log("NOME :", nome);
+              _context5.prev = 0;
               _context5.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(Config.baseURL + '/planoContas');
+            case 3:
+              response = _context5.sent;
+              _this5.planos = response.data;
+              _context5.next = 10;
+              break;
+            case 7:
+              _context5.prev = 7;
+              _context5.t0 = _context5["catch"](0);
+              console.log('Erro:', _context5.t0);
+            case 10:
+            case "end":
+              return _context5.stop();
+          }
+        }, _callee5, null, [[0, 7]]);
+      }))();
+    },
+    mudarNome: function mudarNome(nome) {
+      var _this6 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
+        return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+          while (1) switch (_context6.prev = _context6.next) {
+            case 0:
+              console.log("NOME :", nome);
+              _context6.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(Config.baseURL + '/fornecedor/filtrar', {
                 params: {
                   search: nome
                 }
               }).then(function (response) {
-                console.log(response);
-                _this5.dados2 = response.data;
+                //console.log(response)
+                _this6.dados2 = response.data;
               })["catch"](function (error) {
                 return console.log(error);
               });
             case 3:
             case "end":
-              return _context5.stop();
+              return _context6.stop();
           }
-        }, _callee5);
+        }, _callee6);
       }))();
     },
     adicionarFornecedor: function adicionarFornecedor(event1, event2) {
@@ -2051,51 +2077,51 @@ var urlParams = new URLSearchParams(queryString);
       $('#exampleModal').modal('hide');
       //this.$refs.meu-modal.hide(); lembrar de fechar modal
     },
-    adicionarPlano: function adicionarPlano(event1, event2) {
-      this.nomePlanoContas = event1;
-      this.despesa.plano_de_contas = event2;
+    adicionarPlano: function adicionarPlano(event) {
+      this.nomePlanoContas = event.descricao;
+      this.despesa.plano_de_contas = event.id;
       $('#exampleModal2').modal('hide');
     },
     voltar: function voltar() {
       window.location.href = Config.baseURL + '/';
     },
     salvar: function salvar() {
-      var _this6 = this;
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
-        return _regeneratorRuntime().wrap(function _callee6$(_context6) {
-          while (1) switch (_context6.prev = _context6.next) {
+      var _this7 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7() {
+        return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+          while (1) switch (_context7.prev = _context7.next) {
             case 0:
-              _context6.prev = 0;
-              _this6.loading = true;
-              if (!_this6.despesa.id) {
-                _context6.next = 7;
+              _context7.prev = 0;
+              _this7.loading = true;
+              if (!_this7.despesa.id) {
+                _context7.next = 7;
                 break;
               }
-              _context6.next = 5;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(Config.baseURL + '/movimentacoes/despesas/' + _this6.despesa.id + '/atualizar', _this6.despesa);
+              _context7.next = 5;
+              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(Config.baseURL + '/movimentacoes/despesas/' + _this7.despesa.id + '/atualizar', _this7.despesa);
             case 5:
-              _context6.next = 9;
+              _context7.next = 9;
               break;
             case 7:
-              _context6.next = 9;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(Config.baseURL + '/movimentacoes/despesas/cadastrar', _this6.despesa);
+              _context7.next = 9;
+              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(Config.baseURL + '/movimentacoes/despesas/cadastrar', _this7.despesa);
             case 9:
-              _context6.next = 14;
+              _context7.next = 14;
               break;
             case 11:
-              _context6.prev = 11;
-              _context6.t0 = _context6["catch"](0);
-              console.log('Erro:', _context6.t0);
+              _context7.prev = 11;
+              _context7.t0 = _context7["catch"](0);
+              console.log('Erro:', _context7.t0);
             case 14:
-              _context6.prev = 14;
-              _this6.loading = false;
+              _context7.prev = 14;
+              _this7.loading = false;
               window.location.href = Config.baseURL + '/movimentacoes/despesas';
-              return _context6.finish(14);
+              return _context7.finish(14);
             case 18:
             case "end":
-              return _context6.stop();
+              return _context7.stop();
           }
-        }, _callee6, null, [[0, 11, 14, 18]]);
+        }, _callee7, null, [[0, 11, 14, 18]]);
       }))();
     }
   }
@@ -2831,6 +2857,13 @@ var urlParams = new URLSearchParams(queryString);
     apagar: function apagar(item) {
       this.nomeFornecedor = item.nome;
       this.del = parseInt(item.id);
+    },
+    formatarData: function formatarData(data) {
+      var date = new Date(data);
+      var formater = Intl.DateTimeFormat('pt-BR', {
+        dateStyle: "short"
+      });
+      return formater.format(date);
     },
     deletar: function deletar(id) {
       var _this2 = this;
@@ -4932,7 +4965,7 @@ var render = function render() {
       },
       on: {
         click: function click($event) {
-          return _vm.adicionarPlano(item.descricao, item.id);
+          return _vm.adicionarPlano(item);
         }
       }
     }, [_c("i", {
@@ -6726,14 +6759,18 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-lg-12 corH5"
-  }, [_c("h2", [_c("b", [_vm._v(" Lista de Despesa  \n                "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("a", {
+    staticClass: "col-md-12"
+  }, [_c("h1", {
+    staticStyle: {
+      color: "aliceblue"
+    }
+  }, [_vm._v(" Lista de Despesa \n                "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("a", {
     staticClass: "btn",
     staticStyle: {
       "float": "right"
     }
   }, [_c("button", {
-    staticClass: "btn btn-light",
+    staticClass: "btn btn-light btn2",
     staticStyle: {
       "border-color": "rgb(217, 219, 218)"
     },
@@ -6746,7 +6783,7 @@ var render = function render() {
         _vm.carregar();
       }
     }
-  }, [_vm._v(" \n                        Mostrar Tudo")])])])])])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v(" \n                        Mostrar Tudo")])])])])])]), _vm._v(" "), _c("div", {
     staticClass: "scroll"
   }, [_c("table", {
     staticClass: "table table-striped table-bordered",
@@ -6760,7 +6797,7 @@ var render = function render() {
       attrs: {
         scope: "row"
       }
-    }, [_vm._v(_vm._s(item.nome))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.descricao))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.data))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.valor))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.tipo))]), _vm._v(" "), _c("th", [_c("button", {
+    }, [_vm._v(_vm._s(item.nome))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.descricao))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(_vm.formatarData(item.data)))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.valor))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.tipo))]), _vm._v(" "), _c("th", [_c("button", {
       staticClass: "btn btn-light",
       staticStyle: {
         "border-color": "rgb(217, 219, 218)"
@@ -7041,7 +7078,7 @@ var staticRenderFns = [function () {
       href: "/movimentacoes/despesas/nova"
     }
   }, [_c("button", {
-    staticClass: "btn btn-light",
+    staticClass: "btn btn-light btn2",
     staticStyle: {
       "border-color": "rgb(217, 219, 218)"
     },
@@ -7058,7 +7095,7 @@ var staticRenderFns = [function () {
       "float": "right"
     }
   }, [_c("button", {
-    staticClass: "btn btn-light",
+    staticClass: "btn btn-light btn2",
     staticStyle: {
       "border-color": "rgb(217, 219, 218)"
     },
@@ -13509,7 +13546,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.scroll {\n  min-height: 100px;\n  max-height: 500px;\n  overflow-y: scroll;\n}\n\n", ""]);
+exports.push([module.i, "\n.scroll {\n  min-height: 100px;\n  max-height: 500px;\n  overflow-y: scroll;\n}\n.btn2{\n  border-radius: 0px 15px 15px 15px;\n}\n\n", ""]);
 
 // exports
 
