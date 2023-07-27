@@ -1,8 +1,12 @@
 <template>
     <div class="container ajustar">
-        <div class="row">
-            <div class="col-md-12">
-                <h1 style="color:aliceblue">Lista Movimento Estoque</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 style="color:aliceblue">Lista Movimento Estoque
+                        <a href="/movEstoque"><button class="btn btn-secondary btn-lg" type="button" style="border-radius: 20px; float:right" >+</button></a>
+                    </h1>
+                </div>
             </div>
         </div>
         <div class="row">

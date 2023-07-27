@@ -12,11 +12,11 @@ class Fornecedor extends Model
     ];
 
 
-    function enderecos() {
+    function endereco() {
         return $this->hasOne(FornecedorEnderecos::class, 'fornecedor_id', 'id');
     }
 
-    public function observacoes(){
+    public function observacao(){
         return $this->hasOne(FornecedorObservacoes::class, 'fornecedor_id', 'id');
     }
 }

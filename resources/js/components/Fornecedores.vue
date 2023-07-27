@@ -225,8 +225,8 @@ export default{
                 try {
                     let response = await axios.get(Config.baseURL + '/fornecedores/' + id + '/abrir');
                     this.fornecedor = response.data;
-                    this.fornecedor.endereco =response.data.enderecos;
-                    this.fornecedor.observacao =response.data.observacoes;               
+                    this.fornecedor.endereco =response.data.endereco;
+                    this.fornecedor.observacao =response.data.observacao;               
 
                     console.log(this.fornecedor);
 

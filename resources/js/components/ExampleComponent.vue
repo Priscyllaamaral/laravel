@@ -49,7 +49,7 @@
                 </a>
             </div>
             <div class="col-lg-6">
-                <a href="/movEstoque">
+                <a href="/movEstoque/listar">
                     <div class="card" style="float:left">
                         <div class="row">
                             <div class="col-lg-4 col-3"><i class="bi bi-box-seam img"></i></div>

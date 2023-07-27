@@ -61,8 +61,8 @@ class FornecedorController extends Controller
     public function abrir(Fornecedor $fornecedor)
     {
         $fornecedor->foto = base64_decode($fornecedor->foto);
-        $fornecedor->load('enderecos');
-        $fornecedor->load('observacoes');
+        $fornecedor->load('endereco');
+        $fornecedor->load('observacao');
         
         return response()->json($fornecedor);
     }
@@ -84,8 +84,8 @@ class FornecedorController extends Controller
         $fornecedor->celular = $request->input('celular');
         $fornecedor->save();
 
-        $fornecedor->enderecos()->update($request->input('endereco'));
-        $fornecedor->observacoes()->update($request->input('observacao'));
+        $fornecedor->endereco()->update($request->input('endereco'));
+        $fornecedor->observacao()->update($request->input('observacao'));
      
 
     }
@@ -165,10 +165,10 @@ class FornecedorController extends Controller
    public function destroy($id){
 
         $fornecedor = Fornecedor::findOrFail($id);
-        $fornecedor->load('enderecos');
-        $fornecedor->enderecos()->delete();
-        $fornecedor->load('observacoes');
-        $fornecedor->observacoes()->delete();
+        $fornecedor->load('endereco');
+        $fornecedor->endereco()->delete();
+        $fornecedor->load('observacao');
+        $fornecedor->observacao()->delete();
         $fornecedor->delete();
 
     return "Fornecedor Excluído com sucesso";

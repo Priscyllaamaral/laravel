@@ -2284,8 +2284,8 @@ var urlParams = new URLSearchParams(queryString);
             case 3:
               response = _context.sent;
               _this.fornecedor = response.data;
-              _this.fornecedor.endereco = response.data.enderecos;
-              _this.fornecedor.observacao = response.data.observacoes;
+              _this.fornecedor.endereco = response.data.endereco;
+              _this.fornecedor.observacao = response.data.observacao;
               console.log(_this.fornecedor);
               _context.next = 13;
               break;
@@ -3263,7 +3263,7 @@ var urlParams = new URLSearchParams(queryString);
               // }
             case 13:
               alert("Salvo com sucesso");
-              window.location.href = Config.baseURL + '/movEstoque/';
+              window.location.href = Config.baseURL + '/movEstoque/listar';
               _context4.next = 20;
               break;
             case 17:
@@ -5165,7 +5165,7 @@ var staticRenderFns = [function () {
     staticClass: "col-lg-6"
   }, [_c("a", {
     attrs: {
-      href: "/movEstoque"
+      href: "/movEstoque/listar"
     }
   }, [_c("div", {
     staticClass: "card",
@@ -6207,11 +6207,7 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "aliceblue"
     }
-  }, [_vm._v("Lista de Fornecedores")])])]), _vm._v(" "), _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-md-12"
-  }, [_c("a", {
+  }, [_vm._v("Lista de Fornecedores\n                     "), _c("a", {
     attrs: {
       href: "/fornecedores"
     }
@@ -6224,7 +6220,7 @@ var staticRenderFns = [function () {
     attrs: {
       type: "button"
     }
-  }, [_vm._v("+")])])])])]);
+  }, [_vm._v("+")])])])])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -6333,6 +6329,8 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
+    staticClass: "container"
+  }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-md-12"
@@ -6340,7 +6338,20 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "aliceblue"
     }
-  }, [_vm._v("Lista Movimento Estoque")])])]);
+  }, [_vm._v("Lista Movimento Estoque\n                    "), _c("a", {
+    attrs: {
+      href: "/movEstoque"
+    }
+  }, [_c("button", {
+    staticClass: "btn btn-secondary btn-lg",
+    staticStyle: {
+      "border-radius": "20px",
+      "float": "right"
+    },
+    attrs: {
+      type: "button"
+    }
+  }, [_vm._v("+")])])])])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -6454,11 +6465,7 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "aliceblue"
     }
-  }, [_vm._v("Lista de Produtos")])])]), _vm._v(" "), _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-md-12"
-  }, [_c("a", {
+  }, [_vm._v("Lista de Produtos\n                     "), _c("a", {
     attrs: {
       href: "/produtos/index"
     }
@@ -6471,7 +6478,7 @@ var staticRenderFns = [function () {
     attrs: {
       type: "button"
     }
-  }, [_vm._v("+")])])])])]);
+  }, [_vm._v("+")])])])])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -7492,7 +7499,7 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "container ajustar"
-  }, [_vm._m(0), _vm._v(" "), _c("br"), _vm._v(" "), _c("div", {
+  }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-md-12"
@@ -7621,7 +7628,7 @@ var render = function render() {
     staticStyle: {
       "text-align": "center"
     }
-  }, [_vm._m(1), _vm._v(" "), _c("br"), _vm._v(" "), _c("h4", [_c("b", [_vm._v(_vm._s(_vm._f("valorBR")(_vm.somaTotalLiquido)))])])])]), _vm._v(" "), _c("div", {
+  }, [_vm._m(0), _vm._v(" "), _c("br"), _vm._v(" "), _c("h4", [_c("b", [_vm._v(_vm._s(_vm._f("valorBR")(_vm.somaTotalLiquido)))])])])]), _vm._v(" "), _c("div", {
     staticClass: "form-row",
     attrs: {
       id: "linha"
@@ -7786,7 +7793,7 @@ var render = function render() {
     staticClass: "card-body"
   }, [_c("table", {
     staticClass: "table"
-  }, [_vm._m(2), _vm._v(" "), _c("tbody", _vm._l(_vm.movimento.itens, function (item, index) {
+  }, [_vm._m(1), _vm._v(" "), _c("tbody", _vm._l(_vm.movimento.itens, function (item, index) {
     return _c("tr", {
       key: index
     }, [_c("th", [_vm._v(_vm._s(item.codigo))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.nome))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.valor) + " ")]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.quantidade) + " ")]), _vm._v(" "), _c("th", [_vm._v(_vm._s(_vm._f("valorBR")(_vm.mostrarSubtotal(item.quantidade, item.valor))) + " ")]), _vm._v(" "), _c("th", [_c("button", {
@@ -7864,7 +7871,7 @@ var render = function render() {
     }
   }, [_c("div", {
     staticClass: "modal-content"
-  }, [_vm._m(3), _vm._v(" "), _c("div", {
+  }, [_vm._m(2), _vm._v(" "), _c("div", {
     staticClass: "modal-body"
   }, [_c("input", {
     directives: [{
@@ -7890,7 +7897,7 @@ var render = function render() {
     }
   })]), _vm._v(" "), _c("table", {
     staticClass: "table"
-  }, [_vm._m(4), _vm._v(" "), _c("tbody", _vm._l(_vm.dados2, function (item, index) {
+  }, [_vm._m(3), _vm._v(" "), _c("tbody", _vm._l(_vm.dados2, function (item, index) {
     return _c("tr", {
       key: index
     }, [_c("th", {
@@ -7926,7 +7933,7 @@ var render = function render() {
     }
   }, [_c("div", {
     staticClass: "modal-content"
-  }, [_vm._m(5), _vm._v(" "), _c("div", {
+  }, [_vm._m(4), _vm._v(" "), _c("div", {
     staticClass: "modal-body"
   }, [_c("input", {
     directives: [{
@@ -7953,7 +7960,7 @@ var render = function render() {
     }
   })]), _vm._v(" "), _c("table", {
     staticClass: "table"
-  }, [_vm._m(6), _vm._v(" "), _c("tbody", _vm._l(_vm.dados, function (item, index) {
+  }, [_vm._m(5), _vm._v(" "), _c("tbody", _vm._l(_vm.dados, function (item, index) {
     return _c("tr", {
       key: index
     }, [_c("th", {
@@ -7976,30 +7983,6 @@ var render = function render() {
   }), 0)])])])])]);
 };
 var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-md-12"
-  }, [_c("a", {
-    staticClass: "btn",
-    staticStyle: {
-      "float": "right"
-    },
-    attrs: {
-      href: "/movEstoque/listar"
-    }
-  }, [_c("button", {
-    staticClass: "btn btn-secondary float-right",
-    staticStyle: {
-      "margin-right": "10px"
-    },
-    attrs: {
-      type: "button"
-    }
-  }, [_vm._v("Listar Movimentos")])])])]);
-}, function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("label", {

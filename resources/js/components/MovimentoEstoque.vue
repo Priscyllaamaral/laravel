@@ -1,16 +1,5 @@
 <template>
     <div class="container ajustar">
-
-        <div class="row">
-            <div class="col-md-12">
-                <a href="/movEstoque/listar" class="btn" style=" float: right;">
-                    <button type="button" class="btn btn-secondary float-right" style="margin-right: 10px;" >Listar Movimentos</button>
-                </a>
-            </div>
-        </div>
-
-        <br>
-
         <div class="row">
 
             <div class="col-md-12">
@@ -538,7 +527,7 @@
                         }
                     alert("Salvo com sucesso");
 
-                    window.location.href = Config.baseURL + '/movEstoque/'
+                    window.location.href = Config.baseURL + '/movEstoque/listar'
                     
                 } catch (error) {
                     console.log(error)
