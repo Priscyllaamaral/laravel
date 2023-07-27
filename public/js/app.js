@@ -6549,11 +6549,11 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "container ajustar"
-  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "scroll"
   }, [_c("table", {
     staticClass: "table table-dark"
-  }, [_vm._m(2), _vm._v(" "), _c("tbody", _vm._l(_vm.dados, function (item, index) {
+  }, [_vm._m(1), _vm._v(" "), _c("tbody", _vm._l(_vm.dados, function (item, index) {
     return _c("tr", {
       key: index
     }, [_c("th", {
@@ -6603,7 +6603,7 @@ var render = function render() {
     }
   }, [_c("div", {
     staticClass: "modal-content"
-  }, [_vm._m(3), _vm._v(" "), _c("div", {
+  }, [_vm._m(2), _vm._v(" "), _c("div", {
     staticClass: "modal-footer"
   }, [_c("button", {
     staticClass: "btn btn-secondary",
@@ -6626,6 +6626,8 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
+    staticClass: "container"
+  }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-md-12"
@@ -6633,20 +6635,12 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "aliceblue"
     }
-  }, [_vm._v("Lista de Clientes")])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-md-12"
-  }, [_c("a", {
+  }, [_vm._v("Lista de Clientes\n                    "), _c("a", {
     attrs: {
       href: "/clientes/index"
     }
   }, [_c("button", {
-    staticClass: "btn btn-primary btn-lg",
+    staticClass: "btn btn-secondary btn-lg",
     staticStyle: {
       "border-radius": "20px",
       "float": "right"
@@ -6654,7 +6648,7 @@ var staticRenderFns = [function () {
     attrs: {
       type: "button"
     }
-  }, [_vm._v("+")])])])]);
+  }, [_vm._v("+")])])])])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;

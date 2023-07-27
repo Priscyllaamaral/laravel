@@ -20,6 +20,20 @@
     <!-- Styles -->
     <style>
 
+  
+      /* ::-webkit-scrollbar {
+        width:10px;
+        height: 10px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        background:rgb(221, 200, 221);
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: rgb(213, 153, 213);
+      } */
+
       .centralizar{
 
         width: 100vw;
