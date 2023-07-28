@@ -28,7 +28,7 @@
                                     <th> {{ item.id }} </th>
                                     <th>{{ item.movimento }}</th>
                                     <th>{{ item.fornecedor.nome }}</th>
-                                    <th>{{ formatarData(item.data) }}</th>
+                                    <th>{{ item.data | dataBR }}</th>
                                     <th><button type="button" class="btn btn-secondary"  @click="editar(item.id)"><i class="bi bi-pencil-square"></i></button>
                                         <button type="button" class="btn btn-secondary"  @click="excluir(item.id)"><i class="bi bi-trash"></i></button></th>
                                     

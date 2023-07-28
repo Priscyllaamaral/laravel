@@ -59,7 +59,8 @@
                                                     <div class="row">
                                                         <div class="form-group col-lg-6">
                                                             <label>CPF</label>
-                                                            <input v-model="fornecedor.cpfcnpj" class="form-control"/>
+                                                            <!-- <input v-model="fornecedor.cpfcnpj" class="form-control"/> -->
+                                                            <cpf-cnpj  v-model="fornecedor.cpfcnpj"></cpf-cnpj>
                                                         </div>
                                                         <div class="form-group col-lg-6">
                                                             <label>RG</label>
@@ -108,13 +109,43 @@
                                                 <label>CEP</label>
                                                 <input v-model="fornecedor.endereco.cep" class="form-control"/>
                                             </div>
-                                            <div class="form-group col-md-5">
+                                            <div class="form-group col-md-7">
                                                 <label>Cidade</label>
                                                 <input v-model="fornecedor.endereco.cidade" class="form-control"/>
                                             </div>
-                                            <div class="form-group col-md-4">
+                                            <div class="form-group col-md-2">
                                                 <label>Estado</label>
-                                                <input v-model="fornecedor.endereco.estado" class="form-control"/>
+                                                <!-- <input v-model="fornecedor.endereco.estado" class="form-control"/> -->
+                                                <select v-model="fornecedor.endereco.estado" class="form-control">
+                                                    <option selected>Tipo</option>
+                                                    <option value="AC">AC</option>
+                                                    <option value="AL">AL</option>
+                                                    <option value="AP">AP</option>
+                                                    <option value="AM">AM</option>
+                                                    <option value="BA">BA</option>
+                                                    <option value="CE">CE</option>
+                                                    <option value="DF">DF</option>
+                                                    <option value="ES">ES</option>
+                                                    <option value="GO">GO</option>
+                                                    <option value="MA">MA</option>
+                                                    <option value="MT">MT</option>
+                                                    <option value="MS">MS</option>
+                                                    <option value="MG">MG</option>
+                                                    <option value="PA">PA</option>
+                                                    <option value="PB">PB</option>
+                                                    <option value="PR">PR</option>
+                                                    <option value="PE">PE</option>
+                                                    <option value="PI">PI</option>
+                                                    <option value="RJ">RJ</option>
+                                                    <option value="RN">RN</option>
+                                                    <option value="RS">RS</option>
+                                                    <option value="RO">RO</option>
+                                                    <option value="RR">RR</option>
+                                                    <option value="SC">SC</option>
+                                                    <option value="SP">SP</option>
+                                                    <option value="SE">SE</option>
+                                                    <option value="TO">TO</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -174,9 +205,11 @@
 </template>
 <script>
 import axios from 'axios';
+import CpfCnpj from './CpfCnpj.vue';
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 export default{
+  components: { CpfCnpj },
     
     data(){
         return{

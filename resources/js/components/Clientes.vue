@@ -12,22 +12,23 @@
                 <form>
                 
                     <div class="form-row ">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-8">
                             <label class= "espaco"> Nome </label>
                             <input v-model="cliente.nome" type="text" class="form-control espaco" name="inputNome" placeholder="Nome">
                         </div>
-                        <div class="form-group col-md-6">
-                            <label> CPF </label>
-                            <input v-model="cliente.cpf" type="text" class="form-control" name="inputCPF" placeholder="CPF">
+                        <div class="form-group col-md-4">
+                            <label> CPF/CNPJ </label>
+                            <!-- <input v-model="cliente.cpf" type="text" class="form-control" name="inputCPF" placeholder="CPF"> -->
+                            <cpf-cnpj  v-model="cliente.cpf"></cpf-cnpj>
                         </div>
                     </div>
 
                     <div class="form-row ">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label class= "espaco"> Telefone </label>
                             <input v-model="cliente.celular" type="text" class="form-control espaco" name="inputNome" placeholder="Telefone">
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-8">
                             <label> E-mail </label>
                             <input v-model="cliente.email" type="email" class="form-control" name="inputCPF" placeholder="E-mail">
                         </div>
@@ -76,10 +77,12 @@
 </template>
 
 <script>
+import CpfCnpj from './CpfCnpj.vue';
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
     export default {
+  components: { CpfCnpj },
         data(){
             return{
 

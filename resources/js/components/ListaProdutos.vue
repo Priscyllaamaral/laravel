@@ -27,7 +27,7 @@
                     <th scope="row">{{ item.id }}</th>
                     <td>{{ item.codigo }}</td>
                     <td>{{ item.nome }}</td>
-                    <td>{{ item.valor_vista }}</td>
+                    <td>{{ item.valor_vista | valorBR }}</td>
                     <td>
                         <button class="btn btn-secondary" type="button"><i class="bi bi-pencil-square" @click="editar(item.id)"></i></button>
                         <button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#confirmar" @click="excluir(item.id)"><i class="bi bi-trash"></i></button>
@@ -62,6 +62,7 @@
 import axios from 'axios';
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
+
 
     export default{
         data(){

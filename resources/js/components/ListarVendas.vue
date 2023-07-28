@@ -28,7 +28,7 @@
                                     <th v-if="item.cliente != null"> {{ item.cliente.nome }} </th>
                                     <th v-else> ? </th>
                                     <th>{{ item.status }}</th>
-                                    <th>{{ formatarData(item.data) }}</th>
+                                    <th>{{ item.data | dataBR }}</th>
                                     <th><button type="button" class="btn btn-secondary"  @click="editar(item.id)"><i class="bi bi-pencil-square"></i></button>
                                         <button type="button" class="btn btn-secondary"  @click="excluir(item.id)"><i class="bi bi-trash"></i></button></th>
                                     
