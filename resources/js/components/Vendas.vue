@@ -136,8 +136,8 @@
                                             <th>{{ item.codigo }}</th>
                                             <th>{{ item.nome }}</th>
                                             <th>{{ item.quantidade }}</th>
-                                            <th>{{ valorComputado(item) }}</th>
-                                            <th>{{ item.quantidade * valorComputado(item) }}</th>
+                                            <th>{{ (valorComputado(item)) | valorBR}}</th>
+                                            <th>{{ (item.quantidade * valorComputado(item)) | valorBR }}</th>
                                             <th><button @click=eliminar(item) type="button" class="btn bg-transparent"><i class="bi bi-trash"></i></button></th>
                                         </tr>
 
