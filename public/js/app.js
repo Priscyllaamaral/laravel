@@ -1778,7 +1778,7 @@ var urlParams = new URLSearchParams(queryString);
               _context.next = 6;
               return axios.post(Config.baseURL + '/enderecos/' + _this.endereco.id + '/atualizar', _this.endereco);
             case 6:
-              alert("Atualizado com Sucesso");
+              window.alert("Atualizado com Sucesso");
               _context.next = 18;
               break;
             case 9:
@@ -1792,7 +1792,7 @@ var urlParams = new URLSearchParams(queryString);
               _context.next = 17;
               return axios.post(Config.baseURL + '/clientes/cadastrar', _this.cliente);
             case 17:
-              alert("Salvo com Sucesso");
+              window.alert("Salvo com Sucesso");
             case 18:
               _context.next = 23;
               break;
@@ -1814,7 +1814,7 @@ var urlParams = new URLSearchParams(queryString);
     abrir: function abrir(id) {
       var _this2 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-        var response, response3, response2;
+        var response, response2;
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -1824,26 +1824,26 @@ var urlParams = new URLSearchParams(queryString);
             case 3:
               response = _context2.sent;
               _this2.cliente = response.data;
+
+              //let response3 = await axios.get(Config.baseURL + `/clientes/buscar/${id}` )
+
+              //console.log("DADOS: ",response3.data.codigo)
               _context2.next = 7;
-              return axios.get(Config.baseURL + "/clientes/buscar/".concat(id));
+              return axios.get(Config.baseURL + '/enderecos/' + id + '/abrir');
             case 7:
-              response3 = _context2.sent;
-              _context2.next = 10;
-              return axios.get(Config.baseURL + '/enderecos/' + response3.data.codigo + '/abrir');
-            case 10:
               response2 = _context2.sent;
-              _this2.endereco = response2.data;
-              _context2.next = 17;
+              _this2.endereco = response2.data[0];
+              _context2.next = 14;
               break;
-            case 14:
-              _context2.prev = 14;
+            case 11:
+              _context2.prev = 11;
               _context2.t0 = _context2["catch"](0);
               console.log('Erro:', _context2.t0);
-            case 17:
+            case 14:
             case "end":
               return _context2.stop();
           }
-        }, _callee2, null, [[0, 14]]);
+        }, _callee2, null, [[0, 11]]);
       }))();
     },
     voltar: function voltar() {
@@ -4528,7 +4528,7 @@ var render = function render() {
       }
     }
   })]), _vm._v(" "), _c("div", {
-    staticClass: "form-group col-md-4"
+    staticClass: "form-group col-md-2"
   }, [_c("label", [_vm._v(" Estado ")]), _vm._v(" "), _c("select", {
     directives: [{
       name: "model",
@@ -4555,20 +4555,116 @@ var render = function render() {
     attrs: {
       selected: ""
     }
-  }, [_vm._v("Escolha...")]), _vm._v(" "), _c("option", {
+  }, [_vm._v("Tipo")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "AC"
+    }
+  }, [_vm._v("AC")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "AL"
+    }
+  }, [_vm._v("AL")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "AP"
+    }
+  }, [_vm._v("AP")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "AM"
+    }
+  }, [_vm._v("AM")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "BA"
+    }
+  }, [_vm._v("BA")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "CE"
+    }
+  }, [_vm._v("CE")]), _vm._v(" "), _c("option", {
     attrs: {
       value: "DF"
     }
   }, [_vm._v("DF")]), _vm._v(" "), _c("option", {
     attrs: {
+      value: "ES"
+    }
+  }, [_vm._v("ES")]), _vm._v(" "), _c("option", {
+    attrs: {
       value: "GO"
     }
   }, [_vm._v("GO")]), _vm._v(" "), _c("option", {
     attrs: {
+      value: "MA"
+    }
+  }, [_vm._v("MA")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "MT"
+    }
+  }, [_vm._v("MT")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "MS"
+    }
+  }, [_vm._v("MS")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "MG"
+    }
+  }, [_vm._v("MG")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "PA"
+    }
+  }, [_vm._v("PA")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "PB"
+    }
+  }, [_vm._v("PB")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "PR"
+    }
+  }, [_vm._v("PR")]), _vm._v(" "), _c("option", {
+    attrs: {
       value: "PE"
     }
-  }, [_vm._v("PE")])])]), _vm._v(" "), _c("div", {
-    staticClass: "form-group col-md-2"
+  }, [_vm._v("PE")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "PI"
+    }
+  }, [_vm._v("PI")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "RJ"
+    }
+  }, [_vm._v("RJ")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "RN"
+    }
+  }, [_vm._v("RN")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "RS"
+    }
+  }, [_vm._v("RS")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "RO"
+    }
+  }, [_vm._v("RO")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "RR"
+    }
+  }, [_vm._v("RR")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "SC"
+    }
+  }, [_vm._v("SC")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "SP"
+    }
+  }, [_vm._v("SP")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "SE"
+    }
+  }, [_vm._v("SE")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "TO"
+    }
+  }, [_vm._v("TO")])])]), _vm._v(" "), _c("div", {
+    staticClass: "form-group col-md-4"
   }, [_c("label", [_vm._v(" Código postal ")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
@@ -4648,8 +4744,7 @@ var render = function render() {
       "margin-right": "10px"
     },
     attrs: {
-      type: "button",
-      disabled: _vm.loading
+      type: "button"
     },
     on: {
       click: _vm.voltar

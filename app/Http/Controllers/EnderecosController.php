@@ -37,8 +37,9 @@ class EnderecosController extends Controller
         return response()->json($endereco);
     }
 
-    public function abrir(Endereco $endereco)
+    public function abrir($id)
     {
+        $endereco = Endereco::where('id_cliente', '=', $id)->get();
 
         return response()->json($endereco);
     }

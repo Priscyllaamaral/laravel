@@ -46,17 +46,41 @@
                             <input v-model="endereco.cidade" type="text" class="form-control espaco" name="inputCidade" placeholder="Cidade">
                         </div>
 
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-2">
                             <label> Estado </label>
                             <select v-model="endereco.estado" id="inputEstado" class="form-control">
-                                <option selected>Escolha...</option>
+                                <option selected>Tipo</option>
+                                <option value="AC">AC</option>
+                                <option value="AL">AL</option>
+                                <option value="AP">AP</option>
+                                <option value="AM">AM</option>
+                                <option value="BA">BA</option>
+                                <option value="CE">CE</option>
                                 <option value="DF">DF</option>
+                                <option value="ES">ES</option>
                                 <option value="GO">GO</option>
+                                <option value="MA">MA</option>
+                                <option value="MT">MT</option>
+                                <option value="MS">MS</option>
+                                <option value="MG">MG</option>
+                                <option value="PA">PA</option>
+                                <option value="PB">PB</option>
+                                <option value="PR">PR</option>
                                 <option value="PE">PE</option>
+                                <option value="PI">PI</option>
+                                <option value="RJ">RJ</option>
+                                <option value="RN">RN</option>
+                                <option value="RS">RS</option>
+                                <option value="RO">RO</option>
+                                <option value="RR">RR</option>
+                                <option value="SC">SC</option>
+                                <option value="SP">SP</option>
+                                <option value="SE">SE</option>
+                                <option value="TO">TO</option>
                             </select>
                         </div>
 
-                        <div class="form-group col-md-2">
+                        <div class="form-group col-md-4">
                             <label> Código postal </label>
                             <input v-model="endereco.codigo_postal" type="text" class="form-control" name="inputCodigo">
                         </div>
@@ -69,7 +93,7 @@
                     </div>
 
                     <button type="button" @click="salvar" class="btn btn-primary float-right" style="margin-right: 10px;" >Salvar</button>
-                    <button type="button" @click="voltar" class="btn btn-primary float-right" style="margin-right: 10px;" :disabled="loading">Sair</button>
+                    <button type="button" @click="voltar" class="btn btn-primary float-right" style="margin-right: 10px;" >Sair</button>
                 </form>
             </div>
         </div>
@@ -125,7 +149,7 @@ const urlParams = new URLSearchParams(queryString);
                     if(this.cliente.id){
                         await axios.post(Config.baseURL + '/clientes/' + this.cliente.id + '/atualizar', this.cliente);
                         await axios.post(Config.baseURL + '/enderecos/' + this.endereco.id + '/atualizar', this.endereco);
-                        alert("Atualizado com Sucesso")
+                        window.alert("Atualizado com Sucesso")
 
                     }else{
                         this.endereco.id_cliente
@@ -134,7 +158,7 @@ const urlParams = new URLSearchParams(queryString);
                         this.cliente.codigo = id_endereco;
 
                         await axios.post(Config.baseURL + '/clientes/cadastrar', this.cliente);
-                        alert("Salvo com Sucesso")
+                        window.alert("Salvo com Sucesso")
                     }
                 }catch(erro){
                     console.log(erro)
@@ -149,11 +173,11 @@ const urlParams = new URLSearchParams(queryString);
                     let response = await axios.get(Config.baseURL + '/clientes/' + id + '/abrir')
                     this.cliente = response.data;
 
-                    let response3 = await axios.get(Config.baseURL + `/clientes/buscar/${id}` )
+                    //let response3 = await axios.get(Config.baseURL + `/clientes/buscar/${id}` )
                     
                     //console.log("DADOS: ",response3.data.codigo)
-                    let response2 = await axios.get(Config.baseURL + '/enderecos/' + response3.data.codigo + '/abrir')
-                    this.endereco = response2.data;
+                    let response2 = await axios.get(Config.baseURL + '/enderecos/' + id + '/abrir')
+                    this.endereco = response2.data[0];
 
                     } catch (error) {
                     console.log('Erro:', error)

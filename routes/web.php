@@ -134,7 +134,7 @@ Route::get('/planoContas', ['uses' => 'PlanocontasController@listaPlanoContas'])
 Route::get('/planoContas/buscar/{id}', ['uses' => 'PlanocontasController@buscar']);
 
 Route::post('/enderecos/cadastrar', ['middleware' => 'auth', 'uses' => 'EnderecosController@cadastrar']);
-Route::get('/enderecos/{endereco}/abrir', ['uses' => 'EnderecosController@abrir']); 
+Route::get('/enderecos/{id}/abrir', ['uses' => 'EnderecosController@abrir']); 
 Route::post('/enderecos/{endereco}/atualizar',  ['uses' => 'EnderecosController@atualizar']);
 
 
