@@ -7248,7 +7248,7 @@ var render = function render() {
       attrs: {
         scope: "row"
       }
-    }, [_vm._v(_vm._s(item.nome))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.descricao))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(_vm.formatarData(item.data)))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.valor))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.tipo))]), _vm._v(" "), _c("th", [_c("button", {
+    }, [_vm._v(_vm._s(item.nome))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.descricao))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(_vm._f("dataBR")(item.data)))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.valor))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.tipo))]), _vm._v(" "), _c("th", [_c("button", {
       staticClass: "btn btn-light",
       staticStyle: {
         "border-color": "rgb(217, 219, 218)"

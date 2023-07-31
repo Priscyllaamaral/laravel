@@ -131,10 +131,6 @@ Route::group(['prefix' => 'fornecedores', "middleware" => "auth"], function()
 
 });
 
-
-
-
-
 Route::get('/planoContas', ['uses' => 'PlanocontasController@listaPlanoContas']);
 Route::get('/planoContas/buscar/{id}', ['uses' => 'PlanocontasController@buscar']);
 

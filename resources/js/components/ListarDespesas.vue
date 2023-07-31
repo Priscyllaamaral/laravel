@@ -35,7 +35,7 @@
                     <tr v-for= "(item, index) in dados" :key="index">
                         <th scope="row">{{ item.nome }}</th>
                         <th>{{ item.descricao }}</th>
-                        <th>{{ formatarData(item.data) }}</th>
+                        <th>{{ item.data | dataBR }}</th>
                         <th>{{ item.valor }}</th>
                         <th>{{ item.tipo }}</th>
                         <th>

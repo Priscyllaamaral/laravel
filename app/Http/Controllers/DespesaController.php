@@ -16,13 +16,12 @@ class DespesaController extends Controller
     public function despesas(Request $request)
     {
 
-
         $resposta = Despesa::join('fornecedores', 'fornecedores.id', '=', 'despesas.fornecedor')
         ->join('plano_contas', 'plano_contas.id', '=', 'despesas.plano_de_contas')
         ->select('despesas.id','fornecedores.nome', 'plano_contas.descricao','despesas.data', 'despesas.valor', 'despesas.tipo');
 
         if ($request->nomeFornecedor) {
-            $resposta->where('fornecedores.nome', '=', $request->nomeFornecedor);
+            $resposta->where('fornecedores.nome', 'like', "%{$request->nomeFornecedor}%");
         }
 
         if ($request->planoConta) {
@@ -38,6 +37,8 @@ class DespesaController extends Controller
         if ($request->dataFim) {
             $resposta->where('despesas.data', '<=', $request->dataFim);
         }
+
+        
 
         return $resposta->get();
     }
