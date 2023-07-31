@@ -170,22 +170,22 @@ const urlParams = new URLSearchParams(queryString);
             },
             async abrir(id){
                 try {
-                    let response = await axios.get(Config.baseURL + '/clientes/' + id + '/abrir')
+                    let response = await axios.get(Config.baseURL + '/clientes/' + id + '/abrir');
                     this.cliente = response.data;
 
                     //let response3 = await axios.get(Config.baseURL + `/clientes/buscar/${id}` )
                     
                     //console.log("DADOS: ",response3.data.codigo)
-                    let response2 = await axios.get(Config.baseURL + '/enderecos/' + id + '/abrir')
+                    let response2 = await axios.get(Config.baseURL + '/enderecos/' + id + '/abrir');
                     this.endereco = response2.data[0];
 
                     } catch (error) {
-                    console.log('Erro:', error)
+                    console.log('Erro:', error);
                 }
             },
 
             voltar(){
-                window.location.href = Config.baseURL + '/'
+                window.location.href = Config.baseURL + '/';
             },
 
 

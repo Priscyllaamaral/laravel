@@ -2050,7 +2050,7 @@ var urlParams = new URLSearchParams(queryString);
             case 0:
               _context2.prev = 0;
               _context2.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(Config.baseURL + "/fornecedor/buscar/".concat(id));
+              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(Config.baseURL + "/fornecedores/buscar/".concat(id));
             case 3:
               response = _context2.sent;
               _this2.fornecedor_.nome = response.data.nome;
@@ -2102,7 +2102,7 @@ var urlParams = new URLSearchParams(queryString);
             case 0:
               _context4.prev = 0;
               _context4.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(Config.baseURL + '/fornecedor');
+              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(Config.baseURL + '/fornecedores/index');
             case 3:
               response = _context4.sent;
               _this4.dados = response.data;
@@ -2153,7 +2153,7 @@ var urlParams = new URLSearchParams(queryString);
             case 0:
               console.log("NOME :", nome);
               _context6.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(Config.baseURL + '/fornecedor/filtrar', {
+              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(Config.baseURL + '/fornecedores/filtrar', {
                 params: {
                   search: nome
                 }
@@ -2305,7 +2305,7 @@ var urlParams = new URLSearchParams(queryString);
               };
               console.log(fd);
               _context.next = 8;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(Config.baseURL + '/fornecedor/salvar', fd);
+              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(Config.baseURL + '/fornecedores/salvar', fd);
             case 8:
             case "end":
               return _context.stop();
@@ -2336,7 +2336,7 @@ var urlParams = new URLSearchParams(queryString);
       }))();
     },
     salvar: function salvar() {
-      var resposta = axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(Config.baseURL + '/fornecedor/salvar', this.fornecedor);
+      var resposta = axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(Config.baseURL + '/fornecedores/salvar', this.fornecedor);
       if (resposta) {
         window.alert('Fornecedor Salvo com sucesso!');
       }
@@ -2452,7 +2452,7 @@ var urlParams = new URLSearchParams(queryString);
               };
               console.log(fd);
               _context2.next = 8;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(Config.baseURL + '/fornecedor/salvar', fd);
+              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(Config.baseURL + '/fornecedores/salvar', fd);
             case 8:
             case "end":
               return _context2.stop();
@@ -2506,7 +2506,7 @@ var urlParams = new URLSearchParams(queryString);
               break;
             case 8:
               _context4.next = 10;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(Config.baseURL + '/fornecedor/salvar', _this3.fornecedor);
+              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(Config.baseURL + '/fornecedores/salvar', _this3.fornecedor);
             case 10:
               _resposta = _context4.sent;
               if (_resposta) {
@@ -3317,7 +3317,7 @@ var urlParams = new URLSearchParams(queryString);
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(Config.baseURL + '/fornecedor/filtrar', {
+              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(Config.baseURL + '/fornecedores/filtrar', {
                 params: {
                   search: nome
                 }
@@ -3596,7 +3596,7 @@ var urlParams = new URLSearchParams(queryString);
             case 0:
               _context2.prev = 0;
               _context2.next = 3;
-              return axios.get(Config.baseURL + '/fornecedor');
+              return axios.get(Config.baseURL + '/fornecedores/index');
             case 3:
               response = _context2.sent;
               _this2.dados2 = response.data;
@@ -3623,7 +3623,7 @@ var urlParams = new URLSearchParams(queryString);
             case 0:
               _context3.prev = 0;
               _context3.next = 3;
-              return axios.get(Config.baseURL + "/fornecedor/buscar/".concat(id));
+              return axios.get(Config.baseURL + "/fornecedores/buscar/".concat(id));
             case 3:
               response = _context3.sent;
               _this3.fornecedor_.nome = response.data.nome;
@@ -3647,7 +3647,7 @@ var urlParams = new URLSearchParams(queryString);
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
               _context4.next = 2;
-              return axios.get(Config.baseURL + '/fornecedor/filtrar', {
+              return axios.get(Config.baseURL + '/fornecedores/filtrar', {
                 params: {
                   search: nome
                 }

@@ -237,7 +237,7 @@ const urlParams = new URLSearchParams(queryString);
           async buscarNomeIdFornecedor(id){
 
             try{
-                let response = await axios.get(Config.baseURL + `/fornecedor/buscar/${id}`)
+                let response = await axios.get(Config.baseURL + `/fornecedores/buscar/${id}`)
                 this.fornecedor_.nome = response.data.nome;
             } catch (error){
                 console.log('Erro:', error)
@@ -264,7 +264,7 @@ const urlParams = new URLSearchParams(queryString);
                 console.log('ok :',this.dados);*/
 
                 try {
-                    let response = await axios.get(Config.baseURL + '/fornecedor');
+                    let response = await axios.get(Config.baseURL + '/fornecedores/index');
                     this.dados = response.data;
 
                     } catch (error) {
@@ -286,7 +286,7 @@ const urlParams = new URLSearchParams(queryString);
             async mudarNome(nome){
                 console.log("NOME :",nome);
 
-                await axios.get(Config.baseURL + '/fornecedor/filtrar',{
+                await axios.get(Config.baseURL + '/fornecedores/filtrar',{
                     params: {
                         search: nome
                     }

@@ -443,7 +443,7 @@
             async mudarNomeFornecedor(nome){
                 //console.log("NOME :",nome);
 
-                await axios.get(Config.baseURL + '/fornecedor/filtrar',{
+                await axios.get(Config.baseURL + '/fornecedores/filtrar',{
                     params: {
                         search: nome
                     }

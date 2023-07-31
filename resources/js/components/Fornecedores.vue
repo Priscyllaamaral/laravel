@@ -281,7 +281,7 @@ export default{
                 }
             }
             console.log(fd);
-            await axios.post(Config.baseURL + '/fornecedor/salvar', fd);
+            await axios.post(Config.baseURL + '/fornecedores/salvar', fd);
 
             
         },
@@ -313,7 +313,7 @@ export default{
                 }
 
                 else{
-                    let resposta = await axios.post(Config.baseURL + '/fornecedor/salvar', this.fornecedor);   
+                    let resposta = await axios.post(Config.baseURL + '/fornecedores/salvar', this.fornecedor);   
                     if(resposta){
                         window.alert('Fornecedor Salvo com sucesso!');
                         window.location.href= Config.baseURL+ "/fornecedores/todos";

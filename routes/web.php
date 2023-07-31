@@ -113,18 +113,23 @@ Route::group(['prefix' => 'movimentacoes', "middleware" => "auth"], function()
 
 });
 
-Route::get('/fornecedor', ['middleware' => 'auth', 'uses' => 'FornecedorController@index']);
-Route::get('/fornecedor/buscar', ['middleware' => 'auth', 'uses' => 'FornecedorController@listarFornecedores'])->name('fornecedores');
-Route::get('/fornecedor/buscar/{id}', ['middleware' => 'auth', 'uses' => 'FornecedorController@buscar']);
-Route::get('/fornecedor/filtrar', ['middleware' => 'auth', 'uses' => 'FornecedorController@search']); 
-Route::post('/fornecedor/salvar', ['middleware' => 'auth', 'uses' => 'FornecedorController@salvar']);
-Route::get('/fornecedores', ['middleware' => 'auth', 'uses' => 'FornecedorController@tela']);
-Route::get('/fornecedores/{fornecedor}/abrir', ['middleware' => 'auth', 'uses' => 'FornecedorController@abrir']);
-Route::get('/fornecedores/editar', ['middleware' => 'auth', 'uses' => 'FornecedorController@editar']);
-Route::get('/fornecedores/listar', ['middleware' => 'auth', 'uses' => 'FornecedorController@listar']);
-Route::get('/fornecedores/todos', ['middleware' => 'auth', 'uses' => 'FornecedorController@listarFornecedores']);
-Route::post('/fornecedores/destroy/{id}', ['uses' => 'FornecedorController@destroy']);
-Route::post('/fornecedores/{fornecedor}/atualizar',  ['uses' => 'FornecedorController@atualizar']);
+Route::group(['prefix' => 'fornecedores', "middleware" => "auth"], function()
+{
+
+    Route::get('/index', ['middleware' => 'auth', 'uses' => 'FornecedorController@index']);
+    Route::get('/buscar', ['middleware' => 'auth', 'uses' => 'FornecedorController@listarFornecedores']);
+    Route::get('/buscar/{id}', ['middleware' => 'auth', 'uses' => 'FornecedorController@buscar']);
+    Route::get('/filtrar', ['middleware' => 'auth', 'uses' => 'FornecedorController@search']); 
+    Route::post('/salvar', ['middleware' => 'auth', 'uses' => 'FornecedorController@salvar']);
+    Route::get('/', ['middleware' => 'auth', 'uses' => 'FornecedorController@tela']);
+    Route::get('/{fornecedor}/abrir', ['middleware' => 'auth', 'uses' => 'FornecedorController@abrir']);
+    Route::get('/editar', ['middleware' => 'auth', 'uses' => 'FornecedorController@editar']);
+    Route::get('/listar', ['middleware' => 'auth', 'uses' => 'FornecedorController@listar']);
+    Route::get('/todos', ['middleware' => 'auth', 'uses' => 'FornecedorController@listarFornecedores']);
+    Route::post('/destroy/{id}', ['uses' => 'FornecedorController@destroy']);
+    Route::post('/{fornecedor}/atualizar',  ['uses' => 'FornecedorController@atualizar']);
+
+});
 
 
 

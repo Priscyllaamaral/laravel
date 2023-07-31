@@ -96,7 +96,7 @@
                     }
                 }
                 console.log(fd);
-                await axios.post(Config.baseURL + '/fornecedor/salvar', fd);
+                await axios.post(Config.baseURL + '/fornecedores/salvar', fd);
    
               
             },
@@ -116,7 +116,7 @@
             },
 
             salvar(){
-                let resposta = axios.post(Config.baseURL + '/fornecedor/salvar', this.fornecedor);
+                let resposta = axios.post(Config.baseURL + '/fornecedores/salvar', this.fornecedor);
                 if(resposta){
                     window.alert('Fornecedor Salvo com sucesso!')
                 }
