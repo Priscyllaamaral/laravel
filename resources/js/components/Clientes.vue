@@ -152,12 +152,17 @@ const urlParams = new URLSearchParams(queryString);
                         window.alert("Atualizado com Sucesso")
 
                     }else{
-                        this.endereco.id_cliente
-                        let resposta = await axios.post(Config.baseURL + '/enderecos/cadastrar', this.endereco);
-                        let id_endereco = resposta.data.id;
-                        this.cliente.codigo = id_endereco;
 
-                        await axios.post(Config.baseURL + '/clientes/cadastrar', this.cliente);
+                        let resposta = await axios.post(Config.baseURL + '/clientes/cadastrar', this.cliente);
+
+                        this.endereco.id_cliente = resposta.data.id;
+
+                        //this.endereco.id_cliente
+                        await axios.post(Config.baseURL + '/enderecos/cadastrar', this.endereco);
+                        // let id_endereco = resposta.data.id;
+                        // this.cliente.codigo = id_endereco;
+
+                        
                         window.alert("Salvo com Sucesso")
                     }
                 }catch(erro){

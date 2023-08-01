@@ -1763,7 +1763,7 @@ var urlParams = new URLSearchParams(queryString);
     salvar: function salvar() {
       var _this = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var resposta, id_endereco;
+        var resposta;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -1779,36 +1779,39 @@ var urlParams = new URLSearchParams(queryString);
               return axios.post(Config.baseURL + '/enderecos/' + _this.endereco.id + '/atualizar', _this.endereco);
             case 6:
               window.alert("Atualizado com Sucesso");
-              _context.next = 18;
+              _context.next = 16;
               break;
             case 9:
-              _this.endereco.id_cliente;
-              _context.next = 12;
-              return axios.post(Config.baseURL + '/enderecos/cadastrar', _this.endereco);
-            case 12:
-              resposta = _context.sent;
-              id_endereco = resposta.data.id;
-              _this.cliente.codigo = id_endereco;
-              _context.next = 17;
+              _context.next = 11;
               return axios.post(Config.baseURL + '/clientes/cadastrar', _this.cliente);
-            case 17:
+            case 11:
+              resposta = _context.sent;
+              _this.endereco.id_cliente = resposta.data.id;
+
+              //this.endereco.id_cliente
+              _context.next = 15;
+              return axios.post(Config.baseURL + '/enderecos/cadastrar', _this.endereco);
+            case 15:
+              // let id_endereco = resposta.data.id;
+              // this.cliente.codigo = id_endereco;
+
               window.alert("Salvo com Sucesso");
-            case 18:
-              _context.next = 23;
+            case 16:
+              _context.next = 21;
               break;
-            case 20:
-              _context.prev = 20;
+            case 18:
+              _context.prev = 18;
               _context.t0 = _context["catch"](0);
               console.log(_context.t0);
-            case 23:
-              _context.prev = 23;
+            case 21:
+              _context.prev = 21;
               window.location.href = Config.baseURL + '/clientes';
-              return _context.finish(23);
-            case 26:
+              return _context.finish(21);
+            case 24:
             case "end":
               return _context.stop();
           }
-        }, _callee, null, [[0, 20, 23, 26]]);
+        }, _callee, null, [[0, 18, 21, 24]]);
       }))();
     },
     abrir: function abrir(id) {
@@ -3828,6 +3831,10 @@ var urlParams = new URLSearchParams(queryString);
     }
   },
   watch: {
+    'venda': function venda(newValue) {
+      this.editar = false;
+      this.load = false;
+    },
     'venda.tabela': function vendaTabela(newValue) {
       var _this = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {

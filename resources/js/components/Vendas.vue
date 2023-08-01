@@ -342,6 +342,12 @@
         },
 
         watch:{
+
+            'venda' (newValue){
+                this.editar = false;
+                this.load = false;
+            },
+
             async 'venda.tabela' (newValue){
                 if(this.vendaItem.codigo != ''){
                     let resultado = await axios.get(Config.baseURL + `/produtos/buscar/${this.vendaItem.codigo}`);
