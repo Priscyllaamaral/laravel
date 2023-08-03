@@ -1,4 +1,5 @@
 @extends('layouts.padrao')
 @section('content')
-    <vendas/>
+       <vendedor />
+
 @endsection

@@ -31,7 +31,6 @@ class ClientesController extends Controller
 
     public function abrir(Cliente $cliente)
     {
-
         return response()->json($cliente);
     }
 
@@ -49,14 +48,13 @@ class ClientesController extends Controller
         
         return response()->json($cliente);
     }
-    public function destroy($id){
 
+    public function destroy($id)
+    {
         $cliente = Cliente::findOrFail($id);
         $cliente->delete();
 
         return "Produto Excluído com sucesso";
-
-
     }
 
     public function atualizar(Request $request, Cliente $cliente)

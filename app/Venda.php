@@ -18,4 +18,8 @@ class Venda extends Model
     public function cliente(){
         return $this->belongsTo(Cliente::class, 'cliente_id', 'id' );
     }
+
+    public function vendedor(){
+        return $this->belongsTo(Vendedor::class, 'vendedor_id', 'id' );
+    }
 }

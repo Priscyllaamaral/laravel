@@ -1,156 +1,235 @@
 <template>
     <div class="container ajustar">
         <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <h4 class="card-header" style="background-color: antiquewhite">
-                        Vendas
-                    </h4>
-                    <div class="card-body">
-                        <div class="form-row" id="linha">
-
-                            <div class="form-group col-lg-6 totalValor">
-
-                                <h4><b>TOTAL : R$ {{ somaTotalLiquido * acresDescon | valorBR }}</b> </h4>
-                            </div>
-
-                            <div class="form-group col-lg-6">                  
-                                <button @click="salvar()" class="btn btn-primary float-right" type="button" style="margin-left: 10px;" :disabled="load || editar">Salvar</button>
-                                <button @click="confirmar()" class="btn btn-danger float-right" type="button">Cancelar</button>
-                            </div>
+            <div class="col lg-12">
+                <div class="card" style="background-color: white;">
+                    <div class="row" style="margin-bottom: 20px">
+                        <div class="col-lg-12">
+                            <h3><b>Vendas</b></h3>
                         </div>
-                        <br>
-                        <form>
-                            <div class="form-row" >
-                                <div class="form-group col-lg-5 col-12">
-                                    <label > Cliente </label>
-                                    <div class="input-group">
-                                        <input v-model="cliente.codigo" type="text" class="form-control" style="max-width: 15%; min-width: 15%;" readonly>
-                                        <input v-model="cliente.nome" type="text" class="form-control" style="max-width: 75%; min-width: 75%;" >
-                                        <div class="input-group-append">
-                                            <button  data-toggle="modal" data-target="#exampleModal2" @click="mudarNomeCliente(cliente.nome)" class="btn btn-outline-secondary" type="button"><i class="bi bi-search"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label > Data </label>
-                                    <input v-model="venda.data" type="date" class="form-control">
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <label> Status </label>
-                                    <select v-model="venda.status" type="text" class="form-control">
-                                        <option selected>Tipo</option>
-                                        <option value="Aguardando Pagamento">Aguardando Pagamento</option>
-                                        <option value="Agendada">Agendada</option>
-                                        <option value="Aprovada">Aprovada</option>
-                                        <option value="Reembolsada">Reembolsada</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-2" style="margin-top: 40px;">
-                                    <div class="form-check form-check-inline">
-                                        <input v-model="venda.cancelada" class="form-check-input confirmacao espaco" type="checkbox" id="inlineCheckbox1" value="1">
-                                        <label class="form-check-label" for="inlineCheckbox1">Cancelada </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row" id="linha">
-                                <div class="form-group col-md-4">
-                                    <label > Tabela </label>
-                                    <select v-model="venda.tabela" type="text" class="form-control">
-                                        <option selected>Tipo</option>
-                                        <option value="Á vista">Á vista</option>
-                                        <option value="Á prazo">Á prazo</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group col-md-4">
-                                    <label > Forma Pagamento </label>
-                                    <select v-model="venda.forma_pagamento" type="text" class="form-control">
-                                        <option selected>Tipo</option>
-                                        <option value="Pix">PIX</option>
-                                        <option value="Dinheiro">Dinheiro</option>
-                                        <option value="Cartão Débito">Cartão Débito</option>
-                                        <option value="Cartão Crédito">Cartão Crédito</option>
-                                        <option value="Cheque">Cheque</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group col-md-2" >
-                                    <label > Desconto (%) </label>
-                                    <input v-model="venda.desconto" class="form-control" type="number">
-                                </div>
-
-                                <div class="form-group col-md-2" >
-                                    <label > Acréscimo (%) </label>
-                                    <input v-model="venda.acrescimo" class="form-control" type="number">
-                                </div>
-                            </div>
-
-                            <br>
-
-                            <div class="form-row" id="linha">
-                                <div class="form-group col-lg-6">
-                                    <label > Produto </label>
-                                    <div class="input-group">
-                                        <input v-model="codigoProduto" type="text" class="form-control" style="max-width: 15%; min-width: 15%;" readonly>
-                                        <input v-model="vendaItem.nome" type="text" class="form-control" style="max-width: 75%; min-width: 75%;" >
-                                        <div class="input-group-append">
-                                            <button data-toggle="modal" data-target="#exampleModal" @click="mudarNome(vendaItem.nome)" class="btn btn-outline-secondary" type="button"><i class="bi bi-search"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group col-md-2">
-                                    <label > Quantidade </label>
-                                    <input v-model="vendaItem.quantidade" class="form-control" type="number">
-                                </div>
-
-                                <div class="form-group col-md-3" >
-                                    <label > Valor </label>
-                                    <input v-model="valor" class="form-control" type="number" readonly>
-                                </div>
-                                <div class="form-group col-md-1" >
-                                    <button @click="adicionar" type="button" class="form-control btn btn-primary" style="margin-top: 30px;" :disabled="loading">+</button>
-                                </div>
-                            </div>
-
-                            <br>
-
-                            <h5>Produtos/ Itens da venda</h5>
-                            
-                            <div class="col-md-12" style="max-height: 200px; overflow-y: auto;">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Código</th>
-                                            <th>Descricao</th>
-                                            <th>QTD</th>
-                                            <th>Valor U</th>
-                                            <th>Valor T</th>
-                                            <th>Ação</th>
-                                        </tr>
-
-                                    </thead>
-                                    <tbody>
-                                        <tr v-for="(item, index) in venda.itens" :key="index">
-                                            <th>{{ item.codigo }}</th>
-                                            <th>{{ item.nome }}</th>
-                                            <th>{{ item.quantidade }}</th>
-                                            <th>{{ (valorComputado(item)) | valorBR}}</th>
-                                            <th>{{ (item.quantidade * valorComputado(item)) | valorBR }}</th>
-                                            <th><button @click=eliminar(item) type="button" class="btn bg-transparent"><i class="bi bi-trash"></i></button></th>
-                                        </tr>
-
-                                    </tbody>
-
-
-                                </table>
-                            </div>
-                        </form>
                     </div>
+                
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Cadastro</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="products-tab" data-bs-toggle="tab" data-bs-target="#products" type="button" role="tab" aria-controls="products" aria-selected="false">Produtos</button>
+                                </li>
+                            </ul>
+                            <br>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="form-row" >
+                                                <div class="form-group col-lg-6 col-12">
+                                                    <label > Cliente </label>
+                                                    <div class="input-group">
+                                                        <input v-model="cliente.id" type="text" class="form-control" style="max-width: 15%; min-width: 15%;" readonly>
+                                                        <input v-model="cliente.nome" type="text" class="form-control" style="max-width: 75%; min-width: 75%;" >
+                                                        <div class="input-group-append">
+                                                            <button  data-toggle="modal" data-target="#exampleModal2" @click="mudarNomeCliente(cliente.nome)" class="btn btn-outline-secondary" type="button"><i class="bi bi-search"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-12">
+                                                    <label > Vendedor </label>
+                                                    <div class="input-group">
+                                                        <input v-model="vendedor.id" type="text" class="form-control" style="max-width: 15%; min-width: 15%;" readonly>
+                                                        <input v-model="vendedor.nome" type="text" class="form-control" style="max-width: 75%; min-width: 75%;" >
+                                                        <div class="input-group-append">
+                                                            <button  data-toggle="modal" data-target="#exampleModal3" @click="mudarNomeVendedor(vendedor.nome)" class="btn btn-outline-secondary" type="button"><i class="bi bi-search"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row" >
+                                                <div class="form-group col-md-4">
+                                                    <label > Data </label>
+                                                    <input v-model="venda.data" type="date" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label> Status </label>
+                                                    <select v-model="venda.status" type="text" class="form-control">
+                                                        <option selected>Tipo</option>
+                                                        <option value="Aguardando Pagamento">Aguardando Pagamento</option>
+                                                        <option value="Agendada">Agendada</option>
+                                                        <option value="Aprovada">Aprovada</option>
+                                                        <option value="Reembolsada">Reembolsada</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4" style="margin-top: 40px;">
+                                                    <div class="form-check form-check-inline">
+                                                        <input v-model="venda.cancelada" class="form-check-input confirmacao espaco" type="checkbox" id="inlineCheckbox1" value="1">
+                                                        <label class="form-check-label" for="inlineCheckbox1">Cancelada </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="products" role="tabpanel" aria-labelledby="products-tab">
+                                    <div class="container">
+                                        <div class="row">
+                                            <form>
+                                                <div class="form-row" id="linha">
+
+                                                    <div class="form-group col-lg-6 totalValor">
+
+                                                        <h4><b>TOTAL : R$ {{ somaTotalLiquido * acresDescon | valorBR }}</b> </h4>
+                                                    </div>
+
+                                                    <div class="form-group col-lg-6">                  
+                                                        <button @click="salvar()" class="btn btn-primary float-right" type="button" style="margin-left: 10px;" :disabled="load || editar">Salvar</button>
+                                                        <button @click="confirmar()" class="btn btn-danger float-right" type="button">Cancelar</button>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                            
+                                                <div class="form-row" id="linha">
+                                                    <div class="form-group col-md-4">
+                                                        <label > Tabela </label>
+                                                        <select v-model="venda.tabela" type="text" class="form-control">
+                                                            <option selected>Tipo</option>
+                                                            <option value="Á vista">Á vista</option>
+                                                            <option value="Á prazo">Á prazo</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group col-md-4">
+                                                        <label > Forma Pagamento </label>
+                                                        <select v-model="venda.forma_pagamento" type="text" class="form-control">
+                                                            <option selected>Tipo</option>
+                                                            <option value="Pix">PIX</option>
+                                                            <option value="Dinheiro">Dinheiro</option>
+                                                            <option value="Cartão Débito">Cartão Débito</option>
+                                                            <option value="Cartão Crédito">Cartão Crédito</option>
+                                                            <option value="Cheque">Cheque</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group col-md-2" >
+                                                        <label > Desconto (%) </label>
+                                                        <input v-model="venda.desconto" class="form-control" type="number">
+                                                    </div>
+
+                                                    <div class="form-group col-md-2" >
+                                                        <label > Acréscimo (%) </label>
+                                                        <input v-model="venda.acrescimo" class="form-control" type="number">
+                                                    </div>
+                                                </div>
+
+                                                <br>
+
+                                                <div class="form-row" id="linha">
+                                                    <div class="form-group col-lg-6">
+                                                        <label > Produto </label>
+                                                        <div class="input-group">
+                                                            <input v-model="codigoProduto" type="text" class="form-control" style="max-width: 15%; min-width: 15%;" readonly>
+                                                            <input v-model="vendaItem.nome" type="text" class="form-control" style="max-width: 75%; min-width: 75%;" >
+                                                            <div class="input-group-append">
+                                                                <button data-toggle="modal" data-target="#exampleModal" @click="mudarNome(vendaItem.nome)" class="btn btn-outline-secondary" type="button"><i class="bi bi-search"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group col-md-2">
+                                                        <label > Quantidade </label>
+                                                        <input v-model="vendaItem.quantidade" class="form-control" type="number">
+                                                    </div>
+
+                                                    <div class="form-group col-md-3" >
+                                                        <label > Valor </label>
+                                                        <input v-model="valor" class="form-control" type="number" readonly>
+                                                    </div>
+                                                    <div class="form-group col-md-1" >
+                                                        <button @click="adicionar" type="button" class="form-control btn btn-primary" style="margin-top: 30px;" :disabled="loading">+</button>
+                                                    </div>
+                                                </div>
+
+                                                <br>
+
+                                                <h5>Produtos/ Itens da venda</h5>
+
+                                                <div class="col-md-12" style="max-height: 200px; overflow-y: auto;">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Código</th>
+                                                                <th>Descricao</th>
+                                                                <th>QTD</th>
+                                                                <th>Valor U</th>
+                                                                <th>Valor T</th>
+                                                                <th>Ação</th>
+                                                            </tr>
+
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr v-for="(item, index) in venda.itens" :key="index">
+                                                                <th>{{ item.codigo }}</th>
+                                                                <th>{{ item.nome }}</th>
+                                                                <th>{{ item.quantidade }}</th>
+                                                                <th>{{ (valorComputado(item)) | valorBR}}</th>
+                                                                <th>{{ (item.quantidade * valorComputado(item)) | valorBR }}</th>
+                                                                <th><button @click=eliminar(item) type="button" class="btn bg-transparent"><i class="bi bi-trash"></i></button></th>
+                                                            </tr>
+
+                                                        </tbody>
+
+
+                                                    </table>
+                                                </div>
+                                            </form>
+                                        </div>
+                                     </div>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+                 </div>
+            </div>
+      
+         </div>
+
+         <!-- Modal -->
+        <div class="modal fade" id="exampleModal3" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Pesquisar Vendedor</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" v-model="vendedor.nome" name="search" @keyup="mudarNomeVendedor(vendedor.nome)">
+                    </div>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">CPF</th>
+                            <th scope="col">Selecionar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for= "(item, index) in dadosV" :key="index">
+                                <th scope="row">{{ item.id }}</th>
+                                <th>{{ item.nome }}</th>
+                                <th>{{ item.cpf }}</th>
+                                <th><button @click="adicionarVendedor(item)" data-dismiss="modal" id="btnSave" type="button"><i class="bi bi-check"></i></button></th>
+                            </tr>                      
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
+    <!-- Modal -->
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModal2" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -246,6 +325,7 @@
                 modalVisible : true,
                 dados2: '',
                 dados:'',
+                dadosV : '',
                 produtos: [],
                 //itensVenda: [],
                 editar: true,
@@ -259,6 +339,7 @@
                 venda:{
                     id: null,
                     cliente_id: '',
+                    vendedor_id:'',
                     data: '',
                     status: '',
                     forma_pagamento: '',
@@ -303,6 +384,11 @@
                     cpf:'',
                     codigo:'',
                     premium:''
+                },
+
+                vendedor:{
+                    id: '',
+                    nome: ''
                 }
             }
         },
@@ -405,6 +491,7 @@
                     this.venda = response.data;
                     this.venda.itens = response.data.produtos;
                     this.cliente = response.data.cliente;
+                    this.vendedor = response.data.vendedor;
 
                     console.log("venda :",this.venda);
                     console.log("venda itens :",this.venda.itens);
@@ -418,6 +505,7 @@
             async salvar(){
                 //this.venda.tabela = this.tabela;
                 this.venda.cliente_id = this.cliente.id;
+                this.venda.vendedor_id = this.vendedor.id
                 //this.venda.valor = this.somaTotalLiquido;
 
                 try{
@@ -556,6 +644,7 @@
 
             adicionarCliente(item){
                 this.cliente = item
+                
                 $('#exampleModal2').modal('hide');
             },
 
@@ -569,6 +658,25 @@
                 ).then(response => {
                
                     this.dados = response.data})
+                    .catch(error => console.log(error));
+
+            },
+
+            adicionarVendedor(item){
+                this.vendedor = item
+                $('#exampleModal2').modal('hide');
+            },
+
+            async mudarNomeVendedor(nome){
+            
+                await axios.get(Config.baseURL + '/vendedores/filtrar',{
+                    params: {
+                        search: nome
+                    }
+                }
+                ).then(response => {
+               
+                    this.dadosV = response.data})
                     .catch(error => console.log(error));
 
             },

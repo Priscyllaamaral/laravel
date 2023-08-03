@@ -64,6 +64,23 @@
                 </a>
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <a href="/vendedores">
+                    <div class="card" style="float:right">
+                        <div class="row">
+                            <div class="col-lg-4 col-3"><i class="bi bi-person-bounding-box img"></i></div>
+                            <div class="col-lg-8 col-9">
+                                <div class="row espaco">
+                                    <h4 class="label"><b>Vendedores</b></h4>
+                                    <h6 class="label"><b>Cadastro e Consultas</b></h6>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
 </template>
 <!-- <template>

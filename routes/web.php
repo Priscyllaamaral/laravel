@@ -131,6 +131,16 @@ Route::group(['prefix' => 'fornecedores', "middleware" => "auth"], function()
 
 });
 
+Route::get('/vendedores', ['middleware' => 'auth', 'uses' => 'VendedorController@index']);
+Route::get('/vendedores/novo', ['middleware' => 'auth', 'uses' => 'VendedorController@novo']);
+Route::post('/vendedores/cadastrar', ['middleware' => 'auth', 'uses' => 'VendedorController@cadastrar']);
+Route::get('/vendedores/filtrar', ['middleware' => 'auth', 'uses' => 'VendedorController@search']);
+Route::get('/vendedores/listar', ['middleware' => 'auth', 'uses' => 'VendedorController@listar']);
+Route::post('/vendedores/destroy/{id}', ['middleware' => 'auth', 'uses' => 'VendedorController@destroy']);
+Route::get('/vendedores/editar', ['middleware' => 'auth', 'uses' => 'VendedorController@editar']);
+Route::get('/vendedores/{vendedor}/abrir', ['middleware' => 'auth', 'uses' => 'VendedorController@abrir']);
+Route::post('vendedores/{vendedor}/atualizar', ['middleware' => 'auth', 'uses' => 'VendedorController@atualizar']);
+
 Route::get('/planoContas', ['uses' => 'PlanocontasController@listaPlanoContas']);
 Route::get('/planoContas/buscar/{id}', ['uses' => 'PlanocontasController@buscar']);
 

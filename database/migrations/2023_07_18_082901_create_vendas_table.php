@@ -16,6 +16,7 @@ class CreateVendasTable extends Migration
         Schema::create('vendas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('cliente_id')->nullable();
+            $table->integer('vendedor_id')->nullable();
             $table->date('data')->nullable();
             $table->string('status')->nullable();
             $table->string('forma_pagamento')->nullable();

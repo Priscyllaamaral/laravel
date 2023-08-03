@@ -31,6 +31,7 @@ class VendasController extends Controller
     {
         $vendas = Venda::all();
         $vendas->load('cliente');
+        $vendas->load('vendedor');
         return $vendas;
     }
 
@@ -38,6 +39,7 @@ class VendasController extends Controller
     {
         $venda = new Venda();
         $venda->cliente_id = $request->input('cliente_id');
+        $venda->vendedor_id = $request->input('vendedor_id');
         $venda->data = $request->input('data');
         $venda->status = $request->input('status');
         $venda->forma_pagamento = $request->input('forma_pagamento');
@@ -70,6 +72,7 @@ class VendasController extends Controller
     public function atualizar(Request $request, Venda $venda)
     {
         $venda->cliente_id = $request->input('cliente_id');
+        $venda->vendedor_id = $request->input('vendedor_id');
         $venda->data = $request->input('data');
         $venda->status = $request->input('status');
         $venda->forma_pagamento = $request->input('forma_pagamento');
@@ -101,7 +104,7 @@ class VendasController extends Controller
     public function abrir(Venda $venda)
     {
 
-        $venda->load('itens', 'cliente');
+        $venda->load('itens', 'cliente', 'vendedor');
 
         $produtos = $venda->itens->transform(function($item) {
             $item->nome = $item->produto->nome;
