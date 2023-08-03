@@ -8516,7 +8516,7 @@ var render = function render() {
   }, [_vm._m(1), _vm._v(" "), _c("tbody", _vm._l(_vm.movimento.itens, function (item, index) {
     return _c("tr", {
       key: index
-    }, [_c("th", [_vm._v(_vm._s(item.codigo))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.nome))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.valor) + " ")]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.quantidade) + " ")]), _vm._v(" "), _c("th", [_vm._v(_vm._s(_vm._f("valorBR")(_vm.mostrarSubtotal(item.quantidade, item.valor))) + " ")]), _vm._v(" "), _c("th", [_c("button", {
+    }, [_c("th", [_vm._v(_vm._s(item.codigo))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.nome))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(_vm._f("valorBR")(item.valor)) + " ")]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.quantidade) + " ")]), _vm._v(" "), _c("th", [_vm._v(_vm._s(_vm._f("valorBR")(_vm.mostrarSubtotal(item.quantidade, item.valor))) + " ")]), _vm._v(" "), _c("th", [_c("button", {
       staticClass: "btn bg-transparent",
       attrs: {
         type: "button"

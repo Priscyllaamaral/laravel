@@ -110,7 +110,7 @@
                                     <tr v-for="(item, index) in movimento.itens" :key="index">
                                         <th>{{ item.codigo }}</th>
                                         <th>{{ item.nome }}</th>
-                                        <th>{{ item.valor}} </th>
+                                        <th>{{ item.valor | valorBR}} </th>
                                         <th>{{ item.quantidade }} </th>
                                         <th>{{ mostrarSubtotal(item.quantidade, item.valor) | valorBR }} </th>
                                         <th><button type="button" @click=eliminar(item.codigo) class="btn bg-transparent"><i class="bi bi-trash"></i></button></th>
