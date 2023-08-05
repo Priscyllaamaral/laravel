@@ -165,11 +165,13 @@ const urlParams = new URLSearchParams(queryString);
                         
                         window.alert("Salvo com Sucesso")
                     }
+                    
+                    window.location.href = Config.baseURL + '/clientes'
                 }catch(erro){
                     console.log(erro)
                 }finally{
 
-                    window.location.href = Config.baseURL + '/clientes'
+                    
                 }
 
             },
