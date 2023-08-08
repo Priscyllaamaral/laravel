@@ -16,19 +16,20 @@ class DatabaseSeeder extends Seeder
 }
 
 class UsersTableSeeder extends Seeder 
+{
+
+    public function run()
     {
 
-        public function run()
-        {
-            DB::table('users')->truncate();
-
-            \App\User::create([
-                'name' => 'Admin',
-                'email' => 'laravel@anronsoftware.com.br',
-                'password' => bcrypt('@n40ns'),
-                ]);
-
-        }
+        \App\User::create([
+            'name' => 'Admin',
+            'email' => 'laravel@anronsoftware.com.br',
+            'password' => bcrypt('@n40ns'),
+            'nivel' => 'Administrador',
+            'nivel2' => 'Master',
+            'ativo' => 1,
+            ]);
 
     }
 
+}

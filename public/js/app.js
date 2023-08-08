@@ -1896,21 +1896,21 @@ var urlParams = new URLSearchParams(queryString);
 
               window.alert("Salvo com Sucesso");
             case 16:
-              _context.next = 21;
+              window.location.href = Config.baseURL + '/clientes';
+              _context.next = 22;
               break;
-            case 18:
-              _context.prev = 18;
+            case 19:
+              _context.prev = 19;
               _context.t0 = _context["catch"](0);
               console.log(_context.t0);
-            case 21:
-              _context.prev = 21;
-              window.location.href = Config.baseURL + '/clientes';
-              return _context.finish(21);
+            case 22:
+              _context.prev = 22;
+              return _context.finish(22);
             case 24:
             case "end":
               return _context.stop();
           }
-        }, _callee, null, [[0, 18, 21, 24]]);
+        }, _callee, null, [[0, 19, 22, 24]]);
       }))();
     },
     abrir: function abrir(id) {
@@ -84193,8 +84193,8 @@ moment__WEBPACK_IMPORTED_MODULE_1___default.a.locale('pt-br');
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/anronsoftware/Desktop/www/lab/estudo-laravel/laravel/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/anronsoftware/Desktop/www/lab/estudo-laravel/laravel/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Volumes/Docs/www/laravel/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Volumes/Docs/www/laravel/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
