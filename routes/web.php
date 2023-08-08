@@ -31,6 +31,10 @@ Route::get('/menuCadastro', function() {
     return view('menuCadastro');
 });
 
+Route::get('/caixa', function() {
+    return view('caixa');
+});
+
 Route::get('/login', 'LoginController@index')->name('login');
 Route::get('/login/logout', 'LoginController@logout')->name('logout');
 Route::get('/login/novo', 'LoginController@novo')->name('novo');
@@ -105,6 +109,21 @@ Route::group(['prefix' => 'movimentacoes', "middleware" => "auth"], function()
     Route::get('/despesas', ['middleware' => 'auth', 'uses' => 'DespesaController@index'])->name('despesasListar');
     Route::get('/despesas/nova', ['uses' => 'DespesaController@nova']);
     Route::get('/despesas/listar', ['uses' => 'DespesaController@despesas']);
+    Route::post('/despesas/destroy/{id}', ['uses' => 'DespesaController@destroy']);
+    Route::get('/despesas/{despesa}/abrir', ['uses' => 'DespesaController@abrir']); 
+    Route::get('/despesas/editar', ['uses' => 'DespesaController@editar']); 
+    Route::post('/despesas/cadastrar', ['uses' => 'DespesaController@cadastrar']); 
+    Route::post('/despesas/{despesa}/atualizar',  ['uses' => 'DespesaController@atualizar']); 
+
+});
+
+Route::group(['prefix' => 'movimentoCaixa', "middleware" => "auth"], function()
+{
+    Route::post('/cadastrar', ['uses' => 'MovimentoCaixaController@cadastrar']);
+    Route::get('/listar', ['uses' => 'MovimentoCaixaController@movimentos']);
+
+    //refazer
+    
     Route::post('/despesas/destroy/{id}', ['uses' => 'DespesaController@destroy']);
     Route::get('/despesas/{despesa}/abrir', ['uses' => 'DespesaController@abrir']); 
     Route::get('/despesas/editar', ['uses' => 'DespesaController@editar']); 

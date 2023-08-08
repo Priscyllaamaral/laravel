@@ -101,7 +101,7 @@
 
                                                     <div class="form-group col-md-4">
                                                         <label > Forma Pagamento </label>
-                                                        <select v-model="venda.forma_pagamento" type="text" class="form-control">
+                                                        <select v-model="venda.forma_pagamento" type="text" class="form-select">
                                                             <option selected>Tipo</option>
                                                             <option value="Pix">PIX</option>
                                                             <option value="Dinheiro">Dinheiro</option>

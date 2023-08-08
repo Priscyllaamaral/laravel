@@ -34,7 +34,7 @@
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <a href="https://www.google.com">
+                <a href="/caixa">
                     <div class="card" style="float:right">
                         <div class="row">
                             <div class="col-lg-4 col-3"><i class="bi bi-calculator img"></i></div>

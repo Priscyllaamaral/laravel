@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.7.14"
     },
     "dependencies": {
+        "bootstrap-icons": "^1.10.5",
         "moment": "^2.29.4"
     }
 }

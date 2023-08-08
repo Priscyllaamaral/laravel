@@ -50,7 +50,7 @@
                       </div>
                       <div class="form-group col-md-6">
                           <label> Data </label>
-                          <input type="date" v-model="despesa.data" class="form-control" name="inputCPF" style="max-width: 30%; min-width: 30%;">
+                          <input type="date" v-model="despesa.data" class="form-control" name="inputCPF" style="max-width: 70%; min-width: 70%;">
                       </div>
                   </div>
 
