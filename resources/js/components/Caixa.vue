@@ -240,6 +240,17 @@ export default {
                 this.carregar();
                 //window.location.href = Config.baseURL + '/caixa';
             }
+
+            this.movimento = {
+                id: null,
+                data: '',
+                historico: '',
+                forma_pagamento: '',
+                tipo: '',
+                valor: '',
+                sangria: 0
+
+            }
         },
         async carregar(){
             let resposta = await axios.get(Config.baseURL + '/movimentoCaixa/listar');
@@ -250,7 +261,8 @@ export default {
 
         },
 
-        somaEntradas(){
+        async somaEntradas(){
+            console.log("chamou");
             let entrada = 0;
             let saida = 0;
             for (let index = 0; index < this.caixa.length; index++) {
@@ -264,20 +276,33 @@ export default {
                 }
                 
             }
-            this.entradas = util.valorBR(entrada);
-            this.saidas = util.valorBR(saida);
-            this.saldo = util.valorBR(entrada - saida);
+            this.entradas = await util.valorBR(entrada);
+            this.saidas = await util.valorBR(saida);
+            this.saldo = await util.valorBR(entrada - saida);
         }
 
     },
-    
+
     mounted(){
         this.carregar();
     },
 
     watch:{
-        caixa(){
+        'caixa' (newValue){
+            console.log("alterou");
             this.somaEntradas();
+        },
+
+        'entradas' (newValue){
+            this.entradas = newValue;
+        },
+
+        'saidas' (newValue){
+            this.saidas = newValue;
+        },
+
+        'saldo' (newValue){
+            this.saldo = newValue;
         }
     }
 }

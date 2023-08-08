@@ -2,11 +2,11 @@
     <div class="container ajustar">
         <div class="row">
             <div class="col-lg-6">
-                <a href="/fornecedores/todos">
-                    <div class="card" style="float:right">
+                <a href="/fornecedores/todos" style="text-decoration: none;">
+                    <div class="card" >
                         <div class="row">
-                            <div class="col-lg-4 col-3"><i class="bi bi-person img"></i></div>
-                            <div class="col-lg-8 col-9">
+                            <div class="col-lg-4 col-md-4 col-sm-5 col-12"><i class="bi bi-person img"></i></div>
+                            <div class="col-lg-8 col-md-8 col-sm-7 col-12">
                                 <div class="row espaco">
                                     <h4 class="label"><b>Fornecedores</b></h4>
                                     <h6 class="label"><b>Cadastro e Consultas</b></h6>
@@ -17,11 +17,11 @@
                 </a>     
             </div>
             <div class="col-lg-6" >
-                <a href="/clientes">
-                    <div class="card" style="float:left">
+                <a href="/clientes" style="text-decoration: none;">
+                    <div class="card">
                         <div class="row">
-                            <div class="col-lg-4 col-3"><i class="bi bi-person-circle img"></i></div>
-                            <div class="col-lg-8 col-9">
+                            <div class="col-lg-4 col-md-4 col-sm-5 col-12"><i class="bi bi-person-circle img"></i></div>
+                            <div class="col-lg-8 col-md-8 col-sm-7 col-12">
                                 <div class="row espaco">
                                     <h4 class="label"><b>Clientes</b></h4>
                                     <h6 class="label"><b>Cadastro e Consultas</b></h6>
@@ -34,11 +34,11 @@
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <a href="/produtos">
-                    <div class="card" style="float:right">
+                <a href="/produtos" style="text-decoration: none;">
+                    <div class="card">
                         <div class="row">
-                            <div class="col-lg-4 col-3"><i class="bi bi-upc-scan img"></i></div>
-                            <div class="col-lg-8 col-9">
+                            <div class="col-lg-4 col-md-4 col-sm-5 col-12"><i class="bi bi-upc-scan img"></i></div>
+                            <div class="col-lg-8 col-md-8 col-sm-7 col-12">
                                 <div class="row espaco">
                                     <h4 class="label"><b>Produtos</b></h4>
                                     <h6 class="label"><b>Cadastro e Consultas</b></h6>
@@ -49,11 +49,11 @@
                 </a>
             </div>
             <div class="col-lg-6">
-                <a href="/movimentacoes/despesas">
-                    <div class="card" style="float:left">
+                <a href="/movimentacoes/despesas" style="text-decoration: none;">
+                    <div class="card">
                         <div class="row">
-                            <div class="col-lg-4 col-3"><i class="bi bi-arrow-down-square img"></i></div>
-                            <div class="col-lg-8 col-9">
+                            <div class="col-lg-4 col-md-4 col-sm-5 col-12"><i class="bi bi-arrow-down-square img"></i></div>
+                            <div class="col-lg-8 col-md-8 col-sm-7 col-12">
                                 <div class="row espaco">
                                     <h4 class="label"><b>Despesas</b></h4>
                                     <h6 class="label"><b>Cadastro e Consultas</b></h6>
@@ -66,11 +66,11 @@
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <a href="/vendedores">
-                    <div class="card" style="float:right">
+                <a href="/vendedores" style="text-decoration: none;">
+                    <div class="card">
                         <div class="row">
-                            <div class="col-lg-4 col-3"><i class="bi bi-person-bounding-box img"></i></div>
-                            <div class="col-lg-8 col-9">
+                            <div class="col-lg-4 col-md-4 col-sm-5 col-12"><i class="bi bi-person-bounding-box img"></i></div>
+                            <div class="col-lg-8 col-md-8 col-sm-7 col-12">
                                 <div class="row espaco">
                                     <h4 class="label"><b>Vendedores</b></h4>
                                     <h6 class="label"><b>Cadastro e Consultas</b></h6>
@@ -158,8 +158,8 @@ export default {
 
 .card{
    
-    width: 350px;
-    height: 120px;
+    /* width: 350px;
+    height: 120px; */
     margin-bottom: 30px;
     border: 1px solid purple;
     border-radius: 10px;

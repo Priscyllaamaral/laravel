@@ -1759,6 +1759,16 @@ var urlParams = new URLSearchParams(queryString);
         this.carregar();
         //window.location.href = Config.baseURL + '/caixa';
       }
+
+      this.movimento = {
+        id: null,
+        data: '',
+        historico: '',
+        forma_pagamento: '',
+        tipo: '',
+        valor: '',
+        sangria: 0
+      };
     },
     carregar: function carregar() {
       var _this = this;
@@ -1783,27 +1793,59 @@ var urlParams = new URLSearchParams(queryString);
       }))();
     },
     somaEntradas: function somaEntradas() {
-      var entrada = 0;
-      var saida = 0;
-      for (var index = 0; index < this.caixa.length; index++) {
-        var element = this.caixa[index];
-        if (element.tipo == 'Entrada') {
-          entrada += element.valor;
-        } else if (element.tipo == 'Saída') {
-          saida += element.valor;
-        }
-      }
-      this.entradas = _libs_util__WEBPACK_IMPORTED_MODULE_1__["default"].valorBR(entrada);
-      this.saidas = _libs_util__WEBPACK_IMPORTED_MODULE_1__["default"].valorBR(saida);
-      this.saldo = _libs_util__WEBPACK_IMPORTED_MODULE_1__["default"].valorBR(entrada - saida);
+      var _this2 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        var entrada, saida, index, element;
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
+            case 0:
+              console.log("chamou");
+              entrada = 0;
+              saida = 0;
+              for (index = 0; index < _this2.caixa.length; index++) {
+                element = _this2.caixa[index];
+                if (element.tipo == 'Entrada') {
+                  entrada += element.valor;
+                } else if (element.tipo == 'Saída') {
+                  saida += element.valor;
+                }
+              }
+              _context2.next = 6;
+              return _libs_util__WEBPACK_IMPORTED_MODULE_1__["default"].valorBR(entrada);
+            case 6:
+              _this2.entradas = _context2.sent;
+              _context2.next = 9;
+              return _libs_util__WEBPACK_IMPORTED_MODULE_1__["default"].valorBR(saida);
+            case 9:
+              _this2.saidas = _context2.sent;
+              _context2.next = 12;
+              return _libs_util__WEBPACK_IMPORTED_MODULE_1__["default"].valorBR(entrada - saida);
+            case 12:
+              _this2.saldo = _context2.sent;
+            case 13:
+            case "end":
+              return _context2.stop();
+          }
+        }, _callee2);
+      }))();
     }
   },
   mounted: function mounted() {
     this.carregar();
   },
   watch: {
-    caixa: function caixa() {
+    'caixa': function caixa(newValue) {
+      console.log("alterou");
       this.somaEntradas();
+    },
+    'entradas': function entradas(newValue) {
+      this.entradas = newValue;
+    },
+    'saidas': function saidas(newValue) {
+      this.saidas = newValue;
+    },
+    'saldo': function saldo(newValue) {
+      this.saldo = newValue;
     }
   }
 });
@@ -4567,22 +4609,22 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "col-lg-6"
   }, [_c("a", {
+    staticStyle: {
+      "text-decoration": "none"
+    },
     attrs: {
       href: "/fornecedores/todos"
     }
   }, [_c("div", {
-    staticClass: "card",
-    staticStyle: {
-      "float": "right"
-    }
+    staticClass: "card"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-lg-4 col-3"
+    staticClass: "col-lg-4 col-md-4 col-sm-5 col-12"
   }, [_c("i", {
     staticClass: "bi bi-person img"
   })]), _vm._v(" "), _c("div", {
-    staticClass: "col-lg-8 col-9"
+    staticClass: "col-lg-8 col-md-8 col-sm-7 col-12"
   }, [_c("div", {
     staticClass: "row espaco"
   }, [_c("h4", {
@@ -4592,22 +4634,22 @@ var staticRenderFns = [function () {
   }, [_c("b", [_vm._v("Cadastro e Consultas")])])])])])])])]), _vm._v(" "), _c("div", {
     staticClass: "col-lg-6"
   }, [_c("a", {
+    staticStyle: {
+      "text-decoration": "none"
+    },
     attrs: {
       href: "/clientes"
     }
   }, [_c("div", {
-    staticClass: "card",
-    staticStyle: {
-      "float": "left"
-    }
+    staticClass: "card"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-lg-4 col-3"
+    staticClass: "col-lg-4 col-md-4 col-sm-5 col-12"
   }, [_c("i", {
     staticClass: "bi bi-person-circle img"
   })]), _vm._v(" "), _c("div", {
-    staticClass: "col-lg-8 col-9"
+    staticClass: "col-lg-8 col-md-8 col-sm-7 col-12"
   }, [_c("div", {
     staticClass: "row espaco"
   }, [_c("h4", {
@@ -4619,22 +4661,22 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "col-lg-6"
   }, [_c("a", {
+    staticStyle: {
+      "text-decoration": "none"
+    },
     attrs: {
       href: "/produtos"
     }
   }, [_c("div", {
-    staticClass: "card",
-    staticStyle: {
-      "float": "right"
-    }
+    staticClass: "card"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-lg-4 col-3"
+    staticClass: "col-lg-4 col-md-4 col-sm-5 col-12"
   }, [_c("i", {
     staticClass: "bi bi-upc-scan img"
   })]), _vm._v(" "), _c("div", {
-    staticClass: "col-lg-8 col-9"
+    staticClass: "col-lg-8 col-md-8 col-sm-7 col-12"
   }, [_c("div", {
     staticClass: "row espaco"
   }, [_c("h4", {
@@ -4644,22 +4686,22 @@ var staticRenderFns = [function () {
   }, [_c("b", [_vm._v("Cadastro e Consultas")])])])])])])])]), _vm._v(" "), _c("div", {
     staticClass: "col-lg-6"
   }, [_c("a", {
+    staticStyle: {
+      "text-decoration": "none"
+    },
     attrs: {
       href: "/movimentacoes/despesas"
     }
   }, [_c("div", {
-    staticClass: "card",
-    staticStyle: {
-      "float": "left"
-    }
+    staticClass: "card"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-lg-4 col-3"
+    staticClass: "col-lg-4 col-md-4 col-sm-5 col-12"
   }, [_c("i", {
     staticClass: "bi bi-arrow-down-square img"
   })]), _vm._v(" "), _c("div", {
-    staticClass: "col-lg-8 col-9"
+    staticClass: "col-lg-8 col-md-8 col-sm-7 col-12"
   }, [_c("div", {
     staticClass: "row espaco"
   }, [_c("h4", {
@@ -4671,22 +4713,22 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "col-lg-6"
   }, [_c("a", {
+    staticStyle: {
+      "text-decoration": "none"
+    },
     attrs: {
       href: "/vendedores"
     }
   }, [_c("div", {
-    staticClass: "card",
-    staticStyle: {
-      "float": "right"
-    }
+    staticClass: "card"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-lg-4 col-3"
+    staticClass: "col-lg-4 col-md-4 col-sm-5 col-12"
   }, [_c("i", {
     staticClass: "bi bi-person-bounding-box img"
   })]), _vm._v(" "), _c("div", {
-    staticClass: "col-lg-8 col-9"
+    staticClass: "col-lg-8 col-md-8 col-sm-7 col-12"
   }, [_c("div", {
     staticClass: "row espaco"
   }, [_c("h4", {
@@ -6168,22 +6210,22 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "col-lg-6"
   }, [_c("a", {
+    staticStyle: {
+      "text-decoration": "none"
+    },
     attrs: {
       href: "/menuCadastro"
     }
   }, [_c("div", {
-    staticClass: "card",
-    staticStyle: {
-      "float": "right"
-    }
+    staticClass: "card"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-lg-4 col-3"
+    staticClass: "col-lg-4 col-md-4 col-sm-5 col-12"
   }, [_c("i", {
     staticClass: "bi bi-receipt-cutoff img"
   })]), _vm._v(" "), _c("div", {
-    staticClass: "col-lg-8 col-9"
+    staticClass: "col-lg-8 col-md-8 col-sm-7 col-12"
   }, [_c("div", {
     staticClass: "row espaco"
   }, [_c("h4", {
@@ -6193,22 +6235,22 @@ var staticRenderFns = [function () {
   }, [_c("b", [_vm._v("Fornecedores, Despesas, Clientes, Produtos")])])])])])])])]), _vm._v(" "), _c("div", {
     staticClass: "col-lg-6"
   }, [_c("a", {
+    staticStyle: {
+      "text-decoration": "none"
+    },
     attrs: {
       href: "/venda"
     }
   }, [_c("div", {
-    staticClass: "card",
-    staticStyle: {
-      "float": "left"
-    }
+    staticClass: "card"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-lg-4 col-3"
+    staticClass: "col-lg-4 col-md-4 col-sm-5 col-12"
   }, [_c("i", {
     staticClass: "bi bi-cart-check img"
   })]), _vm._v(" "), _c("div", {
-    staticClass: "col-lg-8 col-9"
+    staticClass: "col-lg-8 col-md-8 col-sm-7 col-12"
   }, [_c("div", {
     staticClass: "row espaco"
   }, [_c("h4", {
@@ -6220,22 +6262,22 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "col-lg-6"
   }, [_c("a", {
+    staticStyle: {
+      "text-decoration": "none"
+    },
     attrs: {
       href: "/caixa"
     }
   }, [_c("div", {
-    staticClass: "card",
-    staticStyle: {
-      "float": "right"
-    }
+    staticClass: "card"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-lg-4 col-3"
+    staticClass: "col-lg-4 col-md-4 col-sm-5 col-12"
   }, [_c("i", {
     staticClass: "bi bi-calculator img"
   })]), _vm._v(" "), _c("div", {
-    staticClass: "col-lg-8 col-9"
+    staticClass: "col-lg-8 col-md-8 col-sm-7 col-12"
   }, [_c("div", {
     staticClass: "row espaco"
   }, [_c("h4", {
@@ -6245,22 +6287,22 @@ var staticRenderFns = [function () {
   }, [_c("b", [_vm._v("Recebimentos, Consultas e Relatórios")])])])])])])])]), _vm._v(" "), _c("div", {
     staticClass: "col-lg-6"
   }, [_c("a", {
+    staticStyle: {
+      "text-decoration": "none"
+    },
     attrs: {
       href: "/movEstoque/listar"
     }
   }, [_c("div", {
-    staticClass: "card",
-    staticStyle: {
-      "float": "left"
-    }
+    staticClass: "card"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-lg-4 col-3"
+    staticClass: "col-lg-4 col-md-4 col-sm-5 col-12"
   }, [_c("i", {
     staticClass: "bi bi-box-seam img"
   })]), _vm._v(" "), _c("div", {
-    staticClass: "col-lg-8 col-9"
+    staticClass: "col-lg-8 col-md-8 col-sm-7 col-12"
   }, [_c("div", {
     staticClass: "row espaco"
   }, [_c("h4", {
@@ -15264,7 +15306,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card[data-v-0d12987f]{\n   \n    width: 350px;\n    height: 120px;\n    margin-bottom: 30px;\n    border: 1px solid purple;\n    border-radius: 10px;\n    background: white;\n    box-shadow: 10px 10px 0px 0px black;\n}\ni[data-v-0d12987f]{\n    padding-left: 20px;\n    padding-top: 15px;\n    font-size: 70px;\n    color: rgb(202, 128, 202);\n}\n.img[data-v-0d12987f]{\n    display: flex;\n    justify-content: center;\n}\n.label[data-v-0d12987f]{\n\n    align-items: center ;\n    text-align: right;\n    color: gray;\n}\n.espaco[data-v-0d12987f]{\n    margin-right: 2px;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.card[data-v-0d12987f]{\n   \n    /* width: 350px;\n    height: 120px; */\n    margin-bottom: 30px;\n    border: 1px solid purple;\n    border-radius: 10px;\n    background: white;\n    box-shadow: 10px 10px 0px 0px black;\n}\ni[data-v-0d12987f]{\n    padding-left: 20px;\n    padding-top: 15px;\n    font-size: 70px;\n    color: rgb(202, 128, 202);\n}\n.img[data-v-0d12987f]{\n    display: flex;\n    justify-content: center;\n}\n.label[data-v-0d12987f]{\n\n    align-items: center ;\n    text-align: right;\n    color: gray;\n}\n.espaco[data-v-0d12987f]{\n    margin-right: 2px;\n}\n\n\n", ""]);
 
 // exports
 
@@ -15340,7 +15382,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card[data-v-299e239e]{\n   \n    width: 350px;\n    height: 120px;\n    margin-bottom: 30px;\n    border: 1px solid purple;\n    border-radius: 10px;\n    background: white;\n    box-shadow: 10px 10px 0px 0px black;\n}\ni[data-v-299e239e]{\n    padding-left: 20px;\n    padding-top: 20px;\n    font-size: 70px;\n    color: purple;\n}\n.img[data-v-299e239e]{\n    display: flex;\n    justify-content: center;\n}\n.estilo[data-v-299e239e]{\n    margin-top: 0px;\n    padding-top: 0px;\n    margin-left: 20px;\n    margin-bottom: 30px;\n}\n.label[data-v-299e239e]{\n\n    align-items: center ;\n    text-align: right;\n    color: gray;\n}\n.espaco[data-v-299e239e]{\n    margin-right: 2px;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.card[data-v-299e239e]{\n   \n    /* width: 350px;\n    height: 120px; */\n    margin-bottom: 30px;\n    border: 1px solid purple;\n    border-radius: 10px;\n    background: white;\n    box-shadow: 10px 10px 0px 0px black;\n}\ni[data-v-299e239e]{\n    padding-left: 20px;\n    padding-top: 20px;\n    font-size: 70px;\n    color: purple;\n}\n.img[data-v-299e239e]{\n    display: flex;\n    justify-content: center;\n}\n.estilo[data-v-299e239e]{\n    margin-top: 0px;\n    padding-top: 0px;\n    margin-left: 20px;\n    margin-bottom: 30px;\n}\n.label[data-v-299e239e]{\n\n    align-items: center ;\n    text-align: right;\n    color: gray;\n}\n.espaco[data-v-299e239e]{\n    margin-right: 2px;\n}\n\n\n", ""]);
 
 // exports
 
@@ -84193,8 +84235,8 @@ moment__WEBPACK_IMPORTED_MODULE_1___default.a.locale('pt-br');
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Volumes/Docs/www/laravel/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Volumes/Docs/www/laravel/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/anronsoftware/Desktop/www/lab/estudo-laravel/laravel/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/anronsoftware/Desktop/www/lab/estudo-laravel/laravel/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

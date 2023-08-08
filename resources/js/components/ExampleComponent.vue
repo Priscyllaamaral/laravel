@@ -2,11 +2,11 @@
     <div class="container ajustar">
         <div class="row">
             <div class="col-lg-6">
-                <a href="/menuCadastro">
-                    <div class="card" style="float:right">
+                <a href="/menuCadastro" style="text-decoration: none;">
+                    <div class="card">
                         <div class="row">
-                            <div class="col-lg-4 col-3"><i class="bi bi-receipt-cutoff img"></i></div>
-                            <div class="col-lg-8 col-9">
+                            <div class="col-lg-4 col-md-4 col-sm-5 col-12"><i class="bi bi-receipt-cutoff img"></i></div>
+                            <div class="col-lg-8 col-md-8 col-sm-7 col-12">
                                 <div class="row espaco">
                                     <h4 class="label"><b>Cadastros</b></h4>
                                     <h6 class="label"><b>Fornecedores, Despesas, Clientes, Produtos</b></h6>
@@ -17,11 +17,11 @@
                 </a>     
             </div>
             <div class="col-lg-6" >
-                <a href="/venda">
-                    <div class="card" style="float:left">
+                <a href="/venda" style="text-decoration: none;">
+                    <div class="card" >
                         <div class="row">
-                            <div class="col-lg-4 col-3"><i class="bi bi-cart-check img"></i></div>
-                            <div class="col-lg-8 col-9">
+                            <div class="col-lg-4 col-md-4 col-sm-5 col-12"><i class="bi bi-cart-check img"></i></div>
+                            <div class="col-lg-8 col-md-8 col-sm-7 col-12">
                                 <div class="row espaco">
                                     <h4 class="label"><b>Vendas</b></h4>
                                     <h6 class="label"><b>Consultas e Relatórios</b></h6>
@@ -34,11 +34,11 @@
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <a href="/caixa">
-                    <div class="card" style="float:right">
+                <a href="/caixa" style="text-decoration: none;">
+                    <div class="card">
                         <div class="row">
-                            <div class="col-lg-4 col-3"><i class="bi bi-calculator img"></i></div>
-                            <div class="col-lg-8 col-9">
+                            <div class="col-lg-4 col-md-4 col-sm-5 col-12"><i class="bi bi-calculator img"></i></div>
+                            <div class="col-lg-8 col-md-8 col-sm-7 col-12">
                                 <div class="row espaco">
                                     <h4 class="label"><b>Caixa</b></h4>
                                     <h6 class="label"><b>Recebimentos, Consultas e Relatórios</b></h6>
@@ -49,11 +49,11 @@
                 </a>
             </div>
             <div class="col-lg-6">
-                <a href="/movEstoque/listar">
-                    <div class="card" style="float:left">
+                <a href="/movEstoque/listar" style="text-decoration: none;">
+                    <div class="card" >
                         <div class="row">
-                            <div class="col-lg-4 col-3"><i class="bi bi-box-seam img"></i></div>
-                            <div class="col-lg-8 col-9">
+                            <div class="col-lg-4 col-md-4 col-sm-5 col-12"><i class="bi bi-box-seam img"></i></div>
+                            <div class="col-lg-8 col-md-8 col-sm-7 col-12">
                                 <div class="row espaco">
                                     <h4 class="label"><b>Movimento Estoque</b></h4>
                                     <h6 class="label"><b>Entrada de Produtos</b></h6>
@@ -141,8 +141,8 @@ export default {
 
 .card{
    
-    width: 350px;
-    height: 120px;
+    /* width: 350px;
+    height: 120px; */
     margin-bottom: 30px;
     border: 1px solid purple;
     border-radius: 10px;
