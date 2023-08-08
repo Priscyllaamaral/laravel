@@ -121,10 +121,11 @@ Route::group(['prefix' => 'movimentoCaixa', "middleware" => "auth"], function()
 {
     Route::post('/cadastrar', ['uses' => 'MovimentoCaixaController@cadastrar']);
     Route::get('/listar', ['uses' => 'MovimentoCaixaController@movimentos']);
+    Route::post('/destroy/{id}', ['uses' => 'MovimentoCaixaController@destroy']);
 
     //refazer
     
-    Route::post('/despesas/destroy/{id}', ['uses' => 'DespesaController@destroy']);
+    
     Route::get('/despesas/{despesa}/abrir', ['uses' => 'DespesaController@abrir']); 
     Route::get('/despesas/editar', ['uses' => 'DespesaController@editar']); 
     Route::post('/despesas/cadastrar', ['uses' => 'DespesaController@cadastrar']); 

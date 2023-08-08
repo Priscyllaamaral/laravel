@@ -30,4 +30,12 @@ class MovimentoCaixaController extends Controller
         return MovimentoCaixa::all();
     }
 
+    public function destroy($id)
+    {
+        $caixa = MovimentoCaixa::findOrFail($id);
+        $caixa->delete();
+
+        return "Mov. Caixa Excluído com sucesso";
+    }
+
 }

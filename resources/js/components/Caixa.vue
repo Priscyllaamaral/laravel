@@ -98,6 +98,7 @@
                                         <th>Observaçāo</th>
                                         <th>Forma Pag.</th>
                                         <th>Valor</th>
+                                        <th></th>
                                         <!-- <th>Ação</th> -->
                                     </tr>
                                 </thead>
@@ -109,8 +110,10 @@
                                         <th> {{ item.historico }} </th>
                                         <th>{{ item.forma_pagamento }}</th>
                                         <th>{{ item.valor | valorBR}}</th>
-                                        <!-- <th><button type="button" class="btn btn-secondary"  @click="editar(item.id)"><i class="bi bi-pencil-square"></i></button>
-                                            <button type="button" class="btn btn-secondary"  @click="excluir(item.id)"><i class="bi bi-trash"></i></button></th> -->
+                                        <th>
+                                            <!-- <button type="button" class="btn btn-secondary"  @click="editar(item.id)"><i class="bi bi-pencil-square"></i></button> -->
+                                            <button type="button" class="btn btn-secondary"  @click="excluir(item.id)"><i class="bi bi-trash"></i></button>
+                                        </th>
                                         
                                     </tr>
                                 </tbody>
@@ -230,15 +233,14 @@ export default {
     },
     methods:{
 
-        salvar(movimento){
+        async salvar(movimento){
             this.movimento.data = new Date().toISOString().slice(0, 19).replace('T', ' ');
             console.log(movimento);
-            let resposta = axios.post(Config.baseURL + '/movimentoCaixa/cadastrar', movimento);
+            let resposta = await axios.post(Config.baseURL + '/movimentoCaixa/cadastrar', movimento);
 
             if(resposta){
-                window.alert('Salvo com Sucesso');
-                this.carregar();
-                //window.location.href = Config.baseURL + '/caixa';
+                window.alert('Salvo com Sucesso');    
+                this.carregar();        
             }
 
             this.movimento = {
@@ -249,25 +251,21 @@ export default {
                 tipo: '',
                 valor: '',
                 sangria: 0
-
             }
+
+            
         },
         async carregar(){
             let resposta = await axios.get(Config.baseURL + '/movimentoCaixa/listar');
             this.caixa = resposta.data;
-            //console.log(typeof(this.caixa));
-            //console.log(this.caixa);
-            //this.somaEntradas();
-
         },
 
         async somaEntradas(){
-            console.log("chamou");
-            let entrada = 0;
-            let saida = 0;
+            //console.log("chamou");
+            var entrada = 0;
+            var saida = 0;
             for (let index = 0; index < this.caixa.length; index++) {
                 let element = this.caixa[index];
-                
                 if(element.tipo == 'Entrada'){
                     entrada+=element.valor;
                 }
@@ -279,6 +277,13 @@ export default {
             this.entradas = await util.valorBR(entrada);
             this.saidas = await util.valorBR(saida);
             this.saldo = await util.valorBR(entrada - saida);
+
+            //console.log(this.entradas, this.saidas, this.saldo);
+        },
+
+        excluir (id){
+            axios.post(Config.baseURL+ `/movimentoCaixa/destroy/${id}` );
+            window.location.href = Config.baseURL + '/caixa';
         }
 
     },
@@ -289,19 +294,22 @@ export default {
 
     watch:{
         'caixa' (newValue){
-            console.log("alterou");
+            //console.log("alterou");
             this.somaEntradas();
         },
 
         'entradas' (newValue){
+            //console.log("entrada");
             this.entradas = newValue;
         },
 
         'saidas' (newValue){
+            //console.log("saida");
             this.saidas = newValue;
         },
 
         'saldo' (newValue){
+            //console.log("saldo");
             this.saldo = newValue;
         }
     }

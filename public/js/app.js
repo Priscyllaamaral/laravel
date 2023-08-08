@@ -1751,83 +1751,97 @@ var urlParams = new URLSearchParams(queryString);
   },
   methods: {
     salvar: function salvar(movimento) {
-      this.movimento.data = new Date().toISOString().slice(0, 19).replace('T', ' ');
-      console.log(movimento);
-      var resposta = axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(Config.baseURL + '/movimentoCaixa/cadastrar', movimento);
-      if (resposta) {
-        window.alert('Salvo com Sucesso');
-        this.carregar();
-        //window.location.href = Config.baseURL + '/caixa';
-      }
-
-      this.movimento = {
-        id: null,
-        data: '',
-        historico: '',
-        forma_pagamento: '',
-        tipo: '',
-        valor: '',
-        sangria: 0
-      };
-    },
-    carregar: function carregar() {
       var _this = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
         var resposta;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(Config.baseURL + '/movimentoCaixa/listar');
-            case 2:
-              resposta = _context.sent;
-              _this.caixa = resposta.data;
-              //console.log(typeof(this.caixa));
-              //console.log(this.caixa);
-              //this.somaEntradas();
+              _this.movimento.data = new Date().toISOString().slice(0, 19).replace('T', ' ');
+              console.log(movimento);
+              _context.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(Config.baseURL + '/movimentoCaixa/cadastrar', movimento);
             case 4:
+              resposta = _context.sent;
+              if (resposta) {
+                window.alert('Salvo com Sucesso');
+                _this.carregar();
+              }
+              _this.movimento = {
+                id: null,
+                data: '',
+                historico: '',
+                forma_pagamento: '',
+                tipo: '',
+                valor: '',
+                sangria: 0
+              };
+            case 7:
             case "end":
               return _context.stop();
           }
         }, _callee);
       }))();
     },
-    somaEntradas: function somaEntradas() {
+    carregar: function carregar() {
       var _this2 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-        var entrada, saida, index, element;
+        var resposta;
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
-              console.log("chamou");
+              _context2.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(Config.baseURL + '/movimentoCaixa/listar');
+            case 2:
+              resposta = _context2.sent;
+              _this2.caixa = resposta.data;
+            case 4:
+            case "end":
+              return _context2.stop();
+          }
+        }, _callee2);
+      }))();
+    },
+    somaEntradas: function somaEntradas() {
+      var _this3 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+        var entrada, saida, index, element;
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
+            case 0:
+              //console.log("chamou");
               entrada = 0;
               saida = 0;
-              for (index = 0; index < _this2.caixa.length; index++) {
-                element = _this2.caixa[index];
+              for (index = 0; index < _this3.caixa.length; index++) {
+                element = _this3.caixa[index];
                 if (element.tipo == 'Entrada') {
                   entrada += element.valor;
                 } else if (element.tipo == 'Saída') {
                   saida += element.valor;
                 }
               }
-              _context2.next = 6;
+              _context3.next = 5;
               return _libs_util__WEBPACK_IMPORTED_MODULE_1__["default"].valorBR(entrada);
-            case 6:
-              _this2.entradas = _context2.sent;
-              _context2.next = 9;
+            case 5:
+              _this3.entradas = _context3.sent;
+              _context3.next = 8;
               return _libs_util__WEBPACK_IMPORTED_MODULE_1__["default"].valorBR(saida);
-            case 9:
-              _this2.saidas = _context2.sent;
-              _context2.next = 12;
+            case 8:
+              _this3.saidas = _context3.sent;
+              _context3.next = 11;
               return _libs_util__WEBPACK_IMPORTED_MODULE_1__["default"].valorBR(entrada - saida);
+            case 11:
+              _this3.saldo = _context3.sent;
             case 12:
-              _this2.saldo = _context2.sent;
-            case 13:
             case "end":
-              return _context2.stop();
+              return _context3.stop();
           }
-        }, _callee2);
+        }, _callee3);
       }))();
+    },
+    excluir: function excluir(id) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(Config.baseURL + "/movimentoCaixa/destroy/".concat(id));
+      window.location.href = Config.baseURL + '/caixa';
     }
   },
   mounted: function mounted() {
@@ -1835,16 +1849,19 @@ var urlParams = new URLSearchParams(queryString);
   },
   watch: {
     'caixa': function caixa(newValue) {
-      console.log("alterou");
+      //console.log("alterou");
       this.somaEntradas();
     },
     'entradas': function entradas(newValue) {
+      //console.log("entrada");
       this.entradas = newValue;
     },
     'saidas': function saidas(newValue) {
+      //console.log("saida");
       this.saidas = newValue;
     },
     'saldo': function saldo(newValue) {
+      //console.log("saldo");
       this.saldo = newValue;
     }
   }
@@ -4869,7 +4886,19 @@ var render = function render() {
   }, [_vm._m(4), _vm._v(" "), _c("tbody", _vm._l(_vm.caixa, function (item, index) {
     return _c("tr", {
       key: index
-    }, [_c("th", [_vm._v(" " + _vm._s(item.id) + " ")]), _vm._v(" "), _c("th", [_vm._v(" " + _vm._s(_vm._f("dataBR")(item.data)) + " ")]), _vm._v(" "), _c("th", [_vm._v(" " + _vm._s(item.tipo) + " ")]), _vm._v(" "), _c("th", [_vm._v(" " + _vm._s(item.historico) + " ")]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.forma_pagamento))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(_vm._f("valorBR")(item.valor)))])]);
+    }, [_c("th", [_vm._v(" " + _vm._s(item.id) + " ")]), _vm._v(" "), _c("th", [_vm._v(" " + _vm._s(_vm._f("dataBR")(item.data)) + " ")]), _vm._v(" "), _c("th", [_vm._v(" " + _vm._s(item.tipo) + " ")]), _vm._v(" "), _c("th", [_vm._v(" " + _vm._s(item.historico) + " ")]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.forma_pagamento))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(_vm._f("valorBR")(item.valor)))]), _vm._v(" "), _c("th", [_c("button", {
+      staticClass: "btn btn-secondary",
+      attrs: {
+        type: "button"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.excluir(item.id);
+        }
+      }
+    }, [_c("i", {
+      staticClass: "bi bi-trash"
+    })])])]);
   }), 0)])])])])])]), _vm._v(" "), _c("div", {
     staticClass: "modal fade",
     attrs: {
@@ -5172,7 +5201,7 @@ var staticRenderFns = [function () {
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Data")]), _vm._v(" "), _c("th", [_vm._v("Movimento")]), _vm._v(" "), _c("th", [_vm._v("Observaçāo")]), _vm._v(" "), _c("th", [_vm._v("Forma Pag.")]), _vm._v(" "), _c("th", [_vm._v("Valor")])])]);
+  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Data")]), _vm._v(" "), _c("th", [_vm._v("Movimento")]), _vm._v(" "), _c("th", [_vm._v("Observaçāo")]), _vm._v(" "), _c("th", [_vm._v("Forma Pag.")]), _vm._v(" "), _c("th", [_vm._v("Valor")]), _vm._v(" "), _c("th")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
