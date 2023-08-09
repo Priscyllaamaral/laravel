@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 style="color: aliceblue;">Lista de Vendedores
+                    <h1 style="color: aliceblue;">Vendedores
                         <a href="/vendedores/novo"><button class="btn btn-secondary btn-lg" type="button" style="border-radius: 20px; float:right" >+</button></a>
                     </h1>
                 </div>
@@ -19,7 +19,7 @@
                     <th scope="col">Celular</th>
                     <th scope="col">Email</th>
                     <th scope="col">CPF</th>
-                    <th scope="col">Ações</th>
+                    <th scope="col"></th>
 
                     </tr>
                 </thead>

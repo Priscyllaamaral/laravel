@@ -2,8 +2,8 @@
     <div class="container ajustar">
         <div class="row">
             <div class="col-md-12">
-                <h1 style="color:aliceblue">Vendas
-                    <a href="/vendas"><button class="btn btn-secondary btn-lg" type="button" style="border-radius: 20px; float:right" >+</button></a>
+                <h1 style="color:aliceblue">Usuários
+                    <a href="/usuario/novo"><button class="btn btn-secondary btn-lg" type="button" style="border-radius: 20px; float:right" >+</button></a>
                 </h1>
             </div>
         </div>
@@ -15,23 +15,19 @@
                         <table class="table table-dark ">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Cliente</th>
-                                    <th>Vendedor</th>
-                                    <th>Status</th>
-                                    <th>Data</th>
+                     
+                                    <th>Nome</th>
+                                    <th>Email</th>
+                                    <th>Ativo</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr v-for="(item, index) in vendas" :key="index">
-                                    <th> {{ item.id }} </th>
-                                    <th v-if="item.cliente != null"> {{ item.cliente.nome }} </th>
-                                    <th v-if="item.cliente != null"> {{ item.vendedor.nome }} </th>
-                                    <th v-else> ? </th>
-                                    <th>{{ item.status }}</th>
-                                    <th>{{ item.data | dataBR }}</th>
-                                    <th><button type="button" class="btn btn-secondary"  @click="editar(item.id)"><i class="bi bi-pencil-square"></i></button>
+                                    <th> {{ item.name }} </th>
+                                    <th> {{ item.email }} </th>
+                                    <th> {{ item.ativo }} </th>
+                                <th><button type="button" class="btn btn-secondary"  @click="editar(item.id)"><i class="bi bi-pencil-square"></i></button>
                                         <button type="button" class="btn btn-secondary"  @click="excluir(item.id)"><i class="bi bi-trash"></i></button></th>
                                     
                                 </tr>
@@ -69,14 +65,14 @@ const urlParams = new URLSearchParams(queryString);
         methods:{
             async carregar(){
                 try{
-                    let resultado = await axios.get(Config.baseURL + '/vendas/buscar/');
+                    let resultado = await axios.get(Config.baseURL + '/usuario/buscar/');
                     this.vendas = resultado.data;
                 }catch(erro){
                     console.log(erro)
                 }
             },
             editar(id){
-                window.location.href = Config.baseURL + '/vendas/editar?id='+id;
+                window.location.href = Config.baseURL + '/usuario/editar?id='+id;
             },
 
             formatarData(data){
@@ -88,10 +84,10 @@ const urlParams = new URLSearchParams(queryString);
             },
 
            async excluir(id){
-                let resposta = confirm("Você deseja excluir essa Venda?");
+                let resposta = confirm("Você deseja excluir este Funcionário?");
                 if(resposta){
-                    await axios.post(Config.baseURL + `/vendas/destroy/${id}`);
-                    window.location.href = Config.baseURL + '/venda';
+                    await axios.post(Config.baseURL + `/usuario/destroy/${id}`);
+                    window.location.href = Config.baseURL + '/usuario';
                     
                 }
 

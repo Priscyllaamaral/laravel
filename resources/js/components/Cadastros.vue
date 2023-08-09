@@ -1,21 +1,6 @@
 <template>
     <div class="container ajustar">
         <div class="row">
-            <div class="col-lg-6">
-                <a href="/fornecedores/todos" style="text-decoration: none;">
-                    <div class="card" >
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-5 col-12"><i class="bi bi-person img"></i></div>
-                            <div class="col-lg-8 col-md-8 col-sm-7 col-12">
-                                <div class="row espaco">
-                                    <h4 class="label"><b>Fornecedores</b></h4>
-                                    <h6 class="label"><b>Cadastro e Consultas</b></h6>
-                                </div>
-                            </div>
-                        </div>  
-                    </div>
-                </a>     
-            </div>
             <div class="col-lg-6" >
                 <a href="/clientes" style="text-decoration: none;">
                     <div class="card">
@@ -31,8 +16,7 @@
                     </div>
                  </a>               
             </div>
-        </div>
-        <div class="row">
+
             <div class="col-lg-6">
                 <a href="/produtos" style="text-decoration: none;">
                     <div class="card">
@@ -48,23 +32,28 @@
                     </div>
                 </a>
             </div>
-            <div class="col-lg-6">
-                <a href="/movimentacoes/despesas" style="text-decoration: none;">
-                    <div class="card">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-5 col-12"><i class="bi bi-arrow-down-square img"></i></div>
-                            <div class="col-lg-8 col-md-8 col-sm-7 col-12">
-                                <div class="row espaco">
-                                    <h4 class="label"><b>Despesas</b></h4>
-                                    <h6 class="label"><b>Cadastro e Consultas</b></h6>
-                                </div>
-                            </div>   
-                        </div>
-                    </div>
-                </a>
-            </div>
+            
+            
+            
         </div>
         <div class="row">
+
+            <div class="col-lg-6">
+                <a href="/fornecedores/todos" style="text-decoration: none;">
+                    <div class="card" >
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-5 col-12"><i class="bi bi-person img"></i></div>
+                            <div class="col-lg-8 col-md-8 col-sm-7 col-12">
+                                <div class="row espaco">
+                                    <h4 class="label"><b>Fornecedores</b></h4>
+                                    <h6 class="label"><b>Cadastro e Consultas</b></h6>
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                </a>     
+            </div>
+
             <div class="col-lg-6">
                 <a href="/vendedores" style="text-decoration: none;">
                     <div class="card">
@@ -80,6 +69,41 @@
                     </div>
                 </a>
             </div>
+            
+        </div>
+        <div class="row">
+            
+            <div class="col-lg-6">
+                <a href="/usuario" style="text-decoration: none;">
+                    <div class="card">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-5 col-12"><i class="bi bi-person-badge img"></i></div>
+                            <div class="col-lg-8 col-md-8 col-sm-7 col-12">
+                                <div class="row espaco">
+                                    <h4 class="label"><b>Funcionários</b></h4>
+                                    <h6 class="label"><b>Cadastro e Consultas</b></h6>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- <div class="col-lg-6">
+                <a href="/movimentacoes/despesas" style="text-decoration: none;">
+                    <div class="card">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-5 col-12"><i class="bi bi-arrow-down-square img"></i></div>
+                            <div class="col-lg-8 col-md-8 col-sm-7 col-12">
+                                <div class="row espaco">
+                                    <h4 class="label"><b>Despesas</b></h4>
+                                    <h6 class="label"><b>Cadastro e Consultas</b></h6>
+                                </div>
+                            </div>   
+                        </div>
+                    </div>
+                </a>
+            </div> -->
         </div>
     </div>
 </template>
@@ -169,8 +193,8 @@ export default {
 
 
 i{
-    padding-left: 20px;
     padding-top: 15px;
+    padding-bottom: 10px;
     font-size: 70px;
     color: rgb(202, 128, 202);
 }

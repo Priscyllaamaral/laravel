@@ -31,9 +31,26 @@ Route::get('/menuCadastro', function() {
     return view('menuCadastro');
 });
 
+Route::get('/menuMovimentacoes', function() {
+    return view('menuMovimentacoes');
+});
+
 Route::get('/caixa', function() {
     return view('caixa');
 });
+
+Route::get('/usuario', function() {
+    return view('usuarios');
+});
+
+Route::get('/usuario/novo', 'UsuariosController@novo');
+Route::post('/usuario/adicionar', 'UsuariosController@cadastrar');
+Route::get('/usuario/buscar', 'UsuariosController@buscar');
+Route::get('/usuario/editar', 'UsuariosController@editar');
+Route::get('/usuario/{user}/abrir', 'UsuariosController@abrir');
+Route::post('/usuario/{usuario}/atualizar', 'UsuariosController@atualizar');
+Route::post('/usuario/destroy/{id}', 'UsuariosController@destroy');
+
 
 Route::get('/login', 'LoginController@index')->name('login');
 Route::get('/login/logout', 'LoginController@logout')->name('logout');
@@ -45,6 +62,7 @@ Route::get('/', ['middleware' => 'auth', 'uses' => 'PrincipalController@index'])
 
 
 Route::get('/venda', ['middleware' => 'auth', 'uses' => 'VendasController@index']);
+
 Route::group(['prefix' => 'vendas', "middleware" => "auth"], function()
 {
     Route::get('/', ['middleware' => 'auth', 'uses' => 'VendasController@index2']);

@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 style="color: aliceblue;">Lista de Fornecedores
+                    <h1 style="color: aliceblue;">Fornecedores
                         <a href="/fornecedores"><button class="btn btn-secondary btn-lg" type="button" style="border-radius: 20px; float:right" >+</button></a>
                     </h1>
                 </div>
@@ -18,7 +18,7 @@
                         <th scope="col">ID</th>
                         <th scope="col">Nome</th>
                         <th scope="col">CPF</th>
-                        <th scope="col">Açōes</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>

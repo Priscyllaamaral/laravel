@@ -9,7 +9,7 @@
                             <div class="col-lg-8 col-md-8 col-sm-7 col-12">
                                 <div class="row espaco">
                                     <h4 class="label"><b>Cadastros</b></h4>
-                                    <h6 class="label"><b>Fornecedores, Despesas, Clientes, Produtos</b></h6>
+                                    <h6 class="label"><b>Fornecedores, Clientes, Produtos, Funcionários, Vendedores</b></h6>
                                 </div>
                             </div>
                         </div>  
@@ -17,6 +17,21 @@
                 </a>     
             </div>
             <div class="col-lg-6" >
+                <a href="/menuMovimentacoes" style="text-decoration: none;">
+                    <div class="card" >
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-5 col-12"><i class="bi bi-arrow-down-up img"></i></div>
+                            <div class="col-lg-8 col-md-8 col-sm-7 col-12">
+                                <div class="row espaco">
+                                    <h4 class="label"><b>Movimentações</b></h4>
+                                    <h6 class="label"><b>Caixa, Estoque, Despesas</b></h6>
+                                </div>
+                            </div>                  
+                        </div>          
+                    </div>
+                 </a>               
+            </div>
+            <!-- <div class="col-lg-6" >
                 <a href="/venda" style="text-decoration: none;">
                     <div class="card" >
                         <div class="row">
@@ -30,9 +45,9 @@
                         </div>          
                     </div>
                  </a>               
-            </div>
+            </div> -->
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-lg-6">
                 <a href="/caixa" style="text-decoration: none;">
                     <div class="card">
@@ -63,7 +78,7 @@
                     </div>
                 </a>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 <!-- <template>
@@ -152,8 +167,8 @@ export default {
 
 
 i{
-    padding-left: 20px;
     padding-top: 20px;
+    padding-bottom: 10px;
     font-size: 70px;
     color: purple;
 }

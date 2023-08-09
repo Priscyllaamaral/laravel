@@ -12,9 +12,12 @@ Vue.component('mov-estoque', require('./components/MovimentoEstoque.vue').defaul
 Vue.component('teste', require('./components/Teste.vue').default);
 Vue.component('menu-completo', require('./components/Menu.vue').default);
 Vue.component('menu-cadastro', require('./components/Cadastros.vue').default);
+Vue.component('menu-movimentacoes', require('./components/Movimentacoes.vue').default);
 Vue.component('vendedor', require('./components/VendedoresListar.vue').default);
 Vue.component('vendedor-novo', require('./components/Vendedor.vue').default);
 Vue.component('caixa', require('./components/Caixa.vue').default);
+Vue.component('usuario', require('./components/Usuarios.vue').default);
+Vue.component('usuarios', require('./components/UsuariosListar.vue').default);
 
 Vue.component('campo-valor', require('./components/extras/CampoValor.vue').default);
 Vue.component('vendas', require('./components/Vendas.vue').default);

@@ -3,7 +3,7 @@
       <div class="container">
           <div class="row">
               <div class="col-md-12">
-                <h1 style="color: aliceblue;"> Lista de Despesa 
+                <h1 style="color: aliceblue;">Despesas
                     <a href="/movimentacoes/despesas/nova" class="btn" style="float:right">
                         <button type="button" class="btn btn-light btn2" style="border-color: rgb(217, 219, 218);"> Nova Despesa</button></a>
                     <a class="btn" style="float:right">
@@ -20,7 +20,7 @@
 
       <div class="scroll">
 
-        <table class="table table-striped table-bordered " style="background-color: aliceblue;">
+        <table class="table table-striped " style="background-color: aliceblue;">
             <thead>
                 <tr>
                     <th scope="col">Fornecedor</th>
@@ -28,7 +28,7 @@
                     <th scope="col">Data</th>
                     <th scope="col">Valor</th>
                     <th scope="col">Tipo</th>
-                    <th scope="col">Açōes</th>
+                    <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>

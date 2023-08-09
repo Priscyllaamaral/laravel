@@ -89,7 +89,7 @@
                 <div class="row">
                     <div class="col-lg-">
                         <div class="scroll">
-                            <table class="table table-bordered table-dark ">
+                            <table class="table table-dark ">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -181,7 +181,7 @@
                         </div>
                      
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input confirmacao" type="checkbox" id="inlineCheckbox1" value="1">
+                        <input v-model="movimento.sangria" class="form-check-input confirmacao" type="checkbox" id="inlineCheckbox1" value="1">
                         <label class="form-check-label" for="inlineCheckbox1">Sangria </label>
                     </div>
                           
