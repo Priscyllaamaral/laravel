@@ -4114,6 +4114,7 @@ var urlParams = new URLSearchParams(queryString);
         acrescimo: '',
         tabela: '',
         cancelada: '',
+        observacao: '',
         itens: []
       },
       vendaItem: {
@@ -7513,6 +7514,9 @@ var render = function render() {
       expression: "fornecedor.observacao.observacoes"
     }],
     staticClass: "form-control",
+    staticStyle: {
+      resize: "none"
+    },
     attrs: {
       rows: "4",
       cols: "50"
@@ -8704,7 +8708,7 @@ var render = function render() {
   }, [_vm._m(1), _vm._v(" "), _c("tbody", _vm._l(_vm.vendas, function (item, index) {
     return _c("tr", {
       key: index
-    }, [_c("th", [_vm._v(" " + _vm._s(item.id) + " ")]), _vm._v(" "), item.cliente != null ? _c("th", [_vm._v(" " + _vm._s(item.cliente.nome) + " ")]) : _vm._e(), _vm._v(" "), item.cliente != null ? _c("th", [_vm._v(" " + _vm._s(item.vendedor.nome) + " ")]) : _c("th", [_vm._v(" ? ")]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.status))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(_vm._f("dataBR")(item.data)))]), _vm._v(" "), _c("th", [_c("button", {
+    }, [_c("th", [_vm._v(" " + _vm._s(item.id) + " ")]), _vm._v(" "), item.cliente != null ? _c("th", [_vm._v(" " + _vm._s(item.cliente.nome) + " ")]) : _vm._e(), _vm._v(" "), item.vendedor != null ? _c("th", [_vm._v(" " + _vm._s(item.vendedor.nome) + " ")]) : _c("th", [_vm._v(" ? ")]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.status))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(_vm._f("dataBR")(item.data)))]), _vm._v(" "), _c("th", [_c("button", {
       staticClass: "btn btn-secondary",
       attrs: {
         type: "button"
@@ -11284,7 +11288,44 @@ var render = function render() {
     }, [_c("i", {
       staticClass: "bi bi-trash"
     })])])]);
-  }), 0)])])])])])])])])])])])]), _vm._v(" "), _c("div", {
+  }), 0)])])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "tab-pane",
+    attrs: {
+      id: "observacao",
+      role: "tabpanel",
+      "aria-labelledby": "observacao-tab"
+    }
+  }, [_c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "form-group col-lg-10"
+  }, [_c("label", [_vm._v("Observaçōes")]), _vm._v(" "), _c("textarea", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.venda.observacao,
+      expression: "venda.observacao"
+    }],
+    staticClass: "form-control",
+    staticStyle: {
+      resize: "none"
+    },
+    attrs: {
+      rows: "4",
+      cols: "50"
+    },
+    domProps: {
+      value: _vm.venda.observacao
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.venda, "observacao", $event.target.value);
+      }
+    }
+  })])])])])])])])])])]), _vm._v(" "), _c("div", {
     staticClass: "modal fade",
     attrs: {
       id: "exampleModal3",
@@ -11514,7 +11555,7 @@ var staticRenderFns = [function () {
       "aria-controls": "home",
       "aria-selected": "true"
     }
-  }, [_vm._v("Cadastro")])]), _vm._v(" "), _c("li", {
+  }, [_vm._v("Início")])]), _vm._v(" "), _c("li", {
     staticClass: "nav-item",
     attrs: {
       role: "presentation"
@@ -11530,7 +11571,23 @@ var staticRenderFns = [function () {
       "aria-controls": "products",
       "aria-selected": "false"
     }
-  }, [_vm._v("Produtos")])])]);
+  }, [_vm._v("Pagamento")])]), _vm._v(" "), _c("li", {
+    staticClass: "nav-item",
+    attrs: {
+      role: "presentation"
+    }
+  }, [_c("button", {
+    staticClass: "nav-link",
+    attrs: {
+      id: "observacao-tab",
+      "data-bs-toggle": "tab",
+      "data-bs-target": "#observacao",
+      type: "button",
+      role: "tab",
+      "aria-controls": "observacao",
+      "aria-selected": "false"
+    }
+  }, [_vm._v("Observaçōes")])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;

@@ -12,8 +12,8 @@ class ProdutosSeeder extends Seeder
     public function run()
     {
         \App\Produto::create([
-            'nome' => 'Café Torrado',
-            'codigo' => 101,
+            'nome' => 'Chá Sagrado',
+            'codigo' => 545,
             'valor_vista' => 50.00,
             'valor_prazo' => 55.00,
             'valor_atacado' => 45.00,
@@ -24,8 +24,8 @@ class ProdutosSeeder extends Seeder
         ]);
 
         \App\Produto::create([
-            'nome' => 'Açúcar Refinado',
-            'codigo' => 102,
+            'nome' => 'Farinha de Milho',
+            'codigo' => 155,
             'valor_vista' => 7.00,
             'valor_prazo' => 8.00,
             'valor_atacado' => 6.00,
@@ -36,8 +36,8 @@ class ProdutosSeeder extends Seeder
         ]);
 
         \App\Produto::create([
-            'nome' => 'Notebook',
-            'codigo' => 302,
+            'nome' => 'Smart TV',
+            'codigo' => 355,
             'valor_vista' => 5000,
             'valor_prazo' => 5500,
             'valor_atacado' => 4500,
@@ -50,7 +50,7 @@ class ProdutosSeeder extends Seeder
 
         \App\Produto::create([
             'nome' => 'Creme Dental',
-            'codigo' => 401,
+            'codigo' => 455,
             'valor_vista' => 5,
             'valor_prazo' => 5.5,
             'valor_atacado' => 4.5,

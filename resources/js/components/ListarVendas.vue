@@ -27,7 +27,7 @@
                                 <tr v-for="(item, index) in vendas" :key="index">
                                     <th> {{ item.id }} </th>
                                     <th v-if="item.cliente != null"> {{ item.cliente.nome }} </th>
-                                    <th v-if="item.cliente != null"> {{ item.vendedor.nome }} </th>
+                                    <th v-if="item.vendedor != null"> {{ item.vendedor.nome }} </th>
                                     <th v-else> ? </th>
                                     <th>{{ item.status }}</th>
                                     <th>{{ item.data | dataBR }}</th>

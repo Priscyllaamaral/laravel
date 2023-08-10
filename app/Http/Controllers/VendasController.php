@@ -47,6 +47,7 @@ class VendasController extends Controller
         $venda->acrescimo = $request->input('acrescimo');
         $venda->tabela = $request->input('tabela');
         $venda->cancelada = $request->input('cancelada');
+        $venda->observacao = $request->input('observacao');
 
         $itens = $request->input('itens');
         $venda->save();
@@ -80,6 +81,7 @@ class VendasController extends Controller
         $venda->acrescimo = $request->input('acrescimo');
         $venda->tabela = $request->input('tabela');
         $venda->cancelada = $request->input('cancelada');
+        $venda->observacao = $request->input('observacao');
 
         $venda->load('itens');
         $venda->itens()->delete();

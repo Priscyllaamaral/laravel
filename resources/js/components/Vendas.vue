@@ -13,10 +13,13 @@
                         <div class="col-lg-12">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Cadastro</button>
+                                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Início</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="products-tab" data-bs-toggle="tab" data-bs-target="#products" type="button" role="tab" aria-controls="products" aria-selected="false">Produtos</button>
+                                    <button class="nav-link" id="products-tab" data-bs-toggle="tab" data-bs-target="#products" type="button" role="tab" aria-controls="products" aria-selected="false">Pagamento</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="observacao-tab" data-bs-toggle="tab" data-bs-target="#observacao" type="button" role="tab" aria-controls="observacao" aria-selected="false">Observaçōes</button>
                                 </li>
                             </ul>
                             <br>
@@ -186,6 +189,16 @@
                                         </div>
                                      </div>
                                 </div>
+                                <div class="tab-pane" id="observacao" role="tabpanel" aria-labelledby="observacao-tab">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="form-group col-lg-10">
+                                                <label>Observaçōes</label>
+                                                <textarea v-model="venda.observacao" rows="4" cols="50" class="form-control" style="resize: none;"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                          </div>
                     </div>
@@ -347,6 +360,7 @@
                     acrescimo: '',
                     tabela: '',
                     cancelada: '',
+                    observacao: '',
                     itens: []
                 },
 

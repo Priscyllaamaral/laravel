@@ -185,7 +185,7 @@
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label>Observaçōes</label>
-                                                <textarea v-model="fornecedor.observacao.observacoes" rows="4" cols="50" class="form-control"></textarea>
+                                                <textarea v-model="fornecedor.observacao.observacoes" rows="4" cols="50" class="form-control" style="resize:none"></textarea>
                                             </div>
                                         </div>
                                     </div>
