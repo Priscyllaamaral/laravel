@@ -8,6 +8,6 @@ class Endereco extends Model
 {
     protected $table = 'enderecos';
     protected $fillable = [
-        'rua', 'cidade', 'estado', 'cep', 'id_cliente'
+        'rua', 'cidade', 'estado', 'codigo_postal', 'numero', 'bairro', 'complemento', 'ponto_referencia',
     ];
 }

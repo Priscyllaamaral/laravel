@@ -14,10 +14,15 @@ class EnderecosController extends Controller
 
         $endereco = new Endereco();
         $endereco->rua = $request->input('rua');
+        $endereco->numero = $request->input('numero');
+        $endereco->bairro = $request->input('bairro');
+        $endereco->complemento = $request->input('complemento');
+        $endereco->ponto_referencia = $request->input('ponto_referencia');
         $endereco->cidade = $request->input('cidade');
         $endereco->estado = $request->input('estado');
         $endereco->codigo_postal = $request->input('codigo_postal');
-        $endereco->id_cliente = $request->input('id_cliente');
+        //$endereco->id_cliente = $request->input('id_cliente');
+
         $endereco->save();
 
        
@@ -39,7 +44,7 @@ class EnderecosController extends Controller
 
     public function abrir($id)
     {
-        $endereco = Endereco::where('id_cliente', '=', $id)->get();
+        $endereco = Endereco::where('id', '=', $id)->get();
 
         return response()->json($endereco);
     }

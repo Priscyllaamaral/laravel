@@ -9,12 +9,12 @@ class Fornecedor extends Model
     protected $table = 'fornecedores';
 
     protected $fillable = [
-        'nome', 'cpfcnpj', 'celular', 'email', 'rg', 'data_nascimento',
+        'nome', 'cpfcnpj', 'celular', 'email', 'rg', 'data_nascimento', 'endereco_id',
     ];
 
 
     function endereco() {
-        return $this->hasOne(FornecedorEnderecos::class, 'fornecedor_id', 'id');
+        return $this->hasOne(Endereco::class, 'id', 'endereco_id');
     }
 
     public function observacao(){

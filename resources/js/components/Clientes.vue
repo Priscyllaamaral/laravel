@@ -111,12 +111,15 @@ const urlParams = new URLSearchParams(queryString);
             return{
 
                 endereco:{
-                    id: '',
+                    id: null,
                     rua: '',
                     cidade: '',
                     estado: '',
                     codigo_postal: '',
-                    id_cliente: ''
+                    numero: '',
+                    bairro: '',
+                    complemento: '',
+                    ponto_referencia: ''
                 },
 
                 cliente:{
@@ -126,7 +129,8 @@ const urlParams = new URLSearchParams(queryString);
                     email: '',
                     cpf: '',
                     premium: 0,
-                    codigo: ''
+                    codigo: '',
+                    endereco_id: null,
                 }
 
             }
@@ -153,12 +157,16 @@ const urlParams = new URLSearchParams(queryString);
 
                     }else{
 
-                        let resposta = await axios.post(Config.baseURL + '/clientes/cadastrar', this.cliente);
+                        let resposta = await axios.post(Config.baseURL + '/enderecos/cadastrar', this.endereco);
+                        
+                        this.cliente.endereco_id = resposta.data.id;
 
-                        this.endereco.id_cliente = resposta.data.id;
+                        await axios.post(Config.baseURL + '/clientes/cadastrar', this.cliente);
+
+                        
 
                         //this.endereco.id_cliente
-                        await axios.post(Config.baseURL + '/enderecos/cadastrar', this.endereco);
+                        
                         // let id_endereco = resposta.data.id;
                         // this.cliente.codigo = id_endereco;
 
@@ -183,7 +191,7 @@ const urlParams = new URLSearchParams(queryString);
                     //let response3 = await axios.get(Config.baseURL + `/clientes/buscar/${id}` )
                     
                     //console.log("DADOS: ",response3.data.codigo)
-                    let response2 = await axios.get(Config.baseURL + '/enderecos/' + id + '/abrir');
+                    let response2 = await axios.get(Config.baseURL + '/enderecos/' + this.cliente.endereco_id + '/abrir');
                     this.endereco = response2.data[0];
 
                     } catch (error) {

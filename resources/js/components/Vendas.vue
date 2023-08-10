@@ -152,7 +152,7 @@
 
                                                 <br>
 
-                                                <h5>Produtos/ Itens da venda</h5>
+                                                <h5>Produtos</h5>
 
                                                 <div class="col-md-12" style="max-height: 200px; overflow-y: auto;">
                                                     <table class="table">

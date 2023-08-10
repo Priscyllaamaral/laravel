@@ -9,7 +9,7 @@
                             <div class="col-lg-8 col-md-8 col-sm-7 col-12">
                                 <div class="row espaco">
                                     <h4 class="label"><b>Cadastros</b></h4>
-                                    <h6 class="label"><b>Fornecedores, Clientes, Produtos, Funcionários, Vendedores</b></h6>
+                                    <h6 class="label"><b>Fornecedores, Clientes, Produtos, Usuários, Vendedores</b></h6>
                                 </div>
                             </div>
                         </div>  

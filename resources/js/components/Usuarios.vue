@@ -3,7 +3,7 @@
         <div class="card cen" style="background-color: darkslateblue;">
             <div class="col-lg-8">
                 <div class="card-body">
-                    <h3 class="card-title" style="text-align: center;"> Funcionário </h3>
+                    <h3 class="card-title" style="text-align: center;"> Usuário </h3>
 
                     <div class="form-group">
                         <label>Nome</label>

@@ -80,7 +80,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-5 col-12"><i class="bi bi-person-badge img"></i></div>
                             <div class="col-lg-8 col-md-8 col-sm-7 col-12">
                                 <div class="row espaco">
-                                    <h4 class="label"><b>Funcionários</b></h4>
+                                    <h4 class="label"><b>Usuários</b></h4>
                                     <h6 class="label"><b>Cadastro e Consultas</b></h6>
                                 </div>
                             </div>  

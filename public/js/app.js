@@ -1893,12 +1893,15 @@ var urlParams = new URLSearchParams(queryString);
   data: function data() {
     return {
       endereco: {
-        id: '',
+        id: null,
         rua: '',
         cidade: '',
         estado: '',
         codigo_postal: '',
-        id_cliente: ''
+        numero: '',
+        bairro: '',
+        complemento: '',
+        ponto_referencia: ''
       },
       cliente: {
         id: null,
@@ -1907,7 +1910,8 @@ var urlParams = new URLSearchParams(queryString);
         email: '',
         cpf: '',
         premium: 0,
-        codigo: ''
+        codigo: '',
+        endereco_id: null
       }
     };
   },
@@ -1941,15 +1945,15 @@ var urlParams = new URLSearchParams(queryString);
               break;
             case 9:
               _context.next = 11;
-              return axios.post(Config.baseURL + '/clientes/cadastrar', _this.cliente);
+              return axios.post(Config.baseURL + '/enderecos/cadastrar', _this.endereco);
             case 11:
               resposta = _context.sent;
-              _this.endereco.id_cliente = resposta.data.id;
-
-              //this.endereco.id_cliente
+              _this.cliente.endereco_id = resposta.data.id;
               _context.next = 15;
-              return axios.post(Config.baseURL + '/enderecos/cadastrar', _this.endereco);
+              return axios.post(Config.baseURL + '/clientes/cadastrar', _this.cliente);
             case 15:
+              //this.endereco.id_cliente
+
               // let id_endereco = resposta.data.id;
               // this.cliente.codigo = id_endereco;
 
@@ -1990,7 +1994,7 @@ var urlParams = new URLSearchParams(queryString);
 
               //console.log("DADOS: ",response3.data.codigo)
               _context2.next = 7;
-              return axios.get(Config.baseURL + '/enderecos/' + id + '/abrir');
+              return axios.get(Config.baseURL + '/enderecos/' + _this2.cliente.endereco_id + '/abrir');
             case 7:
               response2 = _context2.sent;
               _this2.endereco = response2.data[0];
@@ -2545,7 +2549,7 @@ var urlParams = new URLSearchParams(queryString);
           rua: '',
           numero: '',
           bairro: '',
-          cep: '',
+          codigo_postal: '',
           cidade: '',
           estado: '',
           complemento: '',
@@ -4933,7 +4937,7 @@ var staticRenderFns = [function () {
     staticClass: "row espaco"
   }, [_c("h4", {
     staticClass: "label"
-  }, [_c("b", [_vm._v("Funcionários")])]), _vm._v(" "), _c("h6", {
+  }, [_c("b", [_vm._v("Usuários")])]), _vm._v(" "), _c("h6", {
     staticClass: "label"
   }, [_c("b", [_vm._v("Cadastro e Consultas")])])])])])])])])])]);
 }];
@@ -6467,7 +6471,7 @@ var staticRenderFns = [function () {
     staticClass: "label"
   }, [_c("b", [_vm._v("Cadastros")])]), _vm._v(" "), _c("h6", {
     staticClass: "label"
-  }, [_c("b", [_vm._v("Fornecedores, Clientes, Produtos, Funcionários, Vendedores")])])])])])])])]), _vm._v(" "), _c("div", {
+  }, [_c("b", [_vm._v("Fornecedores, Clientes, Produtos, Usuários, Vendedores")])])])])])])])]), _vm._v(" "), _c("div", {
     staticClass: "col-lg-6"
   }, [_c("a", {
     staticStyle: {
@@ -7205,17 +7209,17 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.fornecedor.endereco.cep,
-      expression: "fornecedor.endereco.cep"
+      value: _vm.fornecedor.endereco.codigo_postal,
+      expression: "fornecedor.endereco.codigo_postal"
     }],
     staticClass: "form-control",
     domProps: {
-      value: _vm.fornecedor.endereco.cep
+      value: _vm.fornecedor.endereco.codigo_postal
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.$set(_vm.fornecedor.endereco, "cep", $event.target.value);
+        _vm.$set(_vm.fornecedor.endereco, "codigo_postal", $event.target.value);
       }
     }
   })]), _vm._v(" "), _c("div", {
@@ -10310,7 +10314,7 @@ var render = function render() {
     staticStyle: {
       "text-align": "center"
     }
-  }, [_vm._v(" Funcionário ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v(" Usuário ")]), _vm._v(" "), _c("div", {
     staticClass: "form-group"
   }, [_c("label", [_vm._v("Nome")]), _vm._v(" "), _c("input", {
     directives: [{
@@ -11256,7 +11260,7 @@ var render = function render() {
     on: {
       click: _vm.adicionar
     }
-  }, [_vm._v("+")])])]), _vm._v(" "), _c("br"), _vm._v(" "), _c("h5", [_vm._v("Produtos/ Itens da venda")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("+")])])]), _vm._v(" "), _c("br"), _vm._v(" "), _c("h5", [_vm._v("Produtos")]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12",
     staticStyle: {
       "max-height": "200px",

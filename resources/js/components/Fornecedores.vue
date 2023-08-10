@@ -107,7 +107,7 @@
                                         <div class="row">
                                             <div class="form-group col-md-3">
                                                 <label>CEP</label>
-                                                <input v-model="fornecedor.endereco.cep" class="form-control"/>
+                                                <input v-model="fornecedor.endereco.codigo_postal" class="form-control"/>
                                             </div>
                                             <div class="form-group col-md-7">
                                                 <label>Cidade</label>
@@ -226,7 +226,7 @@ export default{
                     rua: '',
                     numero: '',
                     bairro: '',
-                    cep: '',
+                    codigo_postal: '',
                     cidade: '',
                     estado: '',
                     complemento: '',

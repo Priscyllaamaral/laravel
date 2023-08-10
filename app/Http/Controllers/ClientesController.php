@@ -44,6 +44,7 @@ class ClientesController extends Controller
         $cliente->cpf = $request->input('cpf');
         $cliente->premium = $request->input('premium');
         $cliente->codigo = $request->input('codigo');
+        $cliente->endereco_id = $request->input('endereco_id');
         $cliente->save();
         
         return response()->json($cliente);
@@ -66,6 +67,7 @@ class ClientesController extends Controller
         $cliente->cpf = $request->input('cpf');
         $cliente->celular = $request->input('celular');
         $cliente->premium = $request->input('premium');
+        $cliente->endereco_id = $request->input('endereco_id');
         $cliente->save();
 
         //return redirect()->route('login');
