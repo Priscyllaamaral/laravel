@@ -20,7 +20,7 @@
                     
                         
                             <div class="col-lg-1">
-                                <button type="button" class="btn btn-link btn-lg" style="color:black;">
+                                <button @click="carregar()" type="button" class="btn btn-link btn-lg" style="color:black;">
                                     <i class="bi bi-arrow-clockwise"></i>
                                 </button>
                             </div>
@@ -31,7 +31,7 @@
                                     <div class="input-group-prepend">
                                         <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon03" style="color:black" disabled>Data</button>
                                     </div>
-                                    <input type="date" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                    <input @change="filtrarData()" v-model="data" type="date" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
                                 </div>
                             </div>
                         </div>
@@ -45,9 +45,9 @@
                             <div class="input-group">
                                 <div class="col-lg-4" >
                                     <div class="input-group">
-                                        <input  type="text" class="form-control m-0" style="max-width: 85%; min-width: 85%;" placeholder="Buscar">
+                                        <input v-model="observacao" type="text" class="form-control m-0" style="max-width: 85%; min-width: 85%;" placeholder="Buscar">
                                         <div class="input-group-append m-0">
-                                            <button  data-toggle="modal" data-target="#exampleModal2" class="btn btn-outline-secondary cor m-0" type="button">
+                                            <button @click="filtrarObservacao()" data-toggle="modal" data-target="#exampleModal2" class="btn btn-outline-secondary cor m-0" type="button">
                                                 <i class="bi bi-search"></i>
                                             </button>
                                         </div>
@@ -215,6 +215,8 @@ export default {
             entradas: 0,
             saidas: 0,
             saldo: 0,
+            data: '',
+            observacao :'',
 
 
 
@@ -258,6 +260,8 @@ export default {
         async carregar(){
             let resposta = await axios.get(Config.baseURL + '/movimentoCaixa/listar');
             this.caixa = resposta.data;
+            this.data = '';
+            this.observacao = '';
         },
 
         async somaEntradas(){
@@ -284,6 +288,25 @@ export default {
         excluir (id){
             axios.post(Config.baseURL+ `/movimentoCaixa/destroy/${id}` );
             window.location.href = Config.baseURL + '/caixa';
+        },
+
+        async filtrarData(){
+            let resposta = await axios.get(Config.baseURL+ '/movimentoCaixa/filtrarPorData', {
+                params:{
+                    data : this.data
+                }
+            });
+            this.caixa = resposta.data;
+        },
+
+        async filtrarObservacao(){
+            let resposta = await axios.get(Config.baseURL+ '/movimentoCaixa/filtrarPorObservacao', {
+                params:{
+                    observacao : this.observacao
+                }
+            });
+            this.caixa = resposta.data;
+
         }
 
     },

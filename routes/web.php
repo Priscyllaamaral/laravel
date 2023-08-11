@@ -140,6 +140,8 @@ Route::group(['prefix' => 'movimentoCaixa', "middleware" => "auth"], function()
     Route::post('/cadastrar', ['uses' => 'MovimentoCaixaController@cadastrar']);
     Route::get('/listar', ['uses' => 'MovimentoCaixaController@movimentos']);
     Route::post('/destroy/{id}', ['uses' => 'MovimentoCaixaController@destroy']);
+    Route::get('/filtrarPorData', ['uses' => 'MovimentoCaixaController@filtrarPorData']);
+    Route::get('/filtrarPorObservacao', ['uses' => 'MovimentoCaixaController@filtrarPorObservacao']);
 
     //refazer
     

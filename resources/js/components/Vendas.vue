@@ -25,7 +25,7 @@
                             <br>
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                    <div class="container">
+                                    <div class="container" style="min-width: 500px;">
                                         <div class="row">
                                             <div class="form-row" >
                                                 <div class="form-group col-lg-6 col-12">
@@ -721,6 +721,7 @@
     background-color: rgb(200, 214, 172);
     padding-top: 5px;
 }
+
 
 
 </style>

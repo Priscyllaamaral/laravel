@@ -1738,6 +1738,8 @@ var urlParams = new URLSearchParams(queryString);
       entradas: 0,
       saidas: 0,
       saldo: 0,
+      data: '',
+      observacao: '',
       movimento: {
         id: null,
         data: '',
@@ -1795,7 +1797,9 @@ var urlParams = new URLSearchParams(queryString);
             case 2:
               resposta = _context2.sent;
               _this2.caixa = resposta.data;
-            case 4:
+              _this2.data = '';
+              _this2.observacao = '';
+            case 6:
             case "end":
               return _context2.stop();
           }
@@ -1842,6 +1846,52 @@ var urlParams = new URLSearchParams(queryString);
     excluir: function excluir(id) {
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(Config.baseURL + "/movimentoCaixa/destroy/".concat(id));
       window.location.href = Config.baseURL + '/caixa';
+    },
+    filtrarData: function filtrarData() {
+      var _this4 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+        var resposta;
+        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+          while (1) switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(Config.baseURL + '/movimentoCaixa/filtrarPorData', {
+                params: {
+                  data: _this4.data
+                }
+              });
+            case 2:
+              resposta = _context4.sent;
+              _this4.caixa = resposta.data;
+            case 4:
+            case "end":
+              return _context4.stop();
+          }
+        }, _callee4);
+      }))();
+    },
+    filtrarObservacao: function filtrarObservacao() {
+      var _this5 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
+        var resposta;
+        return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+          while (1) switch (_context5.prev = _context5.next) {
+            case 0:
+              _context5.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(Config.baseURL + '/movimentoCaixa/filtrarPorObservacao', {
+                params: {
+                  observacao: _this5.observacao
+                }
+              });
+            case 2:
+              resposta = _context5.sent;
+              _this5.caixa = resposta.data;
+            case 4:
+            case "end":
+              return _context5.stop();
+          }
+        }, _callee5);
+      }))();
     }
   },
   mounted: function mounted() {
@@ -4967,7 +5017,60 @@ var render = function render() {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "card"
-  }, [_vm._m(0), _vm._v(" "), _c("br"), _vm._v(" "), _c("div", {
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-lg-12"
+  }, [_c("div", {
+    staticClass: "input-group"
+  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-1"
+  }, [_c("button", {
+    staticClass: "btn btn-link btn-lg",
+    staticStyle: {
+      color: "black"
+    },
+    attrs: {
+      type: "button"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.carregar();
+      }
+    }
+  }, [_c("i", {
+    staticClass: "bi bi-arrow-clockwise"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-5"
+  }, [_c("div", {
+    staticClass: "input-group"
+  }, [_vm._m(2), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.data,
+      expression: "data"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "date",
+      placeholder: "",
+      "aria-label": "Example text with button addon",
+      "aria-describedby": "button-addon1"
+    },
+    domProps: {
+      value: _vm.data
+    },
+    on: {
+      change: function change($event) {
+        return _vm.filtrarData();
+      },
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.data = $event.target.value;
+      }
+    }
+  })])])])])]), _vm._v(" "), _c("br"), _vm._v(" "), _c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-lg-12",
@@ -4978,7 +5081,52 @@ var render = function render() {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "input-group"
-  }, [_vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _c("div", {
+  }, [_c("div", {
+    staticClass: "col-lg-4"
+  }, [_c("div", {
+    staticClass: "input-group"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.observacao,
+      expression: "observacao"
+    }],
+    staticClass: "form-control m-0",
+    staticStyle: {
+      "max-width": "85%",
+      "min-width": "85%"
+    },
+    attrs: {
+      type: "text",
+      placeholder: "Buscar"
+    },
+    domProps: {
+      value: _vm.observacao
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.observacao = $event.target.value;
+      }
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "input-group-append m-0"
+  }, [_c("button", {
+    staticClass: "btn btn-outline-secondary cor m-0",
+    attrs: {
+      "data-toggle": "modal",
+      "data-target": "#exampleModal2",
+      type: "button"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.filtrarObservacao();
+      }
+    }
+  }, [_c("i", {
+    staticClass: "bi bi-search"
+  })])])])]), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _c("div", {
     staticClass: "col-lg-5"
   }, [_c("div", {
     staticClass: "input-group"
@@ -5071,7 +5219,7 @@ var render = function render() {
     staticClass: "scroll"
   }, [_c("table", {
     staticClass: "table table-dark"
-  }, [_vm._m(4), _vm._v(" "), _c("tbody", _vm._l(_vm.caixa, function (item, index) {
+  }, [_vm._m(5), _vm._v(" "), _c("tbody", _vm._l(_vm.caixa, function (item, index) {
     return _c("tr", {
       key: index
     }, [_c("th", [_vm._v(" " + _vm._s(item.id) + " ")]), _vm._v(" "), _c("th", [_vm._v(" " + _vm._s(_vm._f("dataBR")(item.data)) + " ")]), _vm._v(" "), _c("th", [_vm._v(" " + _vm._s(item.tipo) + " ")]), _vm._v(" "), _c("th", [_vm._v(" " + _vm._s(item.historico) + " ")]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.forma_pagamento))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(_vm._f("valorBR")(item.valor)))]), _vm._v(" "), _c("th", [_c("button", {
@@ -5103,7 +5251,7 @@ var render = function render() {
     }
   }, [_c("div", {
     staticClass: "modal-content"
-  }, [_vm._m(5), _vm._v(" "), _c("div", {
+  }, [_vm._m(6), _vm._v(" "), _c("div", {
     staticClass: "modal-body"
   }, [_c("div", {
     staticClass: "row"
@@ -5308,14 +5456,12 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-lg-12"
-  }, [_c("div", {
-    staticClass: "input-group"
-  }, [_c("div", {
     staticClass: "col-lg-5"
-  }, [_c("h3", [_c("b", [_vm._v("Movimento de Caixa")])])]), _vm._v(" "), _c("div", {
+  }, [_c("h3", [_c("b", [_vm._v("Movimento de Caixa")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "col-lg-1"
   }, [_c("button", {
     staticClass: "btn btn-link btn-lg",
@@ -5327,23 +5473,11 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "bi bi-printer"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "col-lg-1"
-  }, [_c("button", {
-    staticClass: "btn btn-link btn-lg",
-    staticStyle: {
-      color: "black"
-    },
-    attrs: {
-      type: "button"
-    }
-  }, [_c("i", {
-    staticClass: "bi bi-arrow-clockwise"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "col-lg-5"
-  }, [_c("div", {
-    staticClass: "input-group"
-  }, [_c("div", {
+  })])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "input-group-prepend"
   }, [_c("button", {
     staticClass: "btn btn-outline-secondary",
@@ -5355,44 +5489,7 @@ var staticRenderFns = [function () {
       id: "inputGroupFileAddon03",
       disabled: ""
     }
-  }, [_vm._v("Data")])]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "date",
-      placeholder: "",
-      "aria-label": "Example text with button addon",
-      "aria-describedby": "button-addon1"
-    }
-  })])])])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "col-lg-4"
-  }, [_c("div", {
-    staticClass: "input-group"
-  }, [_c("input", {
-    staticClass: "form-control m-0",
-    staticStyle: {
-      "max-width": "85%",
-      "min-width": "85%"
-    },
-    attrs: {
-      type: "text",
-      placeholder: "Buscar"
-    }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "input-group-append m-0"
-  }, [_c("button", {
-    staticClass: "btn btn-outline-secondary cor m-0",
-    attrs: {
-      "data-toggle": "modal",
-      "data-target": "#exampleModal2",
-      type: "button"
-    }
-  }, [_c("i", {
-    staticClass: "bi bi-search"
-  })])])])]);
+  }, [_vm._v("Data")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -8708,7 +8805,7 @@ var render = function render() {
   }, [_vm._m(1), _vm._v(" "), _c("tbody", _vm._l(_vm.vendas, function (item, index) {
     return _c("tr", {
       key: index
-    }, [_c("th", [_vm._v(" " + _vm._s(item.id) + " ")]), _vm._v(" "), item.cliente != null ? _c("th", [_vm._v(" " + _vm._s(item.cliente.nome) + " ")]) : _vm._e(), _vm._v(" "), item.vendedor != null ? _c("th", [_vm._v(" " + _vm._s(item.vendedor.nome) + " ")]) : _c("th", [_vm._v(" ? ")]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.status))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(_vm._f("dataBR")(item.data)))]), _vm._v(" "), _c("th", [_c("button", {
+    }, [_c("th", [_vm._v(" " + _vm._s(item.id) + " ")]), _vm._v(" "), item.cliente != null ? _c("th", [_vm._v(" " + _vm._s(item.cliente.nome) + " ")]) : _c("th", [_vm._v(" ? ")]), _vm._v(" "), item.vendedor != null ? _c("th", [_vm._v(" " + _vm._s(item.vendedor.nome) + " ")]) : _c("th", [_vm._v(" ? ")]), _vm._v(" "), _c("th", [_vm._v(_vm._s(item.status))]), _vm._v(" "), _c("th", [_vm._v(_vm._s(_vm._f("dataBR")(item.data)))]), _vm._v(" "), _c("th", [_c("button", {
       staticClass: "btn btn-secondary",
       attrs: {
         type: "button"
@@ -10697,7 +10794,10 @@ var render = function render() {
       "aria-labelledby": "home-tab"
     }
   }, [_c("div", {
-    staticClass: "container"
+    staticClass: "container",
+    staticStyle: {
+      "min-width": "500px"
+    }
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
@@ -16391,7 +16491,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#linha{\n    width: 100%;\n    border-bottom: 1px, solid gray;\n}\n.totalValor{\n    border: 2px solid black;\n    border-radius: 0px;\n    border-color: rgb(227, 189, 189);\n    background-color: rgb(200, 214, 172);\n    padding-top: 5px;\n}\n\n\n", ""]);
+exports.push([module.i, "\n#linha{\n    width: 100%;\n    border-bottom: 1px, solid gray;\n}\n.totalValor{\n    border: 2px solid black;\n    border-radius: 0px;\n    border-color: rgb(227, 189, 189);\n    background-color: rgb(200, 214, 172);\n    padding-top: 5px;\n}\n\n\n\n", ""]);
 
 // exports
 
