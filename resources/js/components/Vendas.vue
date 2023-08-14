@@ -327,10 +327,6 @@
     import util from '../libs/util';
     const urlParams = new URLSearchParams(queryString);
 
- 
-                
-        
-
     export default{
         data(){
             return {
@@ -504,8 +500,14 @@
                     let response = await axios.get(Config.baseURL + '/vendas/' + id + '/abrir');
                     this.venda = response.data;
                     this.venda.itens = response.data.produtos;
-                    this.cliente = response.data.cliente;
-                    this.vendedor = response.data.vendedor;
+                      
+                    if(response.data.vendedor){
+                        this.vendedor = response.data.vendedor;
+                    }
+
+                    if(response.data.cliente){
+                        this.cliente = response.data.cliente;
+                    }
 
                     console.log("venda :",this.venda);
                     console.log("venda itens :",this.venda.itens);

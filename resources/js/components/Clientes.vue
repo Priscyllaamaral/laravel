@@ -36,19 +36,19 @@
 
                     <div class="form-group">
                         <label class= "espaco"> Endereço/Rua </label>
-                        <input v-model="endereco.rua" type="text" class="form-control espaco" name="inputEndereco" placeholder="Endereço">
+                        <input v-model="cliente.endereco.rua" type="text" class="form-control espaco" name="inputEndereco" placeholder="Endereço">
                     </div>
 
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label class= "espaco"> Cidade </label>
-                            <input v-model="endereco.cidade" type="text" class="form-control espaco" name="inputCidade" placeholder="Cidade">
+                            <input v-model="cliente.endereco.cidade" type="text" class="form-control espaco" name="inputCidade" placeholder="Cidade">
                         </div>
 
                         <div class="form-group col-md-2">
                             <label> Estado </label>
-                            <select v-model="endereco.estado" id="inputEstado" class="form-control">
+                            <select v-model="cliente.endereco.estado" id="inputEstado" class="form-control">
                                 <option selected>Tipo</option>
                                 <option value="AC">AC</option>
                                 <option value="AL">AL</option>
@@ -82,7 +82,7 @@
 
                         <div class="form-group col-md-4">
                             <label> Código postal </label>
-                            <input v-model="endereco.codigo_postal" type="text" class="form-control" name="inputCodigo">
+                            <input v-model="cliente.endereco.codigo_postal" type="text" class="form-control" name="inputCodigo">
                         </div>
                     </div>
 
@@ -110,17 +110,17 @@ const urlParams = new URLSearchParams(queryString);
         data(){
             return{
 
-                endereco:{
-                    id: null,
-                    rua: '',
-                    cidade: '',
-                    estado: '',
-                    codigo_postal: '',
-                    numero: '',
-                    bairro: '',
-                    complemento: '',
-                    ponto_referencia: ''
-                },
+                // endereco:{
+                //     id: null,
+                //     rua: '',
+                //     cidade: '',
+                //     estado: '',
+                //     codigo_postal: '',
+                //     numero: '',
+                //     bairro: '',
+                //     complemento: '',
+                //     ponto_referencia: ''
+                // },
 
                 cliente:{
                     id: null,
@@ -131,6 +131,17 @@ const urlParams = new URLSearchParams(queryString);
                     premium: 0,
                     codigo: '',
                     endereco_id: null,
+                    endereco:{
+                        id: null,
+                        rua: '',
+                        cidade: '',
+                        estado: '',
+                        codigo_postal: '',
+                        numero: '',
+                        bairro: '',
+                        complemento: '',
+                        ponto_referencia: ''
+                    },
                 }
 
             }
@@ -152,14 +163,14 @@ const urlParams = new URLSearchParams(queryString);
                 try{
                     if(this.cliente.id){
                         await axios.post(Config.baseURL + '/clientes/' + this.cliente.id + '/atualizar', this.cliente);
-                        await axios.post(Config.baseURL + '/enderecos/' + this.endereco.id + '/atualizar', this.endereco);
+                        //await axios.post(Config.baseURL + '/enderecos/' + this.endereco.id + '/atualizar', this.endereco);
                         window.alert("Atualizado com Sucesso")
 
                     }else{
 
-                        let resposta = await axios.post(Config.baseURL + '/enderecos/cadastrar', this.endereco);
+                        //let resposta = await axios.post(Config.baseURL + '/enderecos/cadastrar', this.endereco);
                         
-                        this.cliente.endereco_id = resposta.data.id;
+                        //this.cliente.endereco_id = resposta.data.id;
 
                         await axios.post(Config.baseURL + '/clientes/cadastrar', this.cliente);
 
@@ -187,12 +198,13 @@ const urlParams = new URLSearchParams(queryString);
                 try {
                     let response = await axios.get(Config.baseURL + '/clientes/' + id + '/abrir');
                     this.cliente = response.data;
+                    this.cliente.endereco = response.data.endereco;
 
                     //let response3 = await axios.get(Config.baseURL + `/clientes/buscar/${id}` )
                     
                     //console.log("DADOS: ",response3.data.codigo)
-                    let response2 = await axios.get(Config.baseURL + '/enderecos/' + this.cliente.endereco_id + '/abrir');
-                    this.endereco = response2.data[0];
+                    //let response2 = await axios.get(Config.baseURL + '/enderecos/' + this.cliente.endereco_id + '/abrir');
+                    //this.endereco = response2.data[0];
 
                     } catch (error) {
                     console.log('Erro:', error);

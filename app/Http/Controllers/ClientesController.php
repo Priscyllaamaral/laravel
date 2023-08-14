@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Cliente;
+use App\Endereco;
+
 
 class ClientesController extends Controller
 {
@@ -31,11 +33,24 @@ class ClientesController extends Controller
 
     public function abrir(Cliente $cliente)
     {
+        $cliente->load('endereco');
         return response()->json($cliente);
     }
 
     public function cadastrar(Request $request)
     {
+
+        $endereco = new Endereco();
+        $novoEndereco = $request->input('endereco');
+        $endereco->rua = $novoEndereco['rua'];
+        $endereco->numero = $novoEndereco['numero'];
+        $endereco->bairro = $novoEndereco['bairro'];
+        $endereco->complemento = $novoEndereco['complemento'];
+        $endereco->ponto_referencia = $novoEndereco['ponto_referencia'];
+        $endereco->cidade = $novoEndereco['cidade'];
+        $endereco->estado = $novoEndereco['estado'];
+        $endereco->codigo_postal = $novoEndereco['codigo_postal'];
+        $endereco->save();
 
         $cliente = new Cliente();
         $cliente->nome = $request->input('nome');
@@ -44,15 +59,18 @@ class ClientesController extends Controller
         $cliente->cpf = $request->input('cpf');
         $cliente->premium = $request->input('premium');
         $cliente->codigo = $request->input('codigo');
-        $cliente->endereco_id = $request->input('endereco_id');
+        $cliente->endereco_id = $endereco->id;
         $cliente->save();
         
+
         return response()->json($cliente);
     }
 
     public function destroy($id)
     {
         $cliente = Cliente::findOrFail($id);
+        $cliente->load('endereco');
+        $cliente->endereco()->delete();
         $cliente->delete();
 
         return "Produto Excluído com sucesso";
@@ -67,8 +85,10 @@ class ClientesController extends Controller
         $cliente->cpf = $request->input('cpf');
         $cliente->celular = $request->input('celular');
         $cliente->premium = $request->input('premium');
-        $cliente->endereco_id = $request->input('endereco_id');
+        //$cliente->endereco_id = $request->input('endereco_id');
         $cliente->save();
+
+        $cliente->endereco()->update($request->input('endereco'));
 
         //return redirect()->route('login');
         return response()->json($cliente);

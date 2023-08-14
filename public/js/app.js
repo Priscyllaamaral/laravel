@@ -1942,17 +1942,18 @@ var urlParams = new URLSearchParams(queryString);
   },
   data: function data() {
     return {
-      endereco: {
-        id: null,
-        rua: '',
-        cidade: '',
-        estado: '',
-        codigo_postal: '',
-        numero: '',
-        bairro: '',
-        complemento: '',
-        ponto_referencia: ''
-      },
+      // endereco:{
+      //     id: null,
+      //     rua: '',
+      //     cidade: '',
+      //     estado: '',
+      //     codigo_postal: '',
+      //     numero: '',
+      //     bairro: '',
+      //     complemento: '',
+      //     ponto_referencia: ''
+      // },
+
       cliente: {
         id: null,
         nome: '',
@@ -1961,7 +1962,18 @@ var urlParams = new URLSearchParams(queryString);
         cpf: '',
         premium: 0,
         codigo: '',
-        endereco_id: null
+        endereco_id: null,
+        endereco: {
+          id: null,
+          rua: '',
+          cidade: '',
+          estado: '',
+          codigo_postal: '',
+          numero: '',
+          bairro: '',
+          complemento: '',
+          ponto_referencia: ''
+        }
       }
     };
   },
@@ -1975,61 +1987,53 @@ var urlParams = new URLSearchParams(queryString);
     salvar: function salvar() {
       var _this = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var resposta;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
               _context.prev = 0;
               if (!_this.cliente.id) {
-                _context.next = 9;
+                _context.next = 7;
                 break;
               }
               _context.next = 4;
               return axios.post(Config.baseURL + '/clientes/' + _this.cliente.id + '/atualizar', _this.cliente);
             case 4:
-              _context.next = 6;
-              return axios.post(Config.baseURL + '/enderecos/' + _this.endereco.id + '/atualizar', _this.endereco);
-            case 6:
+              //await axios.post(Config.baseURL + '/enderecos/' + this.endereco.id + '/atualizar', this.endereco);
               window.alert("Atualizado com Sucesso");
-              _context.next = 16;
+              _context.next = 10;
               break;
-            case 9:
-              _context.next = 11;
-              return axios.post(Config.baseURL + '/enderecos/cadastrar', _this.endereco);
-            case 11:
-              resposta = _context.sent;
-              _this.cliente.endereco_id = resposta.data.id;
-              _context.next = 15;
+            case 7:
+              _context.next = 9;
               return axios.post(Config.baseURL + '/clientes/cadastrar', _this.cliente);
-            case 15:
+            case 9:
               //this.endereco.id_cliente
 
               // let id_endereco = resposta.data.id;
               // this.cliente.codigo = id_endereco;
 
               window.alert("Salvo com Sucesso");
-            case 16:
+            case 10:
               window.location.href = Config.baseURL + '/clientes';
-              _context.next = 22;
+              _context.next = 16;
               break;
-            case 19:
-              _context.prev = 19;
+            case 13:
+              _context.prev = 13;
               _context.t0 = _context["catch"](0);
               console.log(_context.t0);
-            case 22:
-              _context.prev = 22;
-              return _context.finish(22);
-            case 24:
+            case 16:
+              _context.prev = 16;
+              return _context.finish(16);
+            case 18:
             case "end":
               return _context.stop();
           }
-        }, _callee, null, [[0, 19, 22, 24]]);
+        }, _callee, null, [[0, 13, 16, 18]]);
       }))();
     },
     abrir: function abrir(id) {
       var _this2 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-        var response, response2;
+        var response;
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -2039,26 +2043,24 @@ var urlParams = new URLSearchParams(queryString);
             case 3:
               response = _context2.sent;
               _this2.cliente = response.data;
+              _this2.cliente.endereco = response.data.endereco;
 
               //let response3 = await axios.get(Config.baseURL + `/clientes/buscar/${id}` )
 
               //console.log("DADOS: ",response3.data.codigo)
-              _context2.next = 7;
-              return axios.get(Config.baseURL + '/enderecos/' + _this2.cliente.endereco_id + '/abrir');
-            case 7:
-              response2 = _context2.sent;
-              _this2.endereco = response2.data[0];
-              _context2.next = 14;
+              //let response2 = await axios.get(Config.baseURL + '/enderecos/' + this.cliente.endereco_id + '/abrir');
+              //this.endereco = response2.data[0];
+              _context2.next = 11;
               break;
-            case 11:
-              _context2.prev = 11;
+            case 8:
+              _context2.prev = 8;
               _context2.t0 = _context2["catch"](0);
               console.log('Erro:', _context2.t0);
-            case 14:
+            case 11:
             case "end":
               return _context2.stop();
           }
-        }, _callee2, null, [[0, 11]]);
+        }, _callee2, null, [[0, 8]]);
       }))();
     },
     voltar: function voltar() {
@@ -3041,21 +3043,15 @@ var urlParams = new URLSearchParams(queryString);
       this.deletar(this.idExcluir);
     },
     deletar: function deletar(id) {
-      var _this = this;
       try {
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(Config.baseURL + "/clientes/destroy/".concat(id)).then(function (response) {
-          var i = _this.dados.map(function (data) {
-            return data.id;
-          }).indexOf(id);
-          _this.dados.slice(i, 1);
-        });
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(Config.baseURL + "/clientes/destroy/".concat(id));
         window.location.href = Config.baseURL + '/clientes';
       } catch (error) {
         console.log(error);
       }
     },
     carregar: function carregar() {
-      var _this2 = this;
+      var _this = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
         var resultado;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
@@ -3066,7 +3062,7 @@ var urlParams = new URLSearchParams(queryString);
               return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(Config.baseURL + '/clientes/listar/');
             case 3:
               resultado = _context.sent;
-              _this2.dados = resultado.data;
+              _this.dados = resultado.data;
               _context.next = 10;
               break;
             case 7:
@@ -4321,8 +4317,12 @@ var urlParams = new URLSearchParams(queryString);
               response = _context3.sent;
               _this3.venda = response.data;
               _this3.venda.itens = response.data.produtos;
-              _this3.cliente = response.data.cliente;
-              _this3.vendedor = response.data.vendedor;
+              if (response.data.vendedor) {
+                _this3.vendedor = response.data.vendedor;
+              }
+              if (response.data.cliente) {
+                _this3.cliente = response.data.cliente;
+              }
               console.log("venda :", _this3.venda);
               console.log("venda itens :", _this3.venda.itens);
               _context3.next = 15;
@@ -5674,8 +5674,8 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.endereco.rua,
-      expression: "endereco.rua"
+      value: _vm.cliente.endereco.rua,
+      expression: "cliente.endereco.rua"
     }],
     staticClass: "form-control espaco",
     attrs: {
@@ -5684,12 +5684,12 @@ var render = function render() {
       placeholder: "Endereço"
     },
     domProps: {
-      value: _vm.endereco.rua
+      value: _vm.cliente.endereco.rua
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.$set(_vm.endereco, "rua", $event.target.value);
+        _vm.$set(_vm.cliente.endereco, "rua", $event.target.value);
       }
     }
   })]), _vm._v(" "), _c("div", {
@@ -5702,8 +5702,8 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.endereco.cidade,
-      expression: "endereco.cidade"
+      value: _vm.cliente.endereco.cidade,
+      expression: "cliente.endereco.cidade"
     }],
     staticClass: "form-control espaco",
     attrs: {
@@ -5712,12 +5712,12 @@ var render = function render() {
       placeholder: "Cidade"
     },
     domProps: {
-      value: _vm.endereco.cidade
+      value: _vm.cliente.endereco.cidade
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.$set(_vm.endereco, "cidade", $event.target.value);
+        _vm.$set(_vm.cliente.endereco, "cidade", $event.target.value);
       }
     }
   })]), _vm._v(" "), _c("div", {
@@ -5726,8 +5726,8 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.endereco.estado,
-      expression: "endereco.estado"
+      value: _vm.cliente.endereco.estado,
+      expression: "cliente.endereco.estado"
     }],
     staticClass: "form-control",
     attrs: {
@@ -5741,7 +5741,7 @@ var render = function render() {
           var val = "_value" in o ? o._value : o.value;
           return val;
         });
-        _vm.$set(_vm.endereco, "estado", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+        _vm.$set(_vm.cliente.endereco, "estado", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
       }
     }
   }, [_c("option", {
@@ -5862,8 +5862,8 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.endereco.codigo_postal,
-      expression: "endereco.codigo_postal"
+      value: _vm.cliente.endereco.codigo_postal,
+      expression: "cliente.endereco.codigo_postal"
     }],
     staticClass: "form-control",
     attrs: {
@@ -5871,12 +5871,12 @@ var render = function render() {
       name: "inputCodigo"
     },
     domProps: {
-      value: _vm.endereco.codigo_postal
+      value: _vm.cliente.endereco.codigo_postal
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.$set(_vm.endereco, "codigo_postal", $event.target.value);
+        _vm.$set(_vm.cliente.endereco, "codigo_postal", $event.target.value);
       }
     }
   })])]), _vm._v(" "), _c("div", {

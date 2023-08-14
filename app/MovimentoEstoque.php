@@ -12,7 +12,7 @@ class MovimentoEstoque extends Model
         'id', 'movimento', 'fornecedor_id', 'data'
     ];
 
-    function fornecedor() {
+    public function fornecedor() {
         return $this->hasOne(Fornecedor::class, 'id', 'fornecedor_id');
     }
 

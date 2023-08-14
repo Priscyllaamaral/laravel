@@ -89,11 +89,7 @@ const urlParams = new URLSearchParams(queryString);
             },
             deletar: function (id) {
                 try{
-                    axios.post(Config.baseURL + `/clientes/destroy/${id}`)
-                    .then(response => {
-                        let i = this.dados.map(data => data.id).indexOf(id);
-                        this.dados.slice(i, 1);
-                    });
+                    axios.post(Config.baseURL + `/clientes/destroy/${id}`);
                     window.location.href = Config.baseURL + '/clientes';
                 }catch(error){
                     console.log(error);
