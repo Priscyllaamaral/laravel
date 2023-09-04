@@ -34,9 +34,21 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class= "espaco"> Endereço/Rua </label>
-                        <input v-model="cliente.endereco.rua" type="text" class="form-control espaco" name="inputEndereco" placeholder="Endereço">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class= "espaco"> Endereço </label>
+                            <input v-model="cliente.endereco.logradouro" type="text" class="form-control espaco" name="inputEndereco" placeholder="Logradouro">
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label class= "espaco"> Número </label>
+                            <input v-model="cliente.endereco.numero" type="text" class="form-control espaco" name="inputEndereco" placeholder="Número">
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label class= "espaco"> Bairro </label>
+                            <input v-model="cliente.endereco.bairro" type="text" class="form-control espaco" name="inputEndereco" placeholder="Bairro">
+                        </div>
                     </div>
 
 
@@ -133,7 +145,7 @@ const urlParams = new URLSearchParams(queryString);
                     endereco_id: null,
                     endereco:{
                         id: null,
-                        rua: '',
+                        logradouro: '',
                         cidade: '',
                         estado: '',
                         codigo_postal: '',

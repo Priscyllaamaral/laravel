@@ -1965,7 +1965,7 @@ var urlParams = new URLSearchParams(queryString);
         endereco_id: null,
         endereco: {
           id: null,
-          rua: '',
+          logradouro: '',
           cidade: '',
           estado: '',
           codigo_postal: '',
@@ -2598,7 +2598,7 @@ var urlParams = new URLSearchParams(queryString);
         data_nascimento: '',
         celular: '',
         endereco: {
-          rua: '',
+          logradouro: '',
           numero: '',
           bairro: '',
           codigo_postal: '',
@@ -5667,32 +5667,86 @@ var render = function render() {
       }
     }
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
+    staticClass: "form-row"
+  }, [_c("div", {
+    staticClass: "form-group col-md-6"
   }, [_c("label", {
     staticClass: "espaco"
-  }, [_vm._v(" Endereço/Rua ")]), _vm._v(" "), _c("input", {
+  }, [_vm._v(" Endereço ")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.cliente.endereco.rua,
-      expression: "cliente.endereco.rua"
+      value: _vm.cliente.endereco.logradouro,
+      expression: "cliente.endereco.logradouro"
     }],
     staticClass: "form-control espaco",
     attrs: {
       type: "text",
       name: "inputEndereco",
-      placeholder: "Endereço"
+      placeholder: "Logradouro"
     },
     domProps: {
-      value: _vm.cliente.endereco.rua
+      value: _vm.cliente.endereco.logradouro
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.$set(_vm.cliente.endereco, "rua", $event.target.value);
+        _vm.$set(_vm.cliente.endereco, "logradouro", $event.target.value);
       }
     }
   })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group col-md-2"
+  }, [_c("label", {
+    staticClass: "espaco"
+  }, [_vm._v(" Número ")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.cliente.endereco.numero,
+      expression: "cliente.endereco.numero"
+    }],
+    staticClass: "form-control espaco",
+    attrs: {
+      type: "text",
+      name: "inputEndereco",
+      placeholder: "Número"
+    },
+    domProps: {
+      value: _vm.cliente.endereco.numero
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.cliente.endereco, "numero", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group col-md-4"
+  }, [_c("label", {
+    staticClass: "espaco"
+  }, [_vm._v(" Bairro ")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.cliente.endereco.bairro,
+      expression: "cliente.endereco.bairro"
+    }],
+    staticClass: "form-control espaco",
+    attrs: {
+      type: "text",
+      name: "inputEndereco",
+      placeholder: "Bairro"
+    },
+    domProps: {
+      value: _vm.cliente.endereco.bairro
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.cliente.endereco, "bairro", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "form-row"
   }, [_c("div", {
     staticClass: "form-group col-md-6"
@@ -7244,21 +7298,21 @@ var render = function render() {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "form-group col-md-6"
-  }, [_c("label", [_vm._v("Rua")]), _vm._v(" "), _c("input", {
+  }, [_c("label", [_vm._v("Logradouro")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.fornecedor.endereco.rua,
-      expression: "fornecedor.endereco.rua"
+      value: _vm.fornecedor.endereco.logradouro,
+      expression: "fornecedor.endereco.logradouro"
     }],
     staticClass: "form-control",
     domProps: {
-      value: _vm.fornecedor.endereco.rua
+      value: _vm.fornecedor.endereco.logradouro
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.$set(_vm.fornecedor.endereco, "rua", $event.target.value);
+        _vm.$set(_vm.fornecedor.endereco, "logradouro", $event.target.value);
       }
     }
   })]), _vm._v(" "), _c("div", {

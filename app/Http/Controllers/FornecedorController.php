@@ -97,7 +97,7 @@ class FornecedorController extends Controller
 
         $endereco = new Endereco ();
         $novoEndereco = $request->input('endereco');
-        $endereco->rua = $novoEndereco['rua'];
+        $endereco->rua = $novoEndereco['logradouro'];
         $endereco->cidade = $novoEndereco['cidade'];
         $endereco->estado = $novoEndereco['estado'];
         $endereco->codigo_postal = $novoEndereco['codigo_postal'];

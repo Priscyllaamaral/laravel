@@ -92,8 +92,8 @@
                                     <div class="container">
                                         <div class="row">
                                             <div class="form-group col-md-6">
-                                                <label>Rua</label>
-                                                <input v-model="fornecedor.endereco.rua" class="form-control"/>
+                                                <label>Logradouro</label>
+                                                <input v-model="fornecedor.endereco.logradouro" class="form-control"/>
                                             </div>
                                             <div class="form-group col-md-2">
                                                 <label>Número</label>
@@ -223,7 +223,7 @@ export default{
                 data_nascimento:'',
                 celular: '',
                 endereco:{
-                    rua: '',
+                    logradouro: '',
                     numero: '',
                     bairro: '',
                     codigo_postal: '',

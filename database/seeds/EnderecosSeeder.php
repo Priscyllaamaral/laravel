@@ -12,7 +12,7 @@ class EnderecosSeeder extends Seeder
     public function run()
     {
         \App\Endereco::create([
-            'rua' => 'rua das flores',
+            'logradouro' => 'rua das flores',
             'cidade' => 'scc',
             'estado' => 'PE',
             'codigo_postal' => '55190530',
@@ -23,7 +23,7 @@ class EnderecosSeeder extends Seeder
         ]);
 
         \App\Endereco::create([
-            'rua' => 'rua das graças',
+            'logradouro' => 'rua das graças',
             'cidade' => 'cabrália',
             'estado' => 'BA',
             'codigo_postal' => '55190850',
@@ -34,7 +34,7 @@ class EnderecosSeeder extends Seeder
         ]);
 
         \App\Endereco::create([
-            'rua' => 'rua das praças',
+            'logradouro' => 'rua das praças',
             'cidade' => 'taguatinga',
             'estado' => 'DF',
             'codigo_postal' => '55190850',
@@ -45,7 +45,7 @@ class EnderecosSeeder extends Seeder
         ]);
 
         \App\Endereco::create([
-            'rua' => 'Padre Leonardo',
+            'logradouro' => 'Padre Leonardo',
             'cidade' => 'Esperança',
             'estado' => 'PB',
             'codigo_postal' => '55190850',
@@ -56,7 +56,7 @@ class EnderecosSeeder extends Seeder
         ]);
 
         \App\Endereco::create([
-            'rua' => 'Soldado Batista',
+            'logradouro' => 'Soldado Batista',
             'cidade' => 'Vitória',
             'estado' => 'ES',
             'codigo_postal' => '55190850',
@@ -67,7 +67,7 @@ class EnderecosSeeder extends Seeder
         ]);
 
         \App\Endereco::create([
-            'rua' => 'rua Frei Caneca',
+            'logradouro' => 'rua Frei Caneca',
             'cidade' => 'Puxinanā',
             'estado' => 'PB',
             'codigo_postal' => '55190850',
