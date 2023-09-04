@@ -6594,7 +6594,7 @@ var staticRenderFns = [function () {
     staticClass: "label"
   }, [_c("b", [_vm._v("Movimentações")])]), _vm._v(" "), _c("h6", {
     staticClass: "label"
-  }, [_c("b", [_vm._v("Caixa, Estoque, Despesas")])])])])])])])])])]);
+  }, [_c("b", [_vm._v("Caixa, Despesas, Estoque, Vendas")])])])])])])])])])]);
 }];
 render._withStripped = true;
 

@@ -24,7 +24,7 @@
                             <div class="col-lg-8 col-md-8 col-sm-7 col-12">
                                 <div class="row espaco">
                                     <h4 class="label"><b>Movimentações</b></h4>
-                                    <h6 class="label"><b>Caixa, Estoque, Despesas</b></h6>
+                                    <h6 class="label"><b>Caixa, Despesas, Estoque, Vendas</b></h6>
                                 </div>
                             </div>                  
                         </div>          
