@@ -14,7 +14,6 @@ class AlterVendas20230810 extends Migration
     public function up()
     {
         Schema::table('vendas', function (Blueprint $table) {
-            $table->integer('vendedor_id')->nullable()->after('cliente_id');
             $table->text('observacao')->nullable()->after('cancelada');
         });
     }
@@ -27,7 +26,6 @@ class AlterVendas20230810 extends Migration
     public function down()
     {
         Schema::table('vendas', function (Blueprint $table) {
-            $table->dropColumn('vendedor_id');
             $table->dropColumn('observacao');
         });
     }

@@ -8,12 +8,13 @@ use App\Endereco;
 
 class EnderecosController extends Controller
 {
+    //Esse controller não é utilizado
     public function cadastrar(Request $request)
     {
        
 
         $endereco = new Endereco();
-        $endereco->rua = $request->input('rua');
+        $endereco->logradouro = $request->input('logradouro');
         $endereco->numero = $request->input('numero');
         $endereco->bairro = $request->input('bairro');
         $endereco->complemento = $request->input('complemento');
@@ -32,7 +33,7 @@ class EnderecosController extends Controller
     public function atualizar(Request $request, Endereco $endereco)
     {
 
-        $endereco->rua = $request->input('rua');
+        $endereco->logradouro = $request->input('logradouro');
         $endereco->cidade = $request->input('cidade');
         $endereco->estado = $request->input('estado');
         $endereco->codigo_postal = $request->input('codigo_postal');

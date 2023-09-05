@@ -42,7 +42,7 @@ class ClientesController extends Controller
 
         $endereco = new Endereco();
         $novoEndereco = $request->input('endereco');
-        $endereco->rua = $novoEndereco['logradouro'];
+        $endereco->logradouro = $novoEndereco['logradouro'];
         $endereco->numero = $novoEndereco['numero'];
         $endereco->bairro = $novoEndereco['bairro'];
         $endereco->complemento = $novoEndereco['complemento'];
