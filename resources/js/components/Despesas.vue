@@ -3,7 +3,7 @@
       <div class="container">
           <div class="row">
               <div class="col-md-12">
-                <h1 style="color: aliceblue;">Despesas
+                <h1 sclass="corTitulo">Despesas
                     <a href="/movimentacoes/despesas/nova" class="btn" style="float:right">
                         <button type="button" class="btn btn-light btn2" style="border-color: rgb(217, 219, 218);"> Nova Despesa</button></a>
                     <a class="btn" style="float:right">

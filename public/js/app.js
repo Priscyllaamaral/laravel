@@ -1942,7 +1942,7 @@ var urlParams = new URLSearchParams(queryString);
   data: function data() {
     return {
       loadings: {
-        loading: false,
+        loading: true,
         loading_mais: false
       },
       exibirBotaoMais: true,
@@ -1985,18 +1985,20 @@ var urlParams = new URLSearchParams(queryString);
             case 4:
               resultado = _context.sent;
               _this.dados = resultado.data;
+              _this.loadings.loading = false;
+              _this.loadings.loading_mais = true;
               _this.pular = _this.pular + 3;
-              _context.next = 12;
+              _context.next = 14;
               break;
-            case 9:
-              _context.prev = 9;
+            case 11:
+              _context.prev = 11;
               _context.t0 = _context["catch"](0);
               console.log(_context.t0);
-            case 12:
+            case 14:
             case "end":
               return _context.stop();
           }
-        }, _callee, null, [[0, 9]]);
+        }, _callee, null, [[0, 11]]);
       }))();
     },
     carregarMais: function carregarMais() {
@@ -2022,6 +2024,7 @@ var urlParams = new URLSearchParams(queryString);
               });
               if (resultado.data.length < 3) {
                 _this2.exibirBotaoMais = false;
+                _this2.loadings.loading_mais = false;
               } else {
                 _this2.pular = _this2.pular + 3;
               }
@@ -2035,14 +2038,10 @@ var urlParams = new URLSearchParams(queryString);
               _context2.t0 = _context2["catch"](0);
               console.log(_context2.t0);
             case 14:
-              _context2.prev = 14;
-              _this2.loadings.loading_mais = false;
-              return _context2.finish(14);
-            case 17:
             case "end":
               return _context2.stop();
           }
-        }, _callee2, null, [[0, 11, 14, 17]]);
+        }, _callee2, null, [[0, 11]]);
       }))();
     },
     editar: function editar(id) {
@@ -2211,7 +2210,7 @@ var urlParams = new URLSearchParams(queryString);
       }))();
     },
     voltar: function voltar() {
-      window.location.href = Config.baseURL + '/';
+      window.location.href = Config.baseURL + '/clientes/';
     }
   }
 });
@@ -5763,8 +5762,8 @@ var render = function render() {
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: _vm.loadings.loading_mais,
-      expression: "loadings.loading_mais"
+      value: _vm.loadings.loading,
+      expression: "loadings.loading"
     }],
     staticClass: "row justify-content-center"
   }, [_vm._m(1)]), _vm._v(" "), _c("div", {
@@ -5779,8 +5778,8 @@ var render = function render() {
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: !_vm.loadings.loading_mais,
-      expression: "!loadings.loading_mais"
+      value: _vm.loadings.loading_mais,
+      expression: "loadings.loading_mais"
     }],
     staticClass: "col pt-4 pb-4 text-center"
   }, [_c("button", {
@@ -5836,10 +5835,8 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "col-md-12"
   }, [_c("h1", {
-    staticStyle: {
-      color: "aliceblue"
-    }
-  }, [_vm._v("Clientes\n                    "), _c("a", {
+    staticClass: "corTitulo"
+  }, [_vm._v("Clientes \n                  "), _c("a", {
     attrs: {
       href: "/clientes/index"
     }
@@ -6324,7 +6321,7 @@ var render = function render() {
       click: _vm.salvar
     }
   }, [_vm._v("Salvar")]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-primary float-right",
+    staticClass: "btn btn-default float-right",
     staticStyle: {
       "margin-right": "10px"
     },
@@ -6334,7 +6331,7 @@ var render = function render() {
     on: {
       click: _vm.voltar
     }
-  }, [_vm._v("Sair")])])])])]);
+  }, [_vm._v("Cancelar")])])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -6344,8 +6341,10 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-lg-12 corH5"
-  }, [_c("h2", [_c("b", [_vm._v(" Registrar Cliente  ")])])])])]);
+    staticClass: "col-md-12"
+  }, [_c("h1", {
+    staticClass: "corTitulo"
+  }, [_vm._v("Cliente ")])])])]);
 }];
 render._withStripped = true;
 
@@ -6420,8 +6419,8 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "col-md-12"
   }, [_c("h1", {
-    staticStyle: {
-      color: "aliceblue"
+    attrs: {
+      sclass: "corTitulo"
     }
   }, [_vm._v("Despesas\n                "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("a", {
     staticClass: "btn",
@@ -7245,8 +7244,10 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-lg-12 corH5"
-  }, [_c("h2", [_c("b", [_vm._v(" Registrar Despesa  ")])])])])]);
+    staticClass: "col-lg-12"
+  }, [_c("h1", {
+    staticClass: "corTitulo"
+  }, [_vm._v("Despesa")])])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -7540,9 +7541,7 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "col-md-12"
   }, [_c("h1", {
-    staticStyle: {
-      color: "aliceblue"
-    }
+    staticClass: "corTitulo"
   }, [_vm._v("Fornecedores\n                     "), _c("a", {
     attrs: {
       href: "/fornecedores"
@@ -7623,7 +7622,7 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "container ajustar"
-  }, [_c("div", {
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col lg-12"
@@ -7632,7 +7631,7 @@ var render = function render() {
     staticStyle: {
       "background-color": "white"
     }
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
+  }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-lg-12"
@@ -8217,13 +8216,14 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "row",
-    staticStyle: {
-      "margin-bottom": "20px"
-    }
+    staticClass: "container"
   }, [_c("div", {
-    staticClass: "col-lg-12"
-  }, [_c("h3", [_c("b", [_vm._v("Fornecedores")])])])]);
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-md-12"
+  }, [_c("h1", {
+    staticClass: "corTitulo"
+  }, [_vm._v("Fornecedor")])])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -8738,8 +8738,8 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "col-md-12"
   }, [_c("h1", {
-    staticStyle: {
-      color: "aliceblue"
+    attrs: {
+      sclass: "corTitulo"
     }
   }, [_vm._v("Movimentos de Estoque\n                    "), _c("a", {
     attrs: {
@@ -9466,9 +9466,7 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "col-md-12"
   }, [_c("h1", {
-    staticStyle: {
-      color: "aliceblue"
-    }
+    staticClass: "corTitulo"
   }, [_vm._v("Produtos\n                     "), _c("a", {
     attrs: {
       href: "/produtos/index"
@@ -9937,8 +9935,10 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-lg-12 corH5"
-  }, [_c("h2", [_c("b", [_vm._v(" Registrar Produto  ")])])])])]);
+    staticClass: "col-md-12"
+  }, [_c("h1", {
+    staticClass: "corTitulo"
+  }, [_vm._v("Produto")])])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -10138,14 +10138,16 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
+    staticClass: "container"
+  }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-md-12"
   }, [_c("h1", {
-    staticStyle: {
-      color: "aliceblue"
+    attrs: {
+      sclass: "corTitulo"
     }
-  }, [_vm._v("Usuários\n                "), _c("a", {
+  }, [_vm._v("Usuários\n                    "), _c("a", {
     attrs: {
       href: "/usuario/novo"
     }
@@ -10158,7 +10160,7 @@ var staticRenderFns = [function () {
     attrs: {
       type: "button"
     }
-  }, [_vm._v("+")])])])])]);
+  }, [_vm._v("+")])])])])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -10505,14 +10507,14 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
+    staticClass: "container"
+  }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-md-12"
   }, [_c("h1", {
-    staticStyle: {
-      color: "aliceblue"
-    }
-  }, [_vm._v("Vendas\n                "), _c("a", {
+    staticClass: "corTitulo"
+  }, [_vm._v("Vendas\n                    "), _c("a", {
     attrs: {
       href: "/vendas"
     }
@@ -10525,7 +10527,7 @@ var staticRenderFns = [function () {
     attrs: {
       type: "button"
     }
-  }, [_vm._v("+")])])])])]);
+  }, [_vm._v("+")])])])])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -11413,7 +11415,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("div", {
     staticClass: "col-lg-12"
-  }, [_c("h3", [_c("b", [_vm._v("Vendas")])])])]);
+  }, [_c("h3", [_c("b", [_vm._v("Venda")])])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -11707,9 +11709,7 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "col-md-12"
   }, [_c("h1", {
-    staticStyle: {
-      color: "aliceblue"
-    }
+    staticClass: "corTitulo"
   }, [_vm._v("Vendedores\n                    "), _c("a", {
     attrs: {
       href: "/vendedores/novo"
@@ -11947,8 +11947,10 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-lg-12 corH5"
-  }, [_c("h2", [_c("b", [_vm._v("Registrar Vendedor")])])])])]);
+    staticClass: "col-md-12"
+  }, [_c("h1", {
+    staticClass: "corTitulo"
+  }, [_vm._v("Vendedor")])])])]);
 }];
 render._withStripped = true;
 
@@ -16033,7 +16035,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card[data-v-0d12987f]{\n   \n    /* width: 350px;\n    height: 120px; */\n    margin-bottom: 30px;\n    border: 1px solid purple;\n    border-radius: 10px;\n    background: white;\n    box-shadow: 10px 10px 0px 0px black;\n}\ni[data-v-0d12987f]{\n    padding-top: 15px;\n    padding-bottom: 10px;\n    font-size: 70px;\n    color: rgb(202, 128, 202);\n}\n.img[data-v-0d12987f]{\n    display: flex;\n    justify-content: center;\n}\n.label[data-v-0d12987f]{\n\n    align-items: center ;\n    text-align: right;\n    color: gray;\n}\n.espaco[data-v-0d12987f]{\n    margin-right: 2px;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.card[data-v-0d12987f]{\n   \n    /* width: 350px;\n    height: 120px; */\n    margin-bottom: 30px;\n    border: 1px solid rgb(202, 128, 202);\n    border-radius: 10px;\n    background: white;\n    box-shadow: 10px 10px 0px 0px black;\n}\ni[data-v-0d12987f]{\n    padding-top: 15px;\n    padding-bottom: 10px;\n    font-size: 70px;\n    color: rgb(202, 128, 202);\n}\n.img[data-v-0d12987f]{\n    display: flex;\n    justify-content: center;\n}\n.label[data-v-0d12987f]{\n\n    align-items: center ;\n    text-align: right;\n    color: gray;\n}\n.espaco[data-v-0d12987f]{\n    margin-right: 2px;\n}\n\n\n", ""]);
 
 // exports
 
@@ -16223,7 +16225,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.card[data-v-656fb6cd]{\n   \n    /* width: 350px;\n    height: 120px; */\n    margin-bottom: 30px;\n    border: 1px solid purple;\n    border-radius: 10px;\n    background: white;\n    box-shadow: 10px 10px 0px 0px black;\n}\ni[data-v-656fb6cd]{\n    padding-top: 15px;\n    padding-bottom: 10px;\n    font-size: 70px;\n    color: rgb(115, 172, 241);\n}\n.img[data-v-656fb6cd]{\n    display: flex;\n    justify-content: center;\n}\n.label[data-v-656fb6cd]{\n\n    align-items: center ;\n    text-align: right;\n    color: gray;\n}\n.espaco[data-v-656fb6cd]{\n    margin-right: 2px;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.card[data-v-656fb6cd]{\n   \n    /* width: 350px;\n    height: 120px; */\n    margin-bottom: 30px;\n    border: 1px solid rgb(115, 172, 241);\n    border-radius: 10px;\n    background: white;\n    box-shadow: 10px 10px 0px 0px black;\n}\ni[data-v-656fb6cd]{\n    padding-top: 15px;\n    padding-bottom: 10px;\n    font-size: 70px;\n    color: rgb(115, 172, 241);\n}\n.img[data-v-656fb6cd]{\n    display: flex;\n    justify-content: center;\n}\n.label[data-v-656fb6cd]{\n\n    align-items: center ;\n    text-align: right;\n    color: gray;\n}\n.espaco[data-v-656fb6cd]{\n    margin-right: 2px;\n}\n\n\n", ""]);
 
 // exports
 

@@ -1,14 +1,15 @@
 <template>
      <div class="container ajustar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="corTitulo">Fornecedor</h1>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col lg-12">
-                <div class="card" style="background-color: white;">
-                    <div class="row" style="margin-bottom: 20px">
-                        <div class="col-lg-12">
-                            <h3><b>Fornecedores</b></h3>
-                        </div>
-                    </div>
-                
+                <div class="card" style="background-color: white;">                
                     <div class="row">
                         <div class="col-lg-12">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">

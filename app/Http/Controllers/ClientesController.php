@@ -47,11 +47,13 @@ class ClientesController extends Controller
     }
 
     public function cadastrar(Request $request)
+
+
     {
-        $novoEndereco = $request->input('endereco');
-        if($novoEndereco['logradouro'] != null) {
+         if($request->filled('endereco.logradouro')) {
 
             $endereco = new Endereco();
+            $novoEndereco = $request->input('endereco');
             $endereco->logradouro = $novoEndereco['logradouro'];
             $endereco->numero = $novoEndereco['numero'];
             $endereco->bairro = $novoEndereco['bairro'];
@@ -105,12 +107,12 @@ class ClientesController extends Controller
     {
         // return $request->all();
 
-        
-        $novoEndereco = $request->input('endereco');
+       
 
-        if($novoEndereco['id'] == null && $novoEndereco['logradouro'] != null) {
+        if(!$request->filled('endereco.id') && $request->filled('endereco.logradouro')) {
 
             $endereco = new Endereco();
+            $novoEndereco = $request->input('endereco');
             $endereco->logradouro = $novoEndereco['logradouro'];
             $endereco->numero = $novoEndereco['numero'];
             $endereco->bairro = $novoEndereco['bairro'];
@@ -130,7 +132,7 @@ class ClientesController extends Controller
             //$cliente->endereco_id = $request->input('endereco_id');
             $cliente->save();
 
-        } else if($novoEndereco['id'] == null && $novoEndereco['logradouro'] == null) {
+        } else if(!$request->filled('endereco.id') && !$request->filled('endereco.logradouro')) {
 
             $cliente->nome = $request->input('nome');
             $cliente->email = $request->input('email');

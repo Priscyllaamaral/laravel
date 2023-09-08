@@ -39,7 +39,8 @@
         width: 100vw;
         height: 100vh;
         display: flex;
-        background: darkslateblue;
+        /* background: darkslateblue; */
+        background: aliceblue;
         flex-direction: row;
         justify-content: center;
         align-items: center;
@@ -47,8 +48,15 @@
 
       }
 
+      .corTitulo{
+        color: rgb(75, 78, 80);
+      }
+      .corNav{
+        background: rgb(201, 196, 238);
+      }
+
       html {
-        background: darkslateblue;
+        /* background: darkslateblue; */
  
         min-height: 100vh;
 
@@ -102,18 +110,18 @@
     <div class="flex-center position-ref full-height">
           <div class="top-right links">
                 @auth
-                <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-                    <a class="navbar-brand" href="#">Anron</a>
+                <nav class="navbar navbar-expand-lg navbar-light corNav ">
+                    <a class="navbar-brand" href="#">Laravel</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
                       <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse " id="navbarNav">
                       <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                          <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(Página atual)</span></a>
+                          <a class="nav-link" href="{{ route('home') }}">Início <span class="sr-only">(Página atual)</span></a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="{{ route('logout') }}">LogOut</a>
+                          <a class="nav-link" href="{{ route('logout') }}">Sair</a>
                         </li>
                       </ul>
                     </div>

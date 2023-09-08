@@ -81,7 +81,7 @@
     /* width: 350px;
     height: 120px; */
     margin-bottom: 30px;
-    border: 1px solid purple;
+    border: 1px solid rgb(115, 172, 241);
     border-radius: 10px;
     background: white;
     box-shadow: 10px 10px 0px 0px black;

@@ -2,8 +2,8 @@
     <div class="container ajustar">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 corH5">
-                    <h2><b> Registrar Produto  </b></h2>
+                <div class="col-md-12">
+                    <h1 class="corTitulo">Produto</h1>
                 </div>
             </div>
         </div>

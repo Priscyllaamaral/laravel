@@ -2,8 +2,8 @@
   <div class="container ajustar">
       <div class="container">
           <div class="row">
-              <div class="col-lg-12 corH5">
-                  <h2><b> Registrar Despesa  </b></h2>
+              <div class="col-lg-12">
+                <h1 class="corTitulo">Despesa</h1>
               </div>
           </div>
       </div>

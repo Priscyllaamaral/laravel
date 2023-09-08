@@ -1,12 +1,12 @@
 <template>
     <div class="container ajustar">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 corH5">
-                    <h2><b> Registrar Cliente  </b></h2>
-                </div>
-            </div>
-        </div>
+          <div class="row">
+              <div class="col-md-12">
+                  <h1 class="corTitulo">Cliente </h1>
+              </div>
+          </div>
+      </div>
         <div class="card">
             <div class="card-body">
                 <form>
@@ -105,7 +105,7 @@
                     </div>
 
                     <button type="button" @click="salvar" class="btn btn-primary float-right" style="margin-right: 10px;" >Salvar</button>
-                    <button type="button" @click="voltar" class="btn btn-primary float-right" style="margin-right: 10px;" >Sair</button>
+                    <button type="button" @click="voltar" class="btn btn-default float-right" style="margin-right: 10px;" >Cancelar</button>
                 </form>
             </div>
         </div>
@@ -235,7 +235,7 @@ const urlParams = new URLSearchParams(queryString);
             },
 
             voltar(){
-                window.location.href = Config.baseURL + '/';
+                window.location.href = Config.baseURL + '/clientes/';
             },
 
 

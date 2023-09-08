@@ -5,7 +5,7 @@
                 <div class="card" style="background-color: white;">
                     <div class="row" style="margin-bottom: 20px">
                         <div class="col-lg-12">
-                            <h3><b>Vendas</b></h3>
+                            <h3><b>Venda</b></h3>
                         </div>
                     </div>
                 
