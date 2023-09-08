@@ -36,9 +36,11 @@ class FornecedorController extends Controller
 
     public function listar()
     {
-        // $fornecedores = Fornecedor::all();
+        $fornecedores = Fornecedor::all();
         // dd($fornecedores);
-        return Fornecedor::all();
+        //$fornecedores = Fornecedor::paginate(5);
+        return $fornecedores;
+        //return Fornecedor::paginate(5);
     }
 
     public function search(Request $request)

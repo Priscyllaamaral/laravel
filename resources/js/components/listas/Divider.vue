@@ -10,7 +10,7 @@
   
   <script>
     export default {
-      name: "ListaView",
+      name: "Divider",
   
       components: {
         // 

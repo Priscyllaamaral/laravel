@@ -2,255 +2,209 @@
     <div class="container ajustar">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 corH5">
-                    <h2><b> Registrar Cliente  </b></h2>
+                <div class="col-md-12">
+                    <h1 style="color: aliceblue;">Clientes
+                        <a href="/clientes/index"><button class="btn btn-secondary btn-lg" type="button" style="border-radius: 20px; float:right" >+</button></a>
+                    </h1>
                 </div>
             </div>
         </div>
-        <div class="card">
-            <div class="card-body">
-                <form>
-                
-                    <div class="form-row ">
-                        <div class="form-group col-md-8">
-                            <label class= "espaco"> Nome </label>
-                            <input v-model="cliente.nome" type="text" class="form-control espaco" name="inputNome" placeholder="Nome">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label> CPF/CNPJ </label>
-                            <!-- <input v-model="cliente.cpf" type="text" class="form-control" name="inputCPF" placeholder="CPF"> -->
-                            <cpf-cnpj  v-model="cliente.cpf"></cpf-cnpj>
-                        </div>
-                    </div>
 
-                    <div class="form-row ">
-                        <div class="form-group col-md-4">
-                            <label class= "espaco"> Telefone </label>
-                            <input v-model="cliente.celular" type="text" class="form-control espaco" name="inputNome" placeholder="Telefone">
-                        </div>
-                        <div class="form-group col-md-8">
-                            <label> E-mail </label>
-                            <input v-model="cliente.email" type="email" class="form-control" name="inputCPF" placeholder="E-mail">
-                        </div>
-                    </div>
+        <div class="row justify-content-center">
+          <div class="col-sm-9 ">
+            <div class="row justify-content-center pb-5">
+                <lista-view v-for= "(item, index) in dados" :key="index" :corBordaStart="cor">
+                    <template #id-codigo> 
+                        <h5 class="mt-1 mb-0">{{ item.id }}</h5>
+                    </template>
+                    <template #descricoes>
+                      <h4 class="ml-5">{{ item.nome }}</h4>
+                      <h5 class="ml-5">{{ item.cpf }}</h5>
+                    </template>
+                    <template #badges>
+                      <span v-if=item.premium class="badge bg-success fw-bold">Premium</span>
+                      <span v-if=!item.premium class="badge bg-default text-dark fw-bold">Comum</span>
+                    </template>
+                    <template #botoes-acoes1> 
+                        <button class="btn" type="button" @click="editar(item.id)"><i class="bi bi-pencil-square"></i></button>
+                    </template>
+                    <template #botoes-acoes2>
+                        <button class="btn" type="button" data-toggle="modal" data-target="#confirmar" @click="excluir(item.id)" ><i class="bi bi-trash"></i></button>
+                    </template>
+                </lista-view>
+            </div>
+          </div>
+        </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label class= "espaco"> Endereço </label>
-                            <input v-model="cliente.endereco.logradouro" type="text" class="form-control espaco" name="inputEndereco" placeholder="Logradouro">
-                        </div>
+        <div class="row justify-content-center" v-show="loadings.loading_mais">
+          <div class="col-12 pt-3 pb-5 text-center">
+            <div class="spinner-border " role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        </div>
 
-                        <div class="form-group col-md-2">
-                            <label class= "espaco"> Número </label>
-                            <input v-model="cliente.endereco.numero" type="text" class="form-control espaco" name="inputEndereco" placeholder="Número">
-                        </div>
+        <div class="row" v-show="exibirBotaoMais">
+          <div class="col pt-4 pb-4 text-center" v-show="!loadings.loading_mais">
+            <button type="button" class="btn btn-default text-white" @click="carregarMais">Mais</button>
+          </div>
+        </div>
+            
+             <!-- <table class="table table-dark">
+                <thead>
+                    <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Celular</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col"></th>
 
-                        <div class="form-group col-md-4">
-                            <label class= "espaco"> Bairro </label>
-                            <input v-model="cliente.endereco.bairro" type="text" class="form-control espaco" name="inputEndereco" placeholder="Bairro">
-                        </div>
-                    </div>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for= "(item, index) in dados" :key="index">
+                    <th scope="row">{{ item.id }}</th>
+                    <td>{{ item.nome }}</td>
+                    <td>{{ item.celular }}</td>
+                    <td>{{ item.email }}</td>
+                    <td>{{ item.cpf }}</td>
+                    <td>
+                        <button class="btn btn-secondary" type="button" @click="editar(item.id)"><i class="bi bi-pencil-square"></i></button>
+                        <button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#confirmar" @click="excluir(item.id)" ><i class="bi bi-trash"></i></button>
+                    </td>
+                    </tr>
+                </tbody>
+            </table> -->
 
 
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label class= "espaco"> Cidade </label>
-                            <input v-model="cliente.endereco.cidade" type="text" class="form-control espaco" name="inputCidade" placeholder="Cidade">
-                        </div>
 
-                        <div class="form-group col-md-2">
-                            <label> Estado </label>
-                            <select v-model="cliente.endereco.estado" id="inputEstado" class="form-control">
-                                <option selected>Tipo</option>
-                                <option value="AC">AC</option>
-                                <option value="AL">AL</option>
-                                <option value="AP">AP</option>
-                                <option value="AM">AM</option>
-                                <option value="BA">BA</option>
-                                <option value="CE">CE</option>
-                                <option value="DF">DF</option>
-                                <option value="ES">ES</option>
-                                <option value="GO">GO</option>
-                                <option value="MA">MA</option>
-                                <option value="MT">MT</option>
-                                <option value="MS">MS</option>
-                                <option value="MG">MG</option>
-                                <option value="PA">PA</option>
-                                <option value="PB">PB</option>
-                                <option value="PR">PR</option>
-                                <option value="PE">PE</option>
-                                <option value="PI">PI</option>
-                                <option value="RJ">RJ</option>
-                                <option value="RN">RN</option>
-                                <option value="RS">RS</option>
-                                <option value="RO">RO</option>
-                                <option value="RR">RR</option>
-                                <option value="SC">SC</option>
-                                <option value="SP">SP</option>
-                                <option value="SE">SE</option>
-                                <option value="TO">TO</option>
-                            </select>
-                        </div>
 
-                        <div class="form-group col-md-4">
-                            <label> Código postal </label>
-                            <input v-model="cliente.endereco.codigo_postal" type="text" class="form-control" name="inputCodigo">
-                        </div>
-                    </div>
-
-                    
-                    <div class="form-check form-check-inline">
-                        <input v-model="cliente.premium" class="form-check-input confirmacao espaco" type="checkbox" id="inlineCheckbox1" value="1">
-                        <label class="form-check-label" for="inlineCheckbox1">Cliente Premium </label>
-                    </div>
-
-                    <button type="button" @click="salvar" class="btn btn-primary float-right" style="margin-right: 10px;" >Salvar</button>
-                    <button type="button" @click="voltar" class="btn btn-primary float-right" style="margin-right: 10px;" >Sair</button>
-                </form>
+         <!-- Modal -->
+         <div class="modal fade" id="confirmar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Deseja mesmo deletar este Cliente?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" @click="confirmar" class="btn btn-primary" data-dismiss="modal">Confirmar</button>
+                </div>
+                </div>
             </div>
         </div>
+        <!-- Modal -->
+
+    <divider></divider>
+    
     </div>
 </template>
 
+
 <script>
-import CpfCnpj from './CpfCnpj.vue';
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
+  import axios from 'axios';
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
 
     export default {
-  components: { CpfCnpj },
+      name: 'Clientes',
+
         data(){
             return{
-
-                // endereco:{
-                //     id: null,
-                //     rua: '',
-                //     cidade: '',
-                //     estado: '',
-                //     codigo_postal: '',
-                //     numero: '',
-                //     bairro: '',
-                //     complemento: '',
-                //     ponto_referencia: ''
-                // },
-
-                cliente:{
-                    id: null,
-                    nome: '',
-                    celular: '',
-                    email: '',
-                    cpf: '',
-                    premium: 0,
-                    codigo: '',
-                    endereco_id: null,
-                    endereco:{
-                        id: null,
-                        logradouro: '',
-                        cidade: '',
-                        estado: '',
-                        codigo_postal: '',
-                        numero: '',
-                        bairro: '',
-                        complemento: '',
-                        ponto_referencia: ''
-                    },
-                }
-
+              loadings: {
+                loading: false,
+                loading_mais: false,
+              },
+              exibirBotaoMais: true,
+                dados: '',
+                idExcluir : -1,
+                cor: "border-success",
+              pular: 0
             }
         },
 
+        mounted(){
+            this.carregar();
 
-
-        mounted() {
-            console.log(urlParams.get('id'))
-            if (urlParams.get('id')) {
-              this.abrir(urlParams.get('id'))
-              
-            }
-   
         },
-        methods: {
-
-            async salvar(){
+        methods:{
+            confirmar: function () {
+                this.deletar(this.idExcluir);
+            },
+            deletar: function (id) {
                 try{
-                    if(this.cliente.id){
-                        await axios.post(Config.baseURL + '/clientes/' + this.cliente.id + '/atualizar', this.cliente);
-                        //await axios.post(Config.baseURL + '/enderecos/' + this.endereco.id + '/atualizar', this.endereco);
-                        window.alert("Atualizado com Sucesso")
+                    axios.post(Config.baseURL + `/clientes/destroy/${id}`);
+                    window.location.href = Config.baseURL + '/clientes';
+                }catch(error){
+                    console.log(error);
+                }
+            },
+            async carregar() {
+                try{
+                  let params = {
+                    pular: this.pular,
+                  }
 
-                    }else{
+                    let resultado = await axios.get(Config.baseURL + '/clientes/listar/', { params: params });
+                    this.dados = resultado.data;
 
-                        //let resposta = await axios.post(Config.baseURL + '/enderecos/cadastrar', this.endereco);
-                        
-                        //this.cliente.endereco_id = resposta.data.id;
-
-                        await axios.post(Config.baseURL + '/clientes/cadastrar', this.cliente);
-
-                        
-
-                        //this.endereco.id_cliente
-                        
-                        // let id_endereco = resposta.data.id;
-                        // this.cliente.codigo = id_endereco;
-
-                        
-                        window.alert("Salvo com Sucesso")
-                    }
-                    
-                    window.location.href = Config.baseURL + '/clientes'
+                    this.pular = this.pular + 3
                 }catch(erro){
                     console.log(erro)
-                }finally{
-
-                    
-                }
-
-            },
-            async abrir(id){
-                try {
-                    let response = await axios.get(Config.baseURL + '/clientes/' + id + '/abrir');
-                    this.cliente = response.data;
-                    this.cliente.endereco = response.data.endereco;
-
-                    //let response3 = await axios.get(Config.baseURL + `/clientes/buscar/${id}` )
-                    
-                    //console.log("DADOS: ",response3.data.codigo)
-                    //let response2 = await axios.get(Config.baseURL + '/enderecos/' + this.cliente.endereco_id + '/abrir');
-                    //this.endereco = response2.data[0];
-
-                    } catch (error) {
-                    console.log('Erro:', error);
                 }
             },
 
-            voltar(){
-                window.location.href = Config.baseURL + '/';
+            async carregarMais() {
+                try{
+                  this.loadings.loading_mais = true;
+
+                  let params = {
+                    pular: this.pular,
+                  }
+
+                    let resultado = await axios.get(Config.baseURL + '/clientes/listar/', { params: params });
+                    resultado.data.forEach((cliente) => {
+                      this.dados.push(cliente);
+                    })
+
+                    if (resultado.data.length < 3) {
+                      this.exibirBotaoMais = false;
+                    } else {
+                      this.pular = this.pular + 3
+                    }
+
+                    $('body, html').animate({
+                      scrollTop: document.body.scrollHeight
+                    }, 'slow')
+                }catch(erro){
+                    console.log(erro)
+                } finally {
+                  this.loadings.loading_mais = false;
+                }
             },
 
+            editar(id){
+                window.location.href = Config.baseURL + '/clientes/editar?id='+id;
+            },
 
-        }
+            excluir(id){
+                this.idExcluir = id;
+            }
+        }   
     }
+
+
+
 </script>
 
 <style>
-/* input{
-    min-width: 80%;
-    max-width: 80%;
-} */
-.card{
-    margin-left: 10px;
-    margin-right: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-/* .espaco{
-    margin-left: 10px;
-} */
-
-.confirmacao {
-    min-width: 20px;
-    min-height: 20px;
-    margin-right: 5px;
-}
-
+.scroll {
+    min-height: 100px;
+    max-height: 500px;
+    overflow-y: scroll;
+  }
 </style>

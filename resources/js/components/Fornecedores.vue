@@ -1,332 +1,133 @@
 <template>
-     <div class="container ajustar">
-        <div class="row">
-            <div class="col lg-12">
-                <div class="card" style="background-color: white;">
-                    <div class="row" style="margin-bottom: 20px">
-                        <div class="col-lg-12">
-                            <h3><b>Fornecedores</b></h3>
-                        </div>
-                    </div>
-                
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Pessoal</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Endereço</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Observações</button>
-                                </li>
-                            </ul>
-                            <br>
-                            <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-lg-5">
-                                                <div class="card">
-                                                    <div class="thumb">
-                                                        <div class="cont">
-                                                            <div class="wrapper">
-                                                                <div class="image">
-                                                                    <img v-bind:src="fornecedor.foto" alt="">
-                                                                </div>
-                                                                <div class="content">
-                                                                    <div class="icon"><i class="bi bi-cloud-upload"></i></div>
-                                                                    <div class="text">No file chosen, yet!!</div>
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <input id="inputFoto" ref="foto" v-on:change="onFileChange" type="file" accept="image/*"> 
-                                                            </div> 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <br><br>
-                                            </div>
-                                            <div class="col-lg-7">
-                                                <div class="card">
-                                                    <div class="row">
-                                                        <div class="form-group col-lg-12">
-                                                            <label>Nome</label>
-                                                            <input v-model="fornecedor.nome" class="form-control"/>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group col-lg-6">
-                                                            <label>CPF</label>
-                                                            <!-- <input v-model="fornecedor.cpfcnpj" class="form-control"/> -->
-                                                            <cpf-cnpj  v-model="fornecedor.cpfcnpj"></cpf-cnpj>
-                                                        </div>
-                                                        <div class="form-group col-lg-6">
-                                                            <label>RG</label>
-                                                            <input v-model="fornecedor.rg" class="form-control"/>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group col-md-12">
-                                                            <label>E-mail</label>
-                                                            <input v-model="fornecedor.email" class="form-control"/>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group col-md-5">
-                                                            <label>Data Nascimento</label>
-                                                            <input v-model="fornecedor.data_nascimento" type="date" class="form-control"/>
-                                                        </div>
-                                                        <div class="form-group col-md-7">
-                                                            <label>Celular</label>
-                                                            <input v-model="fornecedor.celular" class="form-control"/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>        
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="form-group col-md-6">
-                                                <label>Logradouro</label>
-                                                <input v-model="fornecedor.endereco.logradouro" class="form-control"/>
-                                            </div>
-                                            <div class="form-group col-md-2">
-                                                <label>Número</label>
-                                                <input v-model="fornecedor.endereco.numero" class="form-control"/>
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label>Bairro</label>
-                                                <input v-model="fornecedor.endereco.bairro" class="form-control"/>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="form-group col-md-3">
-                                                <label>CEP</label>
-                                                <input v-model="fornecedor.endereco.codigo_postal" class="form-control"/>
-                                            </div>
-                                            <div class="form-group col-md-7">
-                                                <label>Cidade</label>
-                                                <input v-model="fornecedor.endereco.cidade" class="form-control"/>
-                                            </div>
-                                            <div class="form-group col-md-2">
-                                                <label>Estado</label>
-                                                <!-- <input v-model="fornecedor.endereco.estado" class="form-control"/> -->
-                                                <select v-model="fornecedor.endereco.estado" class="form-control">
-                                                    <option selected>Tipo</option>
-                                                    <option value="AC">AC</option>
-                                                    <option value="AL">AL</option>
-                                                    <option value="AP">AP</option>
-                                                    <option value="AM">AM</option>
-                                                    <option value="BA">BA</option>
-                                                    <option value="CE">CE</option>
-                                                    <option value="DF">DF</option>
-                                                    <option value="ES">ES</option>
-                                                    <option value="GO">GO</option>
-                                                    <option value="MA">MA</option>
-                                                    <option value="MT">MT</option>
-                                                    <option value="MS">MS</option>
-                                                    <option value="MG">MG</option>
-                                                    <option value="PA">PA</option>
-                                                    <option value="PB">PB</option>
-                                                    <option value="PR">PR</option>
-                                                    <option value="PE">PE</option>
-                                                    <option value="PI">PI</option>
-                                                    <option value="RJ">RJ</option>
-                                                    <option value="RN">RN</option>
-                                                    <option value="RS">RS</option>
-                                                    <option value="RO">RO</option>
-                                                    <option value="RR">RR</option>
-                                                    <option value="SC">SC</option>
-                                                    <option value="SP">SP</option>
-                                                    <option value="SE">SE</option>
-                                                    <option value="TO">TO</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="form-group col-md-6">
-                                                <label>Complemento</label>
-                                                <input v-model="fornecedor.endereco.complemento" class="form-control"/>
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label>Ponto de referência</label>
-                                                <input v-model="fornecedor.endereco.ponto_referencia" class="form-control"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="form-group col-md-4">
-                                                <label>Comissão</label>
-                                                <select  v-model="fornecedor.observacao.comissao" class="form-control">
-                                                    <option selected>Tipo</option>
-                                                    <option value="Permanente">Permanente</option>
-                                                    <option value="Variável">Variável</option>
-                                
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-md-3">
-                                                <label>Status</label>
-                                                <select v-model="fornecedor.observacao.status" class="form-control">
-                                                    <option selected>Tipo</option>
-                                                    <option value="Ativo">Ativo</option>
-                                                    <option value="Suspenso">Suspenso</option>
-                                                    <option value="Inapto">Inapto</option>
-                                                    <option value="Baixado">Baixado</option>
-                                                    <option value="Nulo">Nulo</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label>Observaçōes</label>
-                                                <textarea v-model="fornecedor.observacao.observacoes" rows="4" cols="50" class="form-control" style="resize:none"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <button @click="salvar" type="button" class="btn btn-primary" style="float:right ; margin-right: 20px">Salvar</button>
-                        </div>
-                    </div>
+    
+    <div class="container ajustar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 style="color: aliceblue;">Fornecedores
+                        <a href="/fornecedores"><button class="btn btn-secondary btn-lg" type="button" style="border-radius: 20px; float:right" >+</button></a>
+                    </h1>
                 </div>
             </div>
         </div>
-    </div>
+        <hr/>
+        <div class="scroll" >
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">CPF</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-info" v-for="(item, index) in dados" :key="index">
+                    <th scope="row">{{ item.id }}</th>
+                    <td>{{ item.nome }}</td>
+                    <td>{{ item.cpfcnpj }}</td>
+                    <td>
+                        <button class="btn btn-secondary" type="button"><i class="bi bi-pencil-square" @click="editar(item.id)"></i></button>
+                        <button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#confirmar" @click="excluir(item.id)"><i class="bi bi-trash"></i></button>
+                    </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="py-4">
+                
+            </div>
+
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="confirmar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Deseja mesmo deletar este Fornecedor?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" @click="confirmar" class="btn btn-primary" data-dismiss="modal">Confirmar</button>
+                </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+   </div>
 </template>
+
 <script>
 import axios from 'axios';
-import CpfCnpj from './CpfCnpj.vue';
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-export default{
-  components: { CpfCnpj },
-    
-    data(){
-        return{
 
-            fornecedor:{
-                id:'',
-                foto : null,
-                nome: '',
-                cpfcnpj: '',
-                rg: '',
-                data_nascimento:'',
-                celular: '',
-                endereco:{
-                    logradouro: '',
-                    numero: '',
-                    bairro: '',
-                    codigo_postal: '',
-                    cidade: '',
-                    estado: '',
-                    complemento: '',
-                    ponto_referencia: ''
+    export default{
+        data(){
+            return{
+                dados: '',
+                idExcluir : -1
+            }
+        },
 
-                },
-                observacao:{
-                    comissao:'',
-                    status: '',
-                    observacoes: ''
+
+        mounted(){
+            this.carregar();
+        },
+
+        methods:{
+            confirmar: function () {
+                this.deletar(this.idExcluir);
+            },
+
+            deletar: function (id) {
+                try{
+                   axios.post(Config.baseURL + `/fornecedores/destroy/${id}`)
+                    .then(response => {
+                        let i = this.dados.map(data => data.id).indexOf(id);
+                        this.dados.slice(i, 1);
+                    });
+                    
+                }catch(error){
+                    console.log(error);
+                }finally{
+                    window.location.href = Config.baseURL + '/fornecedores/todos';
                 }
+            },
+
+            async carregar(){
+                try{
+                    let response = await axios.get(Config.baseURL + '/fornecedores/listar/');
+                    console.log(response.data);
+                    this.dados = response.data;
+                }catch(erro){
+                    console.log(erro);
+                }
+
+            },
+            editar(id){
+                window.location.href = Config.baseURL + '/fornecedores/editar?id='+id;
+            },
+
+            excluir(id){
+                this.idExcluir = parseInt(id);
+                console.log(this.idExcluir);
             }
         }
 
-        
-    },
-
-    mounted() {
-
-            console.log(urlParams.get('id'))
-            if (urlParams.get('id')) {
-              this.abrir(urlParams.get('id'))
-              
-            }
-        },
-    methods: {
-
-        async abrir(id){
-                try {
-                    let response = await axios.get(Config.baseURL + '/fornecedores/' + id + '/abrir');
-                    this.fornecedor = response.data;
-                    this.fornecedor.endereco =response.data.endereco;
-                    this.fornecedor.observacao =response.data.observacao;               
-
-                    console.log(this.fornecedor);
-
-                    } catch (error) {
-                    console.log('Erro:', error);
-                }
-            },
-        //para salvar no servidor
-        async onFileSelected(event){
-            let file = event.target.files[0];
-        
-            let fd = new FormData();
-            fd.append('file',file);
-            fd.append('name', 'file')
-
-            let config = {
-                header : {
-                'Content-Type' : 'multipart/form-data'
-                }
-            }
-            console.log(fd);
-            await axios.post(Config.baseURL + '/fornecedores/salvar', fd);
-
-            
-        },
-
-        async onFileChange(e) {
-            let file = this.$refs.foto.files[0];
-
-            let reader = new FileReader();
-            let vm = this;
-            reader.onload = function () {
-                var dataURL = reader.result;
-                vm.fornecedor.foto = dataURL;    
-            };
-
-            reader.readAsDataURL(file); 
-        
-        },
-
-        async salvar(){
-            try{
-              
-                if(this.fornecedor.id){
-                   let resposta = await axios.post(Config.baseURL+ '/fornecedores/'+this.fornecedor.id+'/atualizar', this.fornecedor);
-
-                   if(resposta){
-                        window.alert('Fornecedor Atualizado com sucesso!');
-                        window.location.href= Config.baseURL+ "/fornecedores/todos";
-                    }
-                }
-
-                else{
-                    let resposta = await axios.post(Config.baseURL + '/fornecedores/salvar', this.fornecedor);   
-                    if(resposta){
-                        window.alert('Fornecedor Salvo com sucesso!');
-                        window.location.href= Config.baseURL+ "/fornecedores/todos";
-                    }                 
-                }
-
-                }catch(erro){
-                    console.log('Erro', erro);
-                }
-            
-            
-        },  
     }
-}
+
 
 </script>
+
+<style>
+  .scroll {
+    min-height: 100px;
+    max-height: 500px;
+    overflow-y: scroll;
+  }
+</style>

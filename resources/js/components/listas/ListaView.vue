@@ -1,5 +1,5 @@
 <template>
-    <div class="col-xl-6 col-md-12 px-2">
+    <div class="col-md-12 mb-2 px-2">
       <div class="card card-lista">
         <div class="card-body py-0 px-2">
           <div class="row">
@@ -62,7 +62,7 @@
               </slot>
             </div>
             
-            <div class="col-12 col-sm-2 px-1 d-flex flex-column justify-content-center align-items-center align-items-sm-end" v-if="exibirGridValores">
+            <div class="col-12 col-sm-2 px-1 d-flex flex-column justify-content-center align-items-center align-items-sm-end" v-if="true">
               <slot name="valores">
                 
               </slot>
@@ -126,12 +126,12 @@
   
         grid1XL: {
           type: String,
-          default: 'col-xl-12',
+          default: 'col-xl-2',
         },
   
         gridDescricoes: {
           type: String,
-          default: 'col-sm-5'
+          default: 'col-sm-5',
         },
   
         gridBadges: {
@@ -146,7 +146,7 @@
   
         gridBotoesXL: {
           type: String,
-          default: 'col-xl-12'
+          default: 'col-xl-2'
         },
       },
   
